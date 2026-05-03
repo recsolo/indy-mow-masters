@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Indy Mow Masters — Mow & Go Lawn Service Indianapolis</title>
+<meta name="description" content="Indy Mow Masters Mow & Go service: front & back mowing, trimming, and leaf blower cleanup. Starting at $40. Serving Indianapolis and surrounding areas." />
+<meta property="og:title" content="Indy Mow Masters — Mow & Go Lawn Care" />
+<meta property="og:description" content="Professional lawn mowing, trimming & cleanup. Starting at $40. Serving Indianapolis and surrounding areas. Call (317) 386-0400." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.indymowmasters.com" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Indy Mow Masters — Mow & Go Lawn Care" />
+<meta name="twitter:description" content="Professional lawn mowing, trimming & cleanup. Starting at $40. Serving Indianapolis." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+<link rel="canonical" href="https://www.indymowmasters.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#fff;color:#0B2A1A;-webkit-font-smoothing:antialiased;line-height:1.6}
+
+/* ─── TOKENS ─── */
+:root{
+  --g-dark:#0B2A1A;
+  --g-mid:#145A32;
+  --g-accent:#1E8449;
+  --gold:#C9922A;
+  --gold-bright:#F0B429;
+  --gold-light:#FEF3C7;
+  --white:#FFFFFF;
+  --off:#F5F6F2;
+  --line:#E2E8DF;
+  --muted:#4A6741;
+}
+
+/* ─── UTILITIES ─── */
+.container{max-width:1160px;margin:0 auto;padding:0 24px}
+.btn{display:inline-block;padding:15px 32px;border-radius:6px;font-weight:700;font-size:16px;text-decoration:none;transition:all .18s ease;cursor:pointer;border:none;font-family:inherit;letter-spacing:.02em}
+.btn-gold{background:var(--gold-bright);color:var(--g-dark)}
+.btn-gold:hover{background:#e0a520;transform:translateY(-2px);box-shadow:0 8px 24px rgba(240,180,41,.35)}
+.btn-outline{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.5)}
+.btn-outline:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.btn-dark{background:var(--g-dark);color:#fff}
+.btn-dark:hover{background:#0d3320;transform:translateY(-2px)}
+
+/* ─── NAV ─── */
+header{position:sticky;top:0;z-index:50;background:var(--g-dark);border-bottom:1px solid rgba(255,255,255,.06)}
+nav{display:flex;justify-content:space-between;align-items:center;height:72px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon{width:40px;height:40px;background:var(--gold-bright);border-radius:8px;display:grid;place-items:center;font-size:22px;flex-shrink:0}
+.logo-text{font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;letter-spacing:.08em;line-height:1}
+.logo-text span{display:block;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:var(--gold-bright);letter-spacing:.15em;text-transform:uppercase}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:14px;font-weight:500;transition:color .15s}
+.nav-links a:hover{color:#fff}
+.nav-phone{display:flex;align-items:center;gap:8px;color:var(--gold-bright);font-weight:700;font-size:15px;text-decoration:none}
+@media(max-width:800px){.nav-links{display:none}.logo-text span{display:none}}
+
+/* ─── HERO ─── */
+.hero{background:var(--g-dark);position:relative;overflow:hidden;padding:90px 0 80px}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(240,180,41,.12);border:1px solid rgba(240,180,41,.3);color:var(--gold-bright);padding:7px 16px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:24px}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold-bright);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,7vw,88px);line-height:1;color:#fff;letter-spacing:.03em;margin-bottom:20px}
+h1 .gold{color:var(--gold-bright)}
+.hero-sub{font-size:18px;color:rgba(255,255,255,.7);max-width:480px;margin-bottom:36px}
+.hero-cta-group{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px}
+.hero-stats{display:flex;gap:36px}
+.stat strong{display:block;font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--gold-bright);letter-spacing:.05em;line-height:1}
+.stat span{font-size:13px;color:rgba(255,255,255,.55);font-weight:500}
+
+/* Price card in hero */
+.hero-card{background:#fff;border-radius:20px;padding:0;overflow:hidden;box-shadow:0 32px 64px rgba(0,0,0,.35)}
+.hc-top{background:var(--g-mid);padding:28px 32px;color:#fff}
+.hc-badge{display:inline-block;background:var(--gold-bright);color:var(--g-dark);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:4px;margin-bottom:14px}
+.hc-top h3{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:.05em;margin-bottom:4px}
+.hc-top p{font-size:14px;color:rgba(255,255,255,.75)}
+.hc-body{padding:28px 32px}
+.include-list{list-style:none;display:grid;gap:12px;margin-bottom:24px}
+.include-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--g-dark);font-weight:500}
+.check{width:22px;height:22px;background:var(--gold-light);color:var(--gold);border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:900;flex-shrink:0;margin-top:1px}
+.price-row{background:var(--off);border-radius:12px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
+.price-row span{font-size:13px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.price-row strong{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--g-dark);letter-spacing:.03em}
+.price-note{font-size:12px;color:var(--muted);text-align:right;margin-top:2px}
+
+@media(max-width:920px){
+  .hero-inner{grid-template-columns:1fr;gap:44px}
+  .hero-card{max-width:440px}
+  .hero{padding:60px 0 60px}
+}
+
+/* ─── SERVICE SECTION ─── */
+.service-section{padding:100px 0;background:var(--off)}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.section-label::before{content:'';display:block;width:28px;height:2px;background:var(--gold)}
+h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5vw,60px);color:var(--g-dark);letter-spacing:.03em;line-height:1.05;margin-bottom:16px}
+.section-sub{color:var(--muted);font-size:17px;max-width:540px;margin-bottom:0}
+
+.service-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.big-service-card{background:var(--g-dark);border-radius:20px;overflow:hidden;color:#fff}
+.bsc-header{background:linear-gradient(135deg,var(--g-mid),var(--g-dark));padding:36px;border-bottom:1px solid rgba(255,255,255,.08)}
+.bsc-tag{display:inline-block;background:var(--gold-bright);color:var(--g-dark);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:4px;margin-bottom:16px}
+.bsc-header h3{font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:.04em;color:#fff;margin-bottom:6px}
+.bsc-header p{color:rgba(255,255,255,.65);font-size:15px}
+.bsc-steps{padding:36px;display:grid;gap:0}
+.step{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.step:last-child{border-bottom:0}
+.step-num{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--gold-bright);line-height:1;width:32px;flex-shrink:0;margin-top:2px}
+.step-info h4{font-size:16px;font-weight:700;color:#fff;margin-bottom:3px}
+.step-info p{font-size:14px;color:rgba(255,255,255,.55)}
+
+.service-right h2{margin-bottom:12px}
+.service-right .section-sub{margin-bottom:32px}
+.promise-list{display:grid;gap:14px;margin-bottom:36px}
+.promise{display:flex;gap:14px;align-items:flex-start}
+.promise-icon{width:44px;height:44px;background:var(--gold-light);border-radius:10px;display:grid;place-items:center;font-size:20px;flex-shrink:0}
+.promise-info h4{font-weight:700;font-size:15px;color:var(--g-dark);margin-bottom:2px}
+.promise-info p{font-size:14px;color:var(--muted)}
+
+@media(max-width:860px){.service-layout{grid-template-columns:1fr}}
+
+/* ─── PRICING ─── */
+.pricing-section{padding:100px 0;background:#fff}
+.pricing-head{text-align:center;max-width:600px;margin:0 auto 56px}
+.pricing-head .section-label{justify-content:center}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:32px}
+.price-card{border:2px solid var(--line);border-radius:16px;padding:36px 28px;text-align:center;position:relative;transition:all .2s}
+.price-card:hover{border-color:var(--g-accent);transform:translateY(-4px);box-shadow:0 16px 40px rgba(20,90,50,.1)}
+.price-card.featured{border-color:var(--gold-bright);background:var(--g-dark);color:#fff}
+.featured-tag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold-bright);color:var(--g-dark);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;border-radius:999px}
+.yard-size{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.price-card.featured .yard-size{color:var(--gold-bright)}
+.price-amt{font-family:'Bebas Neue',sans-serif;font-size:72px;line-height:1;color:var(--g-dark);letter-spacing:.02em;margin-bottom:4px}
+.price-card.featured .price-amt{color:#fff}
+.price-amt sup{font-size:32px;vertical-align:top;margin-top:14px;display:inline-block}
+.size-desc{font-size:14px;color:var(--muted);margin-bottom:24px}
+.price-card.featured .size-desc{color:rgba(255,255,255,.65)}
+.price-amt{margin-bottom:24px}
+.includes-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--g-accent);margin-bottom:12px}
+.price-card.featured .includes-label{color:var(--gold-bright)}
+.mini-list{list-style:none;display:grid;gap:8px;text-align:left}
+.mini-list li{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.price-card.featured .mini-list li{color:rgba(255,255,255,.75)}
+.mini-list li::before{content:'✓';font-weight:800;color:var(--g-accent);font-size:12px}
+.price-card.featured .mini-list li::before{color:var(--gold-bright)}
+
+.addon-bar{background:var(--gold-light);border:2px solid var(--gold);border-radius:14px;padding:24px 32px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.addon-icon{font-size:32px}
+.addon-text h4{font-size:17px;font-weight:800;color:var(--g-dark);margin-bottom:3px}
+.addon-text p{font-size:14px;color:var(--muted)}
+.addon-price{margin-left:auto;text-align:center}
+.addon-price strong{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--g-dark);line-height:1;letter-spacing:.03em}
+.addon-price small{display:block;font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+
+@media(max-width:760px){.pricing-grid{grid-template-columns:1fr}.price-card.featured{order:-1}}
+
+/* ─── CTA STRIP ─── */
+.cta-strip{background:var(--gold-bright);padding:70px 0}
+.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.cta-inner h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4.5vw,56px);color:var(--g-dark);letter-spacing:.03em;line-height:1.05;max-width:540px}
+.cta-inner h2 em{font-style:normal;text-decoration:underline;text-decoration-color:rgba(11,42,26,.35);text-underline-offset:4px}
+.cta-actions{display:flex;flex-direction:column;gap:12px;align-items:flex-end}
+.cta-phone{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--g-dark);letter-spacing:.05em;text-decoration:none}
+.cta-phone:hover{text-decoration:underline}
+.cta-note{font-size:13px;color:rgba(11,42,26,.6);font-weight:500;text-align:right}
+@media(max-width:720px){.cta-inner{flex-direction:column;align-items:flex-start}.cta-actions{align-items:flex-start}}
+
+/* ─── REVIEWS ─── */
+.reviews-section{padding:100px 0;background:var(--off)}
+.reviews-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;gap:24px;flex-wrap:wrap}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.review-card{background:#fff;border-radius:16px;padding:28px;border:1px solid var(--line)}
+.review-stars{color:var(--gold-bright);font-size:18px;letter-spacing:2px;margin-bottom:14px}
+.review-card p{font-size:15px;color:var(--g-dark);margin-bottom:20px;line-height:1.65}
+.reviewer{display:flex;align-items:center;gap:12px}
+.avi{width:42px;height:42px;border-radius:50%;background:var(--g-mid);color:var(--gold-bright);font-weight:800;font-size:14px;display:grid;place-items:center;flex-shrink:0}
+.reviewer-name{font-weight:700;font-size:14px;color:var(--g-dark)}
+.reviewer-loc{font-size:13px;color:var(--muted)}
+@media(max-width:760px){.reviews-grid{grid-template-columns:1fr}}
+
+/* ─── CONTACT FORM ─── */
+.contact-section{padding:100px 0;background:var(--g-dark)}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.contact-left h2{color:#fff;margin-bottom:14px}
+.contact-left p{color:rgba(255,255,255,.65);font-size:16px;margin-bottom:36px}
+.contact-info-list{display:grid;gap:18px}
+.ci-item{display:flex;gap:16px;align-items:center}
+.ci-icon{width:44px;height:44px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;display:grid;place-items:center;font-size:18px;flex-shrink:0}
+.ci-text span{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:3px}
+.ci-text a, .ci-text p{color:#fff;font-weight:600;font-size:16px;text-decoration:none}
+.ci-text a:hover{color:var(--gold-bright)}
+
+form{background:#fff;border-radius:20px;padding:36px;display:grid;gap:16px}
+.form-title{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--g-dark);letter-spacing:.04em;margin-bottom:4px}
+.form-subtitle{font-size:14px;color:var(--muted);margin-bottom:8px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field label{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--g-dark);margin-bottom:7px}
+.field input, .field select, .field textarea{
+  width:100%;padding:13px 16px;
+  border:1.5px solid var(--line);
+  border-radius:8px;font-family:inherit;
+  font-size:15px;background:#fff;color:var(--g-dark);
+  transition:border-color .15s, box-shadow .15s;
+}
+.field input:focus, .field select:focus, .field textarea:focus{
+  outline:none;
+  border-color:var(--g-accent);
+  box-shadow:0 0 0 3px rgba(30,132,73,.12);
+}
+.field textarea{resize:vertical;min-height:90px}
+form .btn-gold{width:100%;margin-top:4px;font-size:16px}
+
+@media(max-width:900px){.contact-inner{grid-template-columns:1fr}.contact-section{padding:60px 0}}
+@media(max-width:600px){.form-row{grid-template-columns:1fr}}
+
+/* ─── FOOTER ─── */
+footer{background:#070f0b;padding:40px 0 28px;text-align:center;color:rgba(255,255,255,.4);font-size:14px}
+.footer-logo{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:18px}
+.footer-logo .logo-icon{width:34px;height:34px;border-radius:6px;font-size:18px}
+.footer-logo .logo-text{font-size:19px;color:#fff}
+.footer-logo .logo-text span{display:none}
+footer p{margin-top:6px}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<header>
+  <div class="container">
+    <nav>
+      <a href="#" class="logo">
+        <div class="logo-icon">🌿</div>
+        <div class="logo-text">
+          Indy Mow Masters
+          <span>Indianapolis, IN</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#service">Service</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="tel:3173860400" class="nav-phone">
+        📞 (317) 386-0400
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">Serving Indianapolis &amp; Surrounding Areas</div>
+        <h1>YOUR YARD.<br>DONE <span class="gold">RIGHT.</span></h1>
+        <p class="hero-sub">One simple service. Three easy price points. We mow front &amp; back, trim, and blow every time — no surprises, no mess.</p>
+        <div class="hero-cta-group">
+          <a href="#contact" class="btn btn-gold">Get a Free Quote</a>
+          <a href="tel:3173860400" class="btn btn-outline">Call (317) 386-0400</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><strong>500+</strong><span>Happy Yards</span></div>
+          <div class="stat"><strong>4.9★</strong><span>Google Rating</span></div>
+          <div class="stat"><strong>$40</strong><span>Starting Price</span></div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="hc-top">
+          <div class="hc-badge">Our Only Service</div>
+          <h3>The Mow &amp; Go Package</h3>
+          <p>Everything your lawn needs. Every single visit.</p>
+        </div>
+        <div class="hc-body">
+          <ul class="include-list">
+            <li><span class="check">✓</span> Front &amp; backyard mowing — full property cut, clean lines every time</li>
+            <li><span class="check">✓</span> Trimming around edges, fences, trees &amp; obstacles</li>
+            <li><span class="check">✓</span> Leaf blower cleanup — driveways, walkways, and patios</li>
+          </ul>
+          <div class="price-row">
+            <span>Starting from</span>
+            <strong><sup>$</sup>40</strong>
+          </div>
+          <p class="price-note">Small / Medium / Large — see pricing below</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICE ─── -->
+<section id="service" class="service-section">
+  <div class="container">
+    <div class="service-layout">
+      <div class="big-service-card">
+        <div class="bsc-header">
+          <div class="bsc-tag">How It Works</div>
+          <h3>The Mow &amp; Go Process</h3>
+          <p>Three steps. Consistent results. Every visit.</p>
+        </div>
+        <div class="bsc-steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-info">
+              <h4>Full Mow — Front &amp; Back</h4>
+              <p>We cut every inch of your property with precision, leaving clean, even lines throughout.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-info">
+              <h4>Trim Everything</h4>
+              <p>String trimmer along all edges, fences, beds, posts, and trees for that finished look.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-info">
+              <h4>Blow &amp; Clean Up</h4>
+              <p>Leaf blower clears all clippings from your driveway, walkways, and patio. We leave nothing behind.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-right">
+        <div class="section-label">Why Choose Us</div>
+        <h2>SIMPLE.<br>RELIABLE.<br>AFFORDABLE.</h2>
+        <p class="section-sub">We don't upsell. We don't skip steps. You get the same great service at the same fair price — every single time.</p>
+        <div class="promise-list">
+          <div class="promise">
+            <div class="promise-icon">⏰</div>
+            <div class="promise-info">
+              <h4>On-Time or We Make It Right</h4>
+              <p>Set day, every week. We notify you before arrival so you're never caught off guard.</p>
+            </div>
+          </div>
+          <div class="promise">
+            <div class="promise-icon">🛡️</div>
+            <div class="promise-info">
+              <h4>Fully Licensed &amp; Insured</h4>
+              <p>Professional equipment, proper insurance. Your property is protected on every visit.</p>
+            </div>
+          </div>
+          <div class="promise">
+            <div class="promise-icon">📍</div>
+            <div class="promise-info">
+              <h4>Locally Owned in Indy</h4>
+              <p>You're talking to the owner — not a call center. We care about our reputation here.</p>
+            </div>
+          </div>
+          <div class="promise">
+            <div class="promise-icon">💬</div>
+            <div class="promise-info">
+              <h4>100% Satisfaction Guarantee</h4>
+              <p>Not happy with a visit? Call us and we'll come back out. No questions asked.</p>
+            </div>
+          </div>
+        </div>
+        <a href="#contact" class="btn btn-dark">Book Your First Mow</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRICING ─── -->
+<section id="pricing" class="pricing-section">
+  <div class="container">
+    <div class="pricing-head">
+      <div class="section-label">Pricing</div>
+      <h2>FLAT RATES. NO SURPRISES.</h2>
+      <p style="color:var(--muted);font-size:17px">One fair price based on your yard size. No hidden fees, no per-visit contracts required.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="yard-size">Small Yard</div>
+        <div class="price-amt"><sup>$</sup>40</div>
+        <div class="includes-label">Every Visit Includes</div>
+        <ul class="mini-list">
+          <li>Front &amp; back mow</li>
+          <li>Full trim</li>
+          <li>Blow &amp; cleanup</li>
+        </ul>
+      </div>
+
+      <div class="price-card featured">
+        <div class="featured-tag">Most Common</div>
+        <div class="yard-size">Medium Yard</div>
+        <div class="price-amt"><sup>$</sup>60</div>
+        <div class="includes-label">Every Visit Includes</div>
+        <ul class="mini-list">
+          <li>Front &amp; back mow</li>
+          <li>Full trim</li>
+          <li>Blow &amp; cleanup</li>
+        </ul>
+      </div>
+
+      <div class="price-card">
+        <div class="yard-size">Large Yard</div>
+        <div class="price-amt"><sup>$</sup>80</div>
+        <div class="includes-label">Every Visit Includes</div>
+        <ul class="mini-list">
+          <li>Front &amp; back mow</li>
+          <li>Full trim</li>
+          <li>Blow &amp; cleanup</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="addon-bar">
+      <div class="addon-icon">⚡</div>
+      <div class="addon-text">
+        <h4>Overgrown Grass Add-On</h4>
+        <p>Grass over standard height? We'll still handle it — just add $20 to your first visit price. One-time fee until your lawn is on a regular schedule.</p>
+      </div>
+      <div class="addon-price">
+        <strong>+$20</strong>
+        <small>One-time add-on</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA STRIP ─── -->
+<section class="cta-strip">
+  <div class="container">
+    <div class="cta-inner">
+      <h2>READY FOR A YARD YOU'RE <em>PROUD OF?</em></h2>
+      <div class="cta-actions">
+        <a href="tel:3173860400" class="cta-phone">(317) 386-0400</a>
+        <span class="cta-note">Or fill out the form below for a free estimate</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── REVIEWS ─── -->
+<section id="reviews" class="reviews-section">
+  <div class="container">
+    <div class="reviews-head">
+      <div>
+        <div class="section-label">Customer Reviews</div>
+        <h2>WHAT INDY<br>NEIGHBORS SAY</h2>
+      </div>
+      <p style="color:var(--muted);max-width:280px;font-size:15px">4.9 ★ rating from 280+ verified Google reviews</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"Simple service, simple price — exactly what I needed. They show up every Tuesday, mow everything, and leave my yard spotless. Worth every dollar."</p>
+        <div class="reviewer">
+          <div class="avi">SK</div>
+          <div>
+            <div class="reviewer-name">Sarah K.</div>
+            <div class="reviewer-loc">Broad Ripple</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"I've tried three other lawn services in Indy. Nobody is as consistent or as affordable. $60 for my medium yard and they never miss a spot. Highly recommend."</p>
+        <div class="reviewer">
+          <div class="avi">DT</div>
+          <div>
+            <div class="reviewer-name">David T.</div>
+            <div class="reviewer-loc">Carmel</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"My grass was embarrassingly overgrown when I called. They came out, handled it for a $20 add-on, and now we're on a regular schedule. Best decision I made this summer."</p>
+        <div class="reviewer">
+          <div class="avi">JR</div>
+          <div>
+            <div class="reviewer-name">Jennifer R.</div>
+            <div class="reviewer-loc">Fishers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <div class="section-label" style="color:var(--gold-bright)">Free Estimate</div>
+        <h2 style="color:#fff">GET YOUR<br>FREE QUOTE<br>TODAY</h2>
+        <p>Tell us your address and we'll give you an honest quote — usually same day. No pushy sales, no contracts required to start.</p>
+        <div class="contact-info-list">
+          <div class="ci-item">
+            <div class="ci-icon">📞</div>
+            <div class="ci-text">
+              <span>Call or Text</span>
+              <a href="tel:3173860400">(317) 386-0400</a>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">📍</div>
+            <div class="ci-text">
+              <span>Service Area</span>
+              <p>Indianapolis &amp; Surrounding Areas</p>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">⏱️</div>
+            <div class="ci-text">
+              <span>Response Time</span>
+              <p>Same-day quotes, 7 days a week</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form action="https://formspree.io/f/xpqbpwny" method="POST">
+        <input type="hidden" name="_subject" value="New quote request — Indy Mow Masters" />
+        <div class="form-title">Request a Free Quote</div>
+        <p class="form-subtitle">We'll get back to you with a price fast — usually same day.</p>
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required placeholder="Jane Doe" autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="phone">Phone / Text</label>
+            <input id="phone" name="phone" type="tel" required placeholder="(317) 555-0123" autocomplete="tel" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="address">Property Address</label>
+          <input id="address" name="address" type="text" required placeholder="1234 Main St, Indianapolis, IN" autocomplete="street-address" />
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="size">Yard Size (estimate)</label>
+            <select id="size" name="yard_size" required>
+              <option value="">Select yard size…</option>
+              <option value="Small yard — $40">Small yard — $40</option>
+              <option value="Medium yard — $60">Medium yard — $60</option>
+              <option value="Large yard — $80">Large yard — $80</option>
+              <option value="Not sure">Not sure — I'll describe it</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="overgrown">Overgrown grass?</label>
+            <select id="overgrown" name="overgrown_grass">
+              <option value="No">No – normal height</option>
+              <option value="Yes (+$20)">Yes – needs the +$20 add-on</option>
+              <option value="Not sure">Not sure</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="notes">Anything else to know?</label>
+          <textarea id="notes" name="notes" placeholder="Gate codes, dogs, special instructions…"></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold">Send My Free Quote Request →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="container">
+    <div class="footer-logo">
+      <div class="logo-icon">🌿</div>
+      <div class="logo-text">Indy Mow Masters</div>
+    </div>
+    <p>© <span id="yr"></span> Indy Mow Masters · Indianapolis, IN · <a href="tel:3173860400" style="color:var(--gold-bright);text-decoration:none">(317) 386-0400</a></p>
+    <p style="margin-top:6px">Licensed &amp; Insured · Locally Owned</p>
+  </div>
+</footer>
+
+<script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
+</body>
+</html>
