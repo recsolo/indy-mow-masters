@@ -72,9 +72,9 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,7vw,88px);line-heigh
 h1 .gold{color:var(--gold-bright)}
 .hero-sub{font-size:18px;color:rgba(255,255,255,.7);max-width:480px;margin-bottom:36px}
 .hero-cta-group{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px}
-.hero-stats{display:flex;gap:36px}
-.stat strong{display:block;font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--gold-bright);letter-spacing:.05em;line-height:1}
-.stat span{font-size:13px;color:rgba(255,255,255,.55);font-weight:500}
+.hero-stats{display:flex;flex-direction:column;gap:10px}
+.stat{display:flex;align-items:center;gap:10px;font-size:15px;color:rgba(255,255,255,.85);font-weight:500}
+.stat strong{color:var(--gold-bright);font-size:18px;flex-shrink:0}
 
 /* Price card in hero */
 .hero-card{background:#fff;border-radius:20px;padding:0;overflow:hidden;box-shadow:0 32px 64px rgba(0,0,0,.35)}
@@ -221,6 +221,16 @@ form .btn-gold{width:100%;margin-top:4px;font-size:16px}
 @media(max-width:900px){.contact-inner{grid-template-columns:1fr}.contact-section{padding:60px 0}}
 @media(max-width:600px){.form-row{grid-template-columns:1fr}}
 
+/* ─── PAYMENT ─── */
+.payment-section{padding:60px 0;background:var(--off);border-top:1px solid var(--line)}
+.payment-inner{display:flex;align-items:center;gap:56px;flex-wrap:wrap}
+.payment-label{flex-shrink:0}
+.payment-label h2{margin-bottom:0}
+.payment-methods{display:flex;gap:12px;flex-wrap:wrap}
+.pay-chip{background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:12px 22px;font-size:15px;font-weight:600;color:var(--g-dark);white-space:nowrap;transition:border-color .15s,box-shadow .15s}
+.pay-chip:hover{border-color:var(--gold);box-shadow:0 4px 12px rgba(201,146,42,.15)}
+@media(max-width:760px){.payment-inner{flex-direction:column;align-items:flex-start;gap:24px}}
+
 /* ─── FOOTER ─── */
 footer{background:#070f0b;padding:40px 0 28px;text-align:center;color:rgba(255,255,255,.4);font-size:14px}
 .footer-logo{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:18px}
@@ -269,9 +279,9 @@ footer p{margin-top:6px}
           <a href="tel:3173860400" class="btn btn-outline">Call (317) 386-0400</a>
         </div>
         <div class="hero-stats">
-          <div class="stat"><strong>500+</strong><span>Happy Yards</span></div>
-          <div class="stat"><strong>4.9★</strong><span>Google Rating</span></div>
-          <div class="stat"><strong>$40</strong><span>Starting Price</span></div>
+          <div class="stat"><strong>✔</strong><span>Trusted by Indianapolis homeowners</span></div>
+          <div class="stat"><strong>✔</strong><span>Local, owner-operated lawn care</span></div>
+          <div class="stat"><strong>✔</strong><span>Fair flat-rate mowing starting at $40</span></div>
         </div>
       </div>
 
@@ -432,6 +442,26 @@ footer p{margin-top:6px}
   </div>
 </section>
 
+<!-- ─── PAYMENT ─── -->
+<section class="payment-section">
+  <div class="container">
+    <div class="payment-inner">
+      <div class="payment-label">
+        <div class="section-label">Payment</div>
+        <h2>WE MAKE IT<br>EASY TO PAY</h2>
+      </div>
+      <div class="payment-methods">
+        <div class="pay-chip">💵 Cash</div>
+        <div class="pay-chip">💳 Card</div>
+        <div class="pay-chip">📱 Cash App</div>
+        <div class="pay-chip">💜 Venmo</div>
+        <div class="pay-chip">🅿️ PayPal</div>
+        <div class="pay-chip">🍎 Apple Pay</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ─── CTA STRIP ─── -->
 <section class="cta-strip">
   <div class="container">
@@ -453,7 +483,7 @@ footer p{margin-top:6px}
         <div class="section-label">Customer Reviews</div>
         <h2>WHAT INDY<br>NEIGHBORS SAY</h2>
       </div>
-      <p style="color:var(--muted);max-width:280px;font-size:15px">4.9 ★ rating from 280+ verified Google reviews</p>
+      <p style="color:var(--muted);max-width:280px;font-size:15px">Real reviews from real Indianapolis homeowners</p>
     </div>
     <div class="reviews-grid">
       <div class="review-card">
@@ -561,6 +591,29 @@ footer p{margin-top:6px}
               <option value="No">No – normal height</option>
               <option value="Yes (+$20)">Yes – needs the +$20 add-on</option>
               <option value="Not sure">Not sure</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="day">Preferred Day</label>
+            <select id="day" name="preferred_day">
+              <option value="">Any day works</option>
+              <option value="Monday">Monday</option>
+              <option value="Tuesday">Tuesday</option>
+              <option value="Wednesday">Wednesday</option>
+              <option value="Thursday">Thursday</option>
+              <option value="Friday">Friday</option>
+              <option value="Saturday">Saturday</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="timewindow">Preferred Time</label>
+            <select id="timewindow" name="preferred_time">
+              <option value="">Any time works</option>
+              <option value="Morning (8am–12pm)">Morning (8am–12pm)</option>
+              <option value="Afternoon (12pm–4pm)">Afternoon (12pm–4pm)</option>
+              <option value="Late Afternoon (4pm–6pm)">Late Afternoon (4pm–6pm)</option>
             </select>
           </div>
         </div>
