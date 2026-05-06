@@ -4,9 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Indy Mow Masters — Mow & Go Lawn Service Indianapolis</title>
-<meta name="description" content="Indy Mow Masters Mow & Go service: front & back mowing, trimming, and leaf blower cleanup. Starting at $40. Serving Indianapolis and surrounding areas." />
+<meta name="description" content="Indy Mow Masters Mow & Go service: front & back mowing, trimming, and leaf blower cleanup. Starting at $40. Serving Indianapolis, Avon, Plainfield, and Brownsburg." />
 <meta property="og:title" content="Indy Mow Masters — Mow & Go Lawn Care" />
-<meta property="og:description" content="Professional lawn mowing, trimming & cleanup. Starting at $40. Serving Indianapolis and surrounding areas. Call (317) 386-0400." />
+<meta property="og:description" content="Professional lawn mowing, trimming & cleanup. Starting at $40. Serving Indianapolis, Avon, Plainfield, and Brownsburg. Call (317) 386-0400." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.indymowmasters.com" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -275,6 +275,7 @@ h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5vw,60px);color:var(
   box-shadow:0 1px 3px rgba(212,160,23,.4), inset 0 1px 0 rgba(255,245,194,.5);
 }
 
+.addon-stack{display:grid;gap:16px}
 .addon-bar{
   background:linear-gradient(135deg, var(--gold-shine) 0%, var(--gold-light) 100%);
   border:1px solid rgba(212,160,23,.4);
@@ -467,7 +468,7 @@ footer p{margin-top:6px}
   <div class="container">
     <div class="hero-inner">
       <div>
-        <div class="hero-badge">Serving Indianapolis &amp; Surrounding Areas</div>
+        <div class="hero-badge">Serving Indianapolis · Avon · Plainfield · Brownsburg</div>
         <h1>YOUR YARD.<br>DONE <span class="gold">RIGHT.</span></h1>
         <p class="hero-sub">One simple service. Three easy price points. We mow front &amp; back, trim, and blow every time — no surprises, no mess.</p>
         <div class="hero-cta-group">
@@ -624,15 +625,29 @@ footer p{margin-top:6px}
       </div>
     </div>
 
-    <div class="addon-bar">
-      <div class="addon-icon">⚡</div>
-      <div class="addon-text">
-        <h4>Overgrown Grass Add-On</h4>
-        <p>Grass over standard height? We'll still handle it — just add $20 to your first visit price. One-time fee until your lawn is on a regular schedule.</p>
+    <div class="addon-stack">
+      <div class="addon-bar">
+        <div class="addon-icon">⚡</div>
+        <div class="addon-text">
+          <h4>Overgrown Grass Add-On</h4>
+          <p>Grass over standard height? We'll still handle it — just add $20 to your first visit price. One-time fee until your lawn is on a regular schedule.</p>
+        </div>
+        <div class="addon-price">
+          <strong>+$20</strong>
+          <small>One-time add-on</small>
+        </div>
       </div>
-      <div class="addon-price">
-        <strong>+$20</strong>
-        <small>One-time add-on</small>
+
+      <div class="addon-bar">
+        <div class="addon-icon">📍</div>
+        <div class="addon-text">
+          <h4>Outside Service Area</h4>
+          <p>We service Indianapolis, Avon, Plainfield, and Brownsburg at standard rates. Anywhere outside that area? Just $10 added to your starting price (Small $50 / Medium $70 / Large $90).</p>
+        </div>
+        <div class="addon-price">
+          <strong>+$10</strong>
+          <small>Out-of-area</small>
+        </div>
       </div>
     </div>
   </div>
@@ -739,7 +754,7 @@ footer p{margin-top:6px}
             <div class="ci-icon">📍</div>
             <div class="ci-text">
               <span>Service Area</span>
-              <p>Indianapolis &amp; Surrounding Areas</p>
+              <p>Indianapolis, Avon, Plainfield, Brownsburg</p>
             </div>
           </div>
           <div class="ci-item">
@@ -768,7 +783,18 @@ footer p{margin-top:6px}
         </div>
         <div class="field">
           <label for="address">Property Address</label>
-          <input id="address" name="address" type="text" required placeholder="1234 Main St, Indianapolis, IN" autocomplete="street-address" />
+          <input id="address" name="address" type="text" required placeholder="1234 Main St" autocomplete="street-address" />
+        </div>
+        <div class="field">
+          <label for="city">City</label>
+          <select id="city" name="city" required>
+            <option value="">Select your city…</option>
+            <option value="Indianapolis">Indianapolis</option>
+            <option value="Avon">Avon</option>
+            <option value="Plainfield">Plainfield</option>
+            <option value="Brownsburg">Brownsburg</option>
+            <option value="Other (+$10)">Other — outside service area (+$10)</option>
+          </select>
         </div>
         <div class="form-row">
           <div class="field">
