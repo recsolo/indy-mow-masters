@@ -12,7 +12,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Indy Mow Masters — Mow & Go Lawn Care" />
 <meta name="twitter:description" content="Professional lawn mowing, trimming & cleanup. Starting at $40. Serving Indianapolis." />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+<link rel="icon" href="logo.png" type="image/png" />
 <link rel="canonical" href="https://www.indymowmasters.com" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -48,15 +48,13 @@ body{font-family:'Inter',sans-serif;background:#fff;color:#0B2A1A;-webkit-font-s
 /* ─── NAV ─── */
 header{position:sticky;top:0;z-index:50;background:var(--g-dark);border-bottom:1px solid rgba(255,255,255,.06)}
 nav{display:flex;justify-content:space-between;align-items:center;height:72px}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-.logo-icon{width:40px;height:40px;background:var(--gold-bright);border-radius:8px;display:grid;place-items:center;font-size:22px;flex-shrink:0}
-.logo-text{font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;letter-spacing:.08em;line-height:1}
-.logo-text span{display:block;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:var(--gold-bright);letter-spacing:.15em;text-transform:uppercase}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo-img{height:52px;width:auto;display:block}
 .nav-links{display:flex;gap:32px;list-style:none}
 .nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:14px;font-weight:500;transition:color .15s}
 .nav-links a:hover{color:#fff}
 .nav-phone{display:flex;align-items:center;gap:8px;color:var(--gold-bright);font-weight:700;font-size:15px;text-decoration:none}
-@media(max-width:800px){.nav-links{display:none}.logo-text span{display:none}}
+@media(max-width:800px){.nav-links{display:none}}
 
 /* ─── HERO ─── */
 .hero{background:var(--g-dark);position:relative;overflow:hidden;padding:90px 0 80px}
@@ -233,10 +231,8 @@ form .btn-gold{width:100%;margin-top:4px;font-size:16px}
 
 /* ─── FOOTER ─── */
 footer{background:#070f0b;padding:40px 0 28px;text-align:center;color:rgba(255,255,255,.4);font-size:14px}
-.footer-logo{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:18px}
-.footer-logo .logo-icon{width:34px;height:34px;border-radius:6px;font-size:18px}
-.footer-logo .logo-text{font-size:19px;color:#fff}
-.footer-logo .logo-text span{display:none}
+.footer-logo{display:flex;justify-content:center;margin-bottom:18px}
+.footer-logo .logo-img{height:64px;width:auto}
 footer p{margin-top:6px}
 </style>
 </head>
@@ -247,11 +243,7 @@ footer p{margin-top:6px}
   <div class="container">
     <nav>
       <a href="#" class="logo">
-        <div class="logo-icon">🌿</div>
-        <div class="logo-text">
-          Indy Mow Masters
-          <span>Indianapolis, IN</span>
-        </div>
+        <img src="logo.png" alt="Indy Mow Masters" class="logo-img" />
       </a>
       <ul class="nav-links">
         <li><a href="#service">Service</a></li>
@@ -631,8 +623,7 @@ footer p{margin-top:6px}
 <footer>
   <div class="container">
     <div class="footer-logo">
-      <div class="logo-icon">🌿</div>
-      <div class="logo-text">Indy Mow Masters</div>
+      <img src="logo.png" alt="Indy Mow Masters" class="logo-img" />
     </div>
     <p>© <span id="yr"></span> Indy Mow Masters · Indianapolis, IN · <a href="tel:3173860400" style="color:var(--gold-bright);text-decoration:none">(317) 386-0400</a></p>
     <p style="margin-top:6px">Licensed &amp; Insured · Locally Owned</p>
