@@ -320,7 +320,7 @@ h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5vw,60px);color:var(
 .reviews-section{padding:100px 0;background:linear-gradient(180deg,#fff 0%,var(--off) 100%);position:relative}
 .reviews-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,160,23,.2),transparent)}
 .reviews-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;gap:24px;flex-wrap:wrap}
-.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.reviews-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
 .review-card{
   background:linear-gradient(180deg,#fff 0%,var(--cream) 100%);
   border:1px solid var(--line);
@@ -504,9 +504,29 @@ footer p{margin-top:6px}
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5.0",
-    "reviewCount": "3",
+    "reviewCount": "7",
     "bestRating": "5"
-  }
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Nanci Hines" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Always shows up and is reliable and reasonable. Great job with every cut!!!"
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Solving Crimes" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Mike is very professional. I appreciate him being on time and courteous. Our yard looks so good afterwards. He's great!!!"
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Terri Strunk-Olivier" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Mike is very dependable. He is always here when he says he will be and he does a great job. I highly recommend him."
+    }
+  ]
 }
 </script>
 </head>
@@ -769,34 +789,45 @@ footer p{margin-top:6px}
     <div class="reviews-grid">
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <p>"Simple service, simple price — exactly what I needed. They show up every Tuesday, mow everything, and leave my yard spotless. Worth every dollar."</p>
+        <p>"Always shows up and is reliable and reasonable. Great job with every cut!!!"</p>
         <div class="reviewer">
-          <div class="avi">SK</div>
+          <div class="avi">NH</div>
           <div>
-            <div class="reviewer-name">Sarah K.</div>
-            <div class="reviewer-loc">Broad Ripple</div>
+            <div class="reviewer-name">Nanci Hines</div>
+            <div class="reviewer-loc">Google Review</div>
           </div>
         </div>
       </div>
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <p>"I've tried three other lawn services in Indy. Nobody is as consistent or as affordable. $60 for my medium yard and they never miss a spot. Highly recommend."</p>
+        <p>"Mike is very professional. I appreciate him being on time and courteous. Our yard looks so good afterwards. He's great!!!"</p>
         <div class="reviewer">
-          <div class="avi">DT</div>
+          <div class="avi">SC</div>
           <div>
-            <div class="reviewer-name">David T.</div>
-            <div class="reviewer-loc">Carmel</div>
+            <div class="reviewer-name">Solving Crimes</div>
+            <div class="reviewer-loc">Google Review</div>
           </div>
         </div>
       </div>
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <p>"My grass was embarrassingly overgrown when I called. They came out, handled it for a $20 add-on, and now we're on a regular schedule. Best decision I made this summer."</p>
+        <p>"Mike is very dependable. He is always here when he says he will be and he does a great job. I highly recommend him."</p>
         <div class="reviewer">
-          <div class="avi">JR</div>
+          <div class="avi">TS</div>
           <div>
-            <div class="reviewer-name">Jennifer R.</div>
-            <div class="reviewer-loc">Fishers</div>
+            <div class="reviewer-name">Terri Strunk-Olivier</div>
+            <div class="reviewer-loc">Google Review</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"Great Service, highly recommended."</p>
+        <div class="reviewer">
+          <div class="avi">SM</div>
+          <div>
+            <div class="reviewer-name">Shakir Mohammed</div>
+            <div class="reviewer-loc">Google Review</div>
           </div>
         </div>
       </div>
