@@ -437,6 +437,18 @@ form .btn-gold{width:100%;margin-top:4px;font-size:16px}
 }
 @media(max-width:760px){.payment-inner{flex-direction:column;align-items:flex-start;gap:24px}}
 
+.area-section{padding:88px 0;background:linear-gradient(180deg,#fff 0%,var(--cream) 100%)}
+.area-head{max-width:680px;margin-bottom:34px}
+.area-head h2{margin-bottom:12px}
+.area-head p{color:var(--muted);font-size:17px}
+.area-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.area-card{background:#fff;border:1px solid rgba(212,160,23,.24);border-radius:14px;padding:22px;text-decoration:none;color:var(--g-dark);box-shadow:0 10px 26px rgba(5,26,16,.06);transition:transform .2s, box-shadow .2s, border-color .2s}
+.area-card:hover{transform:translateY(-3px);border-color:rgba(212,160,23,.5);box-shadow:0 16px 34px rgba(5,26,16,.1)}
+.area-card strong{display:block;font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.04em;margin-bottom:4px}
+.area-card span{display:block;color:var(--muted);font-size:13px;font-weight:700}
+@media(max-width:920px){.area-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.area-grid{grid-template-columns:1fr}}
+
 /* ─── FOOTER ─── */
 footer{
   background:linear-gradient(180deg, var(--g-darkest) 0%, #020a06 100%);
@@ -559,6 +571,7 @@ footer p{margin-top:6px}
       <ul class="nav-links">
         <li><a href="#service">Service</a></li>
         <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#areas">Areas</a></li>
         <li><a href="#reviews">Reviews</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -761,6 +774,23 @@ footer p{margin-top:6px}
 </section>
 
 <!-- ─── PAYMENT ─── -->
+<section id="areas" class="area-section">
+  <div class="container">
+    <div class="area-head">
+      <div class="section-label">Service Areas</div>
+      <h2>Local Lawn Mowing Pages for Indianapolis-Area Homeowners</h2>
+      <p>Choose your city for a focused mowing quote page with pricing, service details, and the fastest way to reach us.</p>
+    </div>
+    <div class="area-grid">
+      <a class="area-card" href="lawn-mowing-indianapolis.html"><strong>Indianapolis</strong><span>Lawn mowing from $40</span></a>
+      <a class="area-card" href="lawn-mowing-avon.html"><strong>Avon</strong><span>Mow, trim &amp; cleanup</span></a>
+      <a class="area-card" href="lawn-mowing-plainfield.html"><strong>Plainfield</strong><span>Flat-rate yard care</span></a>
+      <a class="area-card" href="lawn-mowing-brownsburg.html"><strong>Brownsburg</strong><span>Residential mowing</span></a>
+      <a class="area-card" href="lawn-mowing-speedway.html"><strong>Speedway</strong><span>Fast local quotes</span></a>
+    </div>
+  </div>
+</section>
+
 <section class="payment-section">
   <div class="container">
     <div class="payment-inner">
@@ -848,6 +878,9 @@ footer p{margin-top:6px}
           </div>
         </div>
       </div>
+    </div>
+    <div style="margin-top:34px;text-align:center">
+      <a href="reviews.html" class="btn btn-dark">Leave a Review</a>
     </div>
   </div>
 </section>
