@@ -9,12 +9,20 @@
 <meta property="og:description" content="Professional lawn mowing, trimming & cleanup. Starting at $40. Serving Indianapolis, Avon, Plainfield, Brownsburg, and Speedway. Call (317) 386-0400." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.indymowmasters.com" />
+<meta property="og:image" content="https://www.indymowmasters.com/social-preview.png" />
+<meta property="og:image:alt" content="Indy Mow Masters lawn mowing service preview" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Indy Mow Masters — Mow & Go Lawn Care" />
 <meta name="twitter:description" content="Professional lawn mowing, trimming & cleanup. Starting at $40. Serving Indianapolis." />
-<link rel="icon" href="logo.png" type="image/png" />
+<meta name="twitter:image" content="https://www.indymowmasters.com/social-preview.png" />
+<meta name="theme-color" content="#0d3a23" />
+<link rel="icon" href="logo-128.png" type="image/png" />
+<link rel="apple-touch-icon" href="logo-512.png" />
 <link rel="canonical" href="https://www.indymowmasters.com" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -403,6 +411,7 @@ form{
   box-shadow:0 0 0 3px rgba(212,160,23,.15), inset 0 1px 2px rgba(5,26,16,.02);
 }
 .field textarea{resize:vertical;min-height:90px}
+.spam-field{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
 form .btn-gold{width:100%;margin-top:4px;font-size:16px}
 
 @media(max-width:900px){.contact-inner{grid-template-columns:1fr}.contact-section{padding:60px 0}}
@@ -428,6 +437,18 @@ form .btn-gold{width:100%;margin-top:4px;font-size:16px}
 }
 @media(max-width:760px){.payment-inner{flex-direction:column;align-items:flex-start;gap:24px}}
 
+.area-section{padding:88px 0;background:linear-gradient(180deg,#fff 0%,var(--cream) 100%)}
+.area-head{max-width:680px;margin-bottom:34px}
+.area-head h2{margin-bottom:12px}
+.area-head p{color:var(--muted);font-size:17px}
+.area-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.area-card{background:#fff;border:1px solid rgba(212,160,23,.24);border-radius:14px;padding:22px;text-decoration:none;color:var(--g-dark);box-shadow:0 10px 26px rgba(5,26,16,.06);transition:transform .2s, box-shadow .2s, border-color .2s}
+.area-card:hover{transform:translateY(-3px);border-color:rgba(212,160,23,.5);box-shadow:0 16px 34px rgba(5,26,16,.1)}
+.area-card strong{display:block;font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.04em;margin-bottom:4px}
+.area-card span{display:block;color:var(--muted);font-size:13px;font-weight:700}
+@media(max-width:920px){.area-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.area-grid{grid-template-columns:1fr}}
+
 /* ─── FOOTER ─── */
 footer{
   background:linear-gradient(180deg, var(--g-darkest) 0%, #020a06 100%);
@@ -447,6 +468,8 @@ footer p{margin-top:6px}
   "name": "Indy Mow Masters",
   "description": "Professional lawn mowing service in Indianapolis, IN. Flat-rate mowing, trimming, and leaf blower cleanup for residential properties. Serving Indianapolis, Avon, Plainfield, Brownsburg, Speedway, Whitestown, Zionsville, Fishers, Carmel, and Meridian Hills.",
   "url": "https://www.indymowmasters.com",
+  "image": "https://www.indymowmasters.com/social-preview.png",
+  "logo": "https://www.indymowmasters.com/logo-512.png",
   "telephone": "+13173860400",
   "priceRange": "$40-$80",
   "paymentAccepted": "Cash, Credit Card, Venmo, Cash App, PayPal, Apple Pay",
@@ -509,7 +532,7 @@ footer p{margin-top:6px}
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5.0",
-    "reviewCount": "7",
+    "reviewCount": "4",
     "bestRating": "5"
   },
   "review": [
@@ -530,6 +553,12 @@ footer p{margin-top:6px}
       "author": { "@type": "Person", "name": "Terri Strunk-Olivier" },
       "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
       "reviewBody": "Mike is very dependable. He is always here when he says he will be and he does a great job. I highly recommend him."
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Shakir Mohammed" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Great Service, highly recommended."
     }
   ]
 }
@@ -541,16 +570,17 @@ footer p{margin-top:6px}
 <header>
   <div class="container">
     <nav>
-      <a href="#" class="logo">
-        <img src="logo.png" alt="Indy Mow Masters" class="logo-img" />
+      <a href="#" class="logo" aria-label="Indy Mow Masters home">
+        <img src="logo-128.png" alt="Indy Mow Masters" class="logo-img" width="128" height="128" decoding="async" fetchpriority="high" />
       </a>
       <ul class="nav-links">
         <li><a href="#service">Service</a></li>
         <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#areas">Areas</a></li>
         <li><a href="#reviews">Reviews</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <a href="tel:3173860400" class="nav-phone">
+      <a href="tel:3173860400" class="nav-phone" aria-label="Call Indy Mow Masters at 317-386-0400">
         📞 (317) 386-0400
       </a>
     </nav>
@@ -870,6 +900,23 @@ footer p{margin-top:6px}
 </section>
 
 <!-- ─── PAYMENT ─── -->
+<section id="areas" class="area-section">
+  <div class="container">
+    <div class="area-head">
+      <div class="section-label">Service Areas</div>
+      <h2>Local Lawn Mowing Pages for Indianapolis-Area Homeowners</h2>
+      <p>Choose your city for a focused mowing quote page with pricing, service details, and the fastest way to reach us.</p>
+    </div>
+    <div class="area-grid">
+      <a class="area-card" href="lawn-mowing-indianapolis.html"><strong>Indianapolis</strong><span>Lawn mowing from $40</span></a>
+      <a class="area-card" href="lawn-mowing-avon.html"><strong>Avon</strong><span>Mow, trim &amp; cleanup</span></a>
+      <a class="area-card" href="lawn-mowing-plainfield.html"><strong>Plainfield</strong><span>Flat-rate yard care</span></a>
+      <a class="area-card" href="lawn-mowing-brownsburg.html"><strong>Brownsburg</strong><span>Residential mowing</span></a>
+      <a class="area-card" href="lawn-mowing-speedway.html"><strong>Speedway</strong><span>Fast local quotes</span></a>
+    </div>
+  </div>
+</section>
+
 <section class="payment-section">
   <div class="container">
     <div class="payment-inner">
@@ -958,6 +1005,9 @@ footer p{margin-top:6px}
         </div>
       </div>
     </div>
+    <div style="margin-top:34px;text-align:center">
+      <a href="reviews.html" class="btn btn-dark">Leave a Review</a>
+    </div>
   </div>
 </section>
 
@@ -965,7 +1015,7 @@ footer p{margin-top:6px}
 <footer>
   <div class="container">
     <div class="footer-logo">
-      <img src="logo.png" alt="Indy Mow Masters" class="logo-img" />
+      <img src="logo-128.png" alt="Indy Mow Masters" class="logo-img" width="128" height="128" loading="lazy" decoding="async" />
     </div>
     <p>© <span id="yr"></span> Indy Mow Masters · Indianapolis, IN · <a href="tel:3173860400" style="color:var(--gold-bright);text-decoration:none">(317) 386-0400</a></p>
     <p style="margin-top:6px">Licensed &amp; Insured · Locally Owned</p>
