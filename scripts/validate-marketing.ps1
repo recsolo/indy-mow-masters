@@ -10,6 +10,7 @@ $locationPages = @(
 )
 
 $expectedPages = @(
+  'lawn-care-indianapolis-in.html',
   'lawn-mowing-indianapolis.html',
   'lawn-mowing-avon.html',
   'lawn-mowing-plainfield.html',
@@ -76,11 +77,41 @@ foreach ($page in $locationPages) {
   }
 }
 
+$seoPagePath = Join-Path $root 'lawn-care-indianapolis-in.html'
+if (Test-Path -LiteralPath $seoPagePath) {
+  $seoPage = Get-Content -Raw -LiteralPath $seoPagePath
+  foreach ($required in @(
+    '<title>Professional Lawn Care Services in Indianapolis, IN | Indy Mow Masters</title>',
+    '<meta name="description" content="Indy Mow Masters provides professional lawn care, mowing, trimming, edging, and yard maintenance services in Indianapolis, IN. Schedule reliable lawn service today."',
+    '<link rel="canonical" href="https://www.indymowmasters.com/lawn-care-indianapolis-in" />',
+    'Professional Lawn Care Services for a Healthy, Green Yard',
+    'Schedule Lawn Care Service',
+    'Get a Free Estimate',
+    'BreadcrumbList',
+    'FAQPage'
+  )) {
+    Test-Contains -Html $seoPage -Needle $required -Context 'lawn-care-indianapolis-in.html'
+  }
+
+  $h1Count = ([regex]::Matches($seoPage, '<h1[\s>]', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)).Count
+  if ($h1Count -ne 1) {
+    $failures.Add("lawn-care-indianapolis-in.html should contain exactly one H1, found $h1Count")
+  }
+}
+
 $index = Get-Content -Raw -LiteralPath (Join-Path $root 'index.html')
 foreach ($page in $expectedPages) {
+  if ($page -eq 'lawn-care-indianapolis-in.html') {
+    continue
+  }
+
   if ($index -notlike "*$page*") {
     $failures.Add("index.html does not link to $page")
   }
+}
+
+foreach ($required in @('/lawn-care-indianapolis-in', 'Lawn Care Services in Indianapolis, IN', 'View Lawn Care Services', '>Services<')) {
+  Test-Contains -Html $index -Needle $required -Context 'index.html'
 }
 
 foreach ($required in @('FAQPage', 'Frequently Asked Questions', 'name="lead_source"', 'sms:3173860400', 'mobile-sticky-cta')) {
@@ -95,9 +126,22 @@ Test-JsonLd -Html $index -Context 'index.html'
 
 $sitemap = Get-Content -Raw -LiteralPath (Join-Path $root 'sitemap.xml')
 foreach ($page in $expectedPages) {
+  if ($page -eq 'lawn-care-indianapolis-in.html') {
+    continue
+  }
+
   if ($sitemap -notlike "*https://www.indymowmasters.com/$page*") {
     $failures.Add("sitemap.xml missing $page")
   }
+}
+
+if ($sitemap -notlike '*https://www.indymowmasters.com/lawn-care-indianapolis-in*') {
+  $failures.Add('sitemap.xml missing /lawn-care-indianapolis-in')
+}
+
+$vercel = Get-Content -Raw -LiteralPath (Join-Path $root 'vercel.json')
+foreach ($required in @('"source": "/lawn-care-indianapolis-in"', '"destination": "/lawn-care-indianapolis-in.html"')) {
+  Test-Contains -Html $vercel -Needle $required -Context 'vercel.json'
 }
 
 if ($failures.Count -gt 0) {

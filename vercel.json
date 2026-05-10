@@ -1,4 +1,10 @@
 {
+  "rewrites": [
+    {
+      "source": "/lawn-care-indianapolis-in",
+      "destination": "/lawn-care-indianapolis-in.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
