@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Lawn Mowing Indianapolis IN | $40 Flat Rate | Indy Mow Masters</title>
-<meta name="description" content="Professional lawn mowing service in Indianapolis, IN — flat rates starting at $40. Mowing, trimming &amp; cleanup every visit. Serving Avon, Plainfield, Brownsburg, Speedway, Carmel, Fishers, Zionsville &amp; more. Call (317) 386-0400." />
+<meta name="description" content="Affordable lawn mowing in Indianapolis, Carmel, Fishers, Zionsville & Whitestown IN. Flat $40 rate — no contracts, no surprises. Instant quotes. Call or book online." />
 <meta property="og:title" content="Indy Mow Masters — Mow & Go Lawn Care" />
 <meta property="og:description" content="Professional lawn mowing, trimming & cleanup. Starting at $40. Serving Indianapolis, Avon, Plainfield, Brownsburg, and Speedway. Call (317) 386-0400." />
 <meta property="og:type" content="website" />
@@ -20,7 +20,8 @@
 <meta name="theme-color" content="#0d3a23" />
 <link rel="icon" href="logo-128.png" type="image/png" />
 <link rel="apple-touch-icon" href="logo-512.png" />
-<link rel="canonical" href="https://www.indymowmasters.com" />
+<meta name="keywords" content="lawn mowing Indianapolis IN, lawn care Indianapolis, affordable lawn mowing near me, $40 lawn mowing Indianapolis, lawn mowing Carmel IN, lawn mowing Fishers IN, lawn mowing Zionsville IN, lawn mowing Whitestown IN, lawn mowing Meridian Hills IN, grass cutting Indianapolis">
+<link rel="canonical" href="https://www.indymowmasters.com/" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -491,12 +492,12 @@ footer p{margin-top:6px}
   "@type": ["LocalBusiness", "LawnCareService"],
   "@id": "https://www.indymowmasters.com/#business",
   "name": "Indy Mow Masters",
-  "description": "Professional lawn mowing service in Indianapolis, IN. Flat-rate mowing, trimming, and leaf blower cleanup for residential properties. Serving Indianapolis, Avon, Plainfield, Brownsburg, Speedway, Whitestown, Zionsville, Fishers, Carmel, and Meridian Hills.",
+  "description": "Affordable flat-rate lawn mowing service serving Indianapolis, Carmel, Fishers, Zionsville, Whitestown and surrounding areas. Starting at $40.",
   "url": "https://www.indymowmasters.com",
-  "image": "https://www.indymowmasters.com/social-preview.png",
+  "image": "https://www.indymowmasters.com/og-image.jpg",
   "logo": "https://www.indymowmasters.com/logo-512.png",
   "telephone": "+13173860400",
-  "priceRange": "$40-$80",
+  "priceRange": "$40-$120",
   "paymentAccepted": "Cash, Credit Card, Venmo, Cash App, PayPal, Apple Pay",
   "contactPoint": {
     "@type": "ContactPoint",
@@ -517,16 +518,18 @@ footer p{margin-top:6px}
     "longitude": -86.1581
   },
   "areaServed": [
-    { "@type": "City", "name": "Indianapolis" },
-    { "@type": "City", "name": "Avon" },
-    { "@type": "City", "name": "Plainfield" },
-    { "@type": "City", "name": "Brownsburg" },
-    { "@type": "City", "name": "Speedway" },
-    { "@type": "City", "name": "Whitestown" },
-    { "@type": "City", "name": "Zionsville" },
-    { "@type": "City", "name": "Fishers" },
-    { "@type": "City", "name": "Carmel" },
-    { "@type": "City", "name": "Meridian Hills" }
+    {"@type": "City", "name": "Indianapolis"},
+    {"@type": "City", "name": "Carmel"},
+    {"@type": "City", "name": "Fishers"},
+    {"@type": "City", "name": "Zionsville"},
+    {"@type": "City", "name": "Whitestown"},
+    {"@type": "City", "name": "Meridian Hills"},
+    {"@type": "City", "name": "Broad Ripple"},
+    {"@type": "City", "name": "Westfield"},
+    {"@type": "City", "name": "Avon"},
+    {"@type": "City", "name": "Plainfield"},
+    {"@type": "City", "name": "Brownsburg"},
+    {"@type": "City", "name": "Speedway"}
   ],
   "openingHoursSpecification": [{
     "@type": "OpeningHoursSpecification",
@@ -536,37 +539,36 @@ footer p{margin-top:6px}
   }],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "Residential Lawn Mowing Services",
+    "name": "Lawn Care Services",
     "itemListElement": [
       {
         "@type": "Offer",
-        "name": "Small Yard Lawn Mowing",
-        "description": "Full mow front & back, string trimming, leaf blower cleanup.",
-        "price": "40.00",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Lawn Mowing",
+          "description": "Professional lawn mowing, edging, and blowing starting at $40 flat rate"
+        },
+        "price": "40",
         "priceCurrency": "USD"
       },
       {
         "@type": "Offer",
-        "name": "Medium Yard Lawn Mowing",
-        "description": "Full mow front & back, string trimming, leaf blower cleanup.",
-        "price": "60.00",
-        "priceCurrency": "USD"
-      },
-      {
-        "@type": "Offer",
-        "name": "Large Yard Lawn Mowing",
-        "description": "Full mow front & back, string trimming, leaf blower cleanup.",
-        "price": "80.00",
-        "priceCurrency": "USD"
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Full Yard Cleanup",
+          "description": "Complete yard cleanup including mowing, edging, trimming, and debris removal"
+        }
       }
     ]
   },
-  "knowsAbout": [
-    "residential lawn mowing",
-    "yard trimming",
-    "blower cleanup",
-    "overgrown grass mowing",
-    "Indianapolis lawn care"
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "7"
+  },
+  "sameAs": [
+    "https://www.facebook.com/indymowmasters",
+    "https://www.google.com/maps?cid=indymowmasters"
   ]
 }
 </script>
@@ -577,34 +579,50 @@ footer p{margin-top:6px}
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What does the $40 lawn mowing service include?",
+      "name": "How much does lawn mowing cost in Indianapolis?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Small residential yards start at $40 and include front and backyard mowing, string trimming, and blower cleanup of hard surfaces."
+        "text": "Our flat rate starts at $40 for standard residential lawns in Indianapolis. No contracts, no surprises. Final price depends on lawn size."
       }
     },
     {
       "@type": "Question",
-      "name": "What cities does Indy Mow Masters serve?",
+      "name": "What areas do you serve?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Indy Mow Masters serves Indianapolis, Avon, Plainfield, Brownsburg, and Speedway. Homes outside the standard service area may be quoted with an out-of-area add-on."
+        "text": "We serve Indianapolis, Carmel, Fishers, Zionsville, Whitestown, Meridian Hills, Broad Ripple, and Westfield Indiana."
       }
     },
     {
       "@type": "Question",
-      "name": "Can I request a one-time lawn mowing quote?",
+      "name": "Do you require a contract or commitment?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Homeowners can request a one-time cut, first mow, or recurring mowing estimate by calling, texting, or submitting the quote form."
+        "text": "No contracts, no cancellation fees, no commitments. Schedule one-time mows or regular service — whatever works for you."
       }
     },
     {
       "@type": "Question",
-      "name": "Do you handle overgrown grass?",
+      "name": "How do I get a quote for lawn mowing near me?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Overgrown grass can usually be handled with a one-time add-on so the lawn can get back onto a regular mowing schedule."
+        "text": "Fill out the quick quote form on our website with your address and lawn size. We'll get back to you fast, usually within a few hours."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does your lawn mowing service include?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every visit includes mowing, edging along driveways and sidewalks, and blowing off clippings from hard surfaces."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often should I get my lawn mowed in Indianapolis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "During Indianapolis's growing season (April through October), weekly mowing keeps your lawn looking its best. Bi-weekly is popular for slower-growing lawns."
       }
     }
   ]
@@ -1070,29 +1088,76 @@ footer p{margin-top:6px}
   </div>
 </section>
 
-<!-- ─── FAQ ─── -->
-<section class="faq-section">
-  <div class="container">
-    <div class="section-label">Frequently Asked Questions</div>
-    <h2>Indianapolis Lawn Mowing Questions</h2>
-    <p class="section-sub">Quick answers for homeowners comparing lawn mowing prices, service areas, and how to request a quote.</p>
-    <div class="faq-grid">
-      <div class="faq-item">
-        <h3>What does the $40 lawn mowing service include?</h3>
-        <p>Small residential yards start at $40 and include front and backyard mowing, string trimming, and blower cleanup of driveways, walkways, and patios.</p>
+<!-- City Landing Sections -->
+<section id="service-areas-detail" style="padding:60px 20px; background:white;">
+  <div style="max-width:1000px; margin:0 auto;">
+    <h2 style="text-align:center; font-size:2rem; font-weight:800; margin-bottom:8px;">Lawn Mowing Near You</h2>
+    <p style="text-align:center; color:#6b7280; margin-bottom:40px;">Serving homeowners across Greater Indianapolis</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px;">
+      <div style="border:2px solid #e5e7eb; border-radius:14px; padding:24px;">
+        <h3 style="font-size:1.2rem; font-weight:800; margin-bottom:8px;">🌿 Lawn Mowing Indianapolis, IN</h3>
+        <p style="color:#4b5563; font-size:0.95rem; line-height:1.7;">Flat $40 rate for most Indianapolis homes. We cover all Indianapolis neighborhoods including Broad Ripple, Meridian Hills, Speedway, Lawrence, and more. Fast scheduling, no contracts.</p>
       </div>
-      <div class="faq-item">
-        <h3>Do you serve Avon, Plainfield, Brownsburg, and Speedway?</h3>
-        <p>Yes. Indianapolis, Avon, Plainfield, Brownsburg, and Speedway are the main service areas. Nearby homes can still request a quote.</p>
+      <div style="border:2px solid #e5e7eb; border-radius:14px; padding:24px;">
+        <h3 style="font-size:1.2rem; font-weight:800; margin-bottom:8px;">🌿 Lawn Mowing Carmel, IN</h3>
+        <p style="color:#4b5563; font-size:0.95rem; line-height:1.7;">Professional lawn mowing in Carmel Indiana. Affordable flat-rate pricing for Carmel homeowners. We handle standard lots and larger properties. Book online in minutes.</p>
       </div>
-      <div class="faq-item">
-        <h3>Can I request a one-time cut?</h3>
-        <p>Yes. You can request a one-time mow, first cut, or regular mowing schedule through the quote form, by phone, or by text.</p>
+      <div style="border:2px solid #e5e7eb; border-radius:14px; padding:24px;">
+        <h3 style="font-size:1.2rem; font-weight:800; margin-bottom:8px;">🌿 Lawn Mowing Fishers, IN</h3>
+        <p style="color:#4b5563; font-size:0.95rem; line-height:1.7;">Reliable lawn care in Fishers Indiana. Competitive flat-rate pricing, weekly or bi-weekly service. No contracts, no hidden fees. Fishers families trust Indy Mow Masters.</p>
       </div>
-      <div class="faq-item">
-        <h3>What if my grass is overgrown?</h3>
-        <p>Overgrown grass can usually be handled with a one-time add-on so the lawn can get back onto a regular mowing schedule.</p>
+      <div style="border:2px solid #e5e7eb; border-radius:14px; padding:24px;">
+        <h3 style="font-size:1.2rem; font-weight:800; margin-bottom:8px;">🌿 Lawn Mowing Zionsville, IN</h3>
+        <p style="color:#4b5563; font-size:0.95rem; line-height:1.7;">Serving Zionsville Indiana with quality lawn mowing at affordable prices. Flexible scheduling around your needs. Get a quick quote for your Zionsville home today.</p>
       </div>
+      <div style="border:2px solid #e5e7eb; border-radius:14px; padding:24px;">
+        <h3 style="font-size:1.2rem; font-weight:800; margin-bottom:8px;">🌿 Lawn Mowing Whitestown, IN</h3>
+        <p style="color:#4b5563; font-size:0.95rem; line-height:1.7;">Growing communities like Whitestown deserve great lawn care. Indy Mow Masters brings flat-rate professional mowing to Whitestown homeowners. Book your first cut today.</p>
+      </div>
+      <div style="border:2px solid #e5e7eb; border-radius:14px; padding:24px;">
+        <h3 style="font-size:1.2rem; font-weight:800; margin-bottom:8px;">🌿 Lawn Mowing Meridian Hills, IN</h3>
+        <p style="color:#4b5563; font-size:0.95rem; line-height:1.7;">Premium lawn mowing for Meridian Hills homes. We take care of your lawn like it's our own. Consistent, reliable, and priced fairly. Schedule online anytime.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" style="background:#f8f9fa; padding:60px 20px;">
+  <div style="max-width:800px; margin:0 auto;">
+    <h2 style="font-size:2rem; font-weight:800; color:#1a1a2e; margin-bottom:8px; text-align:center;">Frequently Asked Questions</h2>
+    <p style="text-align:center; color:#6b7280; margin-bottom:40px;">Everything you need to know about our Indianapolis lawn mowing service</p>
+
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <details style="background:white; border-radius:12px; padding:20px 24px; box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+        <summary style="font-size:1.05rem; font-weight:700; cursor:pointer; color:#1a1a2e; list-style:none; display:flex; justify-content:space-between; align-items:center;">How much does lawn mowing cost in Indianapolis? <span style="color:#2dc653; font-size:1.4rem;">+</span></summary>
+        <p style="margin-top:12px; color:#4b5563; line-height:1.7;">Our flat rate starts at $40 for standard residential lawns in Indianapolis. Unlike many companies that charge by the hour or by square footage, we keep it simple with transparent flat pricing. No surprises, no contracts. Final price depends on lawn size — we'll confirm your exact price before we start.</p>
+      </details>
+
+      <details style="background:white; border-radius:12px; padding:20px 24px; box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+        <summary style="font-size:1.05rem; font-weight:700; cursor:pointer; color:#1a1a2e; list-style:none; display:flex; justify-content:space-between; align-items:center;">What areas do you serve? <span style="color:#2dc653; font-size:1.4rem;">+</span></summary>
+        <p style="margin-top:12px; color:#4b5563; line-height:1.7;">We serve Indianapolis and the surrounding suburbs including Carmel, Fishers, Zionsville, Whitestown, Meridian Hills, Broad Ripple, and Westfield. Not sure if we cover your neighborhood? Request a quote and we'll let you know!</p>
+      </details>
+
+      <details style="background:white; border-radius:12px; padding:20px 24px; box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+        <summary style="font-size:1.05rem; font-weight:700; cursor:pointer; color:#1a1a2e; list-style:none; display:flex; justify-content:space-between; align-items:center;">Do you require a contract or commitment? <span style="color:#2dc653; font-size:1.4rem;">+</span></summary>
+        <p style="margin-top:12px; color:#4b5563; line-height:1.7;">Absolutely not. We believe in earning your business every single visit. No contracts, no cancellation fees, no commitments. You can schedule one-time mows or regular service — whatever works for you. Most customers set up weekly or bi-weekly cuts once they see the quality.</p>
+      </details>
+
+      <details style="background:white; border-radius:12px; padding:20px 24px; box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+        <summary style="font-size:1.05rem; font-weight:700; cursor:pointer; color:#1a1a2e; list-style:none; display:flex; justify-content:space-between; align-items:center;">How do I get a quote for lawn mowing near me? <span style="color:#2dc653; font-size:1.4rem;">+</span></summary>
+        <p style="margin-top:12px; color:#4b5563; line-height:1.7;">It's easy — just fill out our quick quote form at the top of this page with your address and lawn size. We'll get back to you fast, usually within a few hours. You can also call or text us directly to get an instant quote.</p>
+      </details>
+
+      <details style="background:white; border-radius:12px; padding:20px 24px; box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+        <summary style="font-size:1.05rem; font-weight:700; cursor:pointer; color:#1a1a2e; list-style:none; display:flex; justify-content:space-between; align-items:center;">What does your lawn mowing service include? <span style="color:#2dc653; font-size:1.4rem;">+</span></summary>
+        <p style="margin-top:12px; color:#4b5563; line-height:1.7;">Every visit includes mowing, edging along driveways and sidewalks, and blowing off clippings from hard surfaces. We leave your yard looking sharp and clean every time. Need full cleanup, trimming, or overgrown lots? We handle that too.</p>
+      </details>
+
+      <details style="background:white; border-radius:12px; padding:20px 24px; box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+        <summary style="font-size:1.05rem; font-weight:700; cursor:pointer; color:#1a1a2e; list-style:none; display:flex; justify-content:space-between; align-items:center;">How often should I get my lawn mowed in Indianapolis? <span style="color:#2dc653; font-size:1.4rem;">+</span></summary>
+        <p style="margin-top:12px; color:#4b5563; line-height:1.7;">During Indianapolis's growing season (April through October), weekly mowing keeps your lawn looking its best. Bi-weekly is a popular option for lawns that grow slower. We'll recommend the right frequency based on your grass type and how fast it grows.</p>
+      </details>
     </div>
   </div>
 </section>
