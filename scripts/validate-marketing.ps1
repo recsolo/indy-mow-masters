@@ -13,6 +13,7 @@ $expectedPages = @(
   'lawn-care-tips-indianapolis-in.html',
   'best-grass-height-indianapolis-in.html',
   'weed-control-tips-indianapolis-in.html',
+  'lawn-care-products.html',
   'lawn-mowing-indianapolis.html',
   'lawn-mowing-avon.html',
   'lawn-mowing-plainfield.html',
@@ -81,6 +82,46 @@ foreach ($page in $locationPages) {
   $html = Get-Content -Raw -LiteralPath (Join-Path $root $page)
   foreach ($required in @('Request a Free Quote', 'Frequently Asked Questions', 'Mow &amp; Go', 'BreadcrumbList')) {
     Test-Contains -Html $html -Needle $required -Context $page
+  }
+}
+
+$affiliatePagePath = Join-Path $root 'lawn-care-products.html'
+if (Test-Path -LiteralPath $affiliatePagePath) {
+  $affiliateHtml = Get-Content -Raw -LiteralPath $affiliatePagePath
+  foreach ($required in @(
+    '<title>Lawn Care Products and Yard Tools | Indy Mow Masters</title>',
+    '<link rel="canonical" href="https://www.indymowmasters.com/lawn-care-products" />',
+    'Lawn Care Products and Yard Tools',
+    'As an Amazon Associate I earn from qualifying purchases.',
+    'mteezy74-20',
+    'rel="sponsored nofollow noopener"',
+    'target="_blank"',
+    'FAQPage'
+  )) {
+    Test-Contains -Html $affiliateHtml -Needle $required -Context 'lawn-care-products.html'
+  }
+
+  $h1Count = ([regex]::Matches($affiliateHtml, '<h1[\s>]', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)).Count
+  if ($h1Count -ne 1) {
+    $failures.Add("lawn-care-products.html should contain exactly one H1, found $h1Count")
+  }
+
+  $amazonLinks = [regex]::Matches($affiliateHtml, '<a\b(?=[^>]*href="https://www\.amazon\.com/)[^>]*>', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)
+  if ($amazonLinks.Count -lt 6) {
+    $failures.Add("lawn-care-products.html should include at least 6 Amazon affiliate links")
+  }
+
+  foreach ($link in $amazonLinks) {
+    $tag = $link.Value
+    if ($tag -notlike '*tag=mteezy74-20*') {
+      $failures.Add("Amazon link missing affiliate tag: $tag")
+    }
+    if ($tag -notlike '*rel="sponsored nofollow noopener"*') {
+      $failures.Add("Amazon link missing sponsored nofollow noopener rel: $tag")
+    }
+    if ($tag -notlike '*target="_blank"*') {
+      $failures.Add("Amazon link missing target blank: $tag")
+    }
   }
 }
 
@@ -153,7 +194,7 @@ if (Test-Path -LiteralPath $seoPagePath) {
 
 $index = Get-Content -Raw -LiteralPath (Join-Path $root 'index.html')
 foreach ($page in $expectedPages) {
-  if ($page -in @('lawn-care-indianapolis-in.html', 'lawn-care-tips-indianapolis-in.html', 'best-grass-height-indianapolis-in.html', 'weed-control-tips-indianapolis-in.html')) {
+  if ($page -in @('lawn-care-indianapolis-in.html', 'lawn-care-tips-indianapolis-in.html', 'best-grass-height-indianapolis-in.html', 'weed-control-tips-indianapolis-in.html', 'lawn-care-products.html')) {
     continue
   }
 
@@ -170,6 +211,10 @@ foreach ($required in @('/lawn-care-tips-indianapolis-in', 'Lawn Care Tips for I
   Test-Contains -Html $index -Needle $required -Context 'index.html'
 }
 
+foreach ($required in @('/lawn-care-products', 'Lawn Care Products and Yard Tools', 'Shop Yard Tools', '>Products<')) {
+  Test-Contains -Html $index -Needle $required -Context 'index.html'
+}
+
 foreach ($required in @('FAQPage', 'Frequently Asked Questions', 'name="lead_source"', 'sms:3173860400', 'mobile-sticky-cta')) {
   Test-Contains -Html $index -Needle $required -Context 'index.html'
 }
@@ -178,7 +223,7 @@ Test-JsonLd -Html $index -Context 'index.html'
 
 $sitemap = Get-Content -Raw -LiteralPath (Join-Path $root 'sitemap.xml')
 foreach ($page in $expectedPages) {
-  if ($page -in @('lawn-care-indianapolis-in.html', 'lawn-care-tips-indianapolis-in.html', 'best-grass-height-indianapolis-in.html', 'weed-control-tips-indianapolis-in.html')) {
+  if ($page -in @('lawn-care-indianapolis-in.html', 'lawn-care-tips-indianapolis-in.html', 'best-grass-height-indianapolis-in.html', 'weed-control-tips-indianapolis-in.html', 'lawn-care-products.html')) {
     continue
   }
 
@@ -197,8 +242,16 @@ foreach ($pageInfo in $educationPages) {
   }
 }
 
+if ($sitemap -notlike '*https://www.indymowmasters.com/lawn-care-products*') {
+  $failures.Add('sitemap.xml missing /lawn-care-products')
+}
+
 $vercel = Get-Content -Raw -LiteralPath (Join-Path $root 'vercel.json')
 foreach ($required in @('"source": "/lawn-care-indianapolis-in"', '"destination": "/lawn-care-indianapolis-in.html"')) {
+  Test-Contains -Html $vercel -Needle $required -Context 'vercel.json'
+}
+
+foreach ($required in @('"source": "/lawn-care-products"', '"destination": "/lawn-care-products.html"')) {
   Test-Contains -Html $vercel -Needle $required -Context 'vercel.json'
 }
 
