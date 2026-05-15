@@ -99,6 +99,23 @@ foreach ($page in $locationPages) {
   }
 }
 
+$publicHtmlFiles = Get-ChildItem -LiteralPath $root -Filter '*.html' | Where-Object { $_.Name -notlike 'google*.html' }
+foreach ($htmlFile in $publicHtmlFiles) {
+  $html = Get-Content -Raw -LiteralPath $htmlFile.FullName
+  if ($html -match '<style\b') {
+    $failures.Add("$($htmlFile.Name) should not include inline <style> blocks")
+  }
+  if ($html -match '\sstyle=') {
+    $failures.Add("$($htmlFile.Name) should not include inline style attributes")
+  }
+  if ($html -match '\son[a-z]+=') {
+    $failures.Add("$($htmlFile.Name) should not include inline event handlers")
+  }
+  if ($html -match '<script(?![^>]*type="application/ld\+json")(?![^>]*\ssrc=)[^>]*>') {
+    $failures.Add("$($htmlFile.Name) should not include inline executable scripts")
+  }
+}
+
 $affiliatePagePath = Join-Path $root 'lawn-care-products.html'
 if (Test-Path -LiteralPath $affiliatePagePath) {
   $affiliateHtml = Get-Content -Raw -LiteralPath $affiliatePagePath
@@ -299,6 +316,14 @@ foreach ($required in @('"source": "/lawn-care-products"', '"destination": "/law
 
 foreach ($required in @('"source": "/privacy-policy"', '"destination": "/privacy-policy.html"')) {
   Test-Contains -Html $vercel -Needle $required -Context 'vercel.json'
+}
+
+foreach ($required in @('Content-Security-Policy', "style-src-attr 'none'", "script-src-attr 'none'", "object-src 'none'")) {
+  Test-Contains -Html $vercel -Needle $required -Context 'vercel.json'
+}
+
+if ($vercel -like "*'unsafe-inline'*") {
+  $failures.Add("vercel.json CSP should not include 'unsafe-inline'")
 }
 
 foreach ($pageInfo in $educationPages) {

@@ -1,0 +1,12 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;font-family:'Inter',sans-serif;background:linear-gradient(135deg,#051a10 0%,#0d3a23 100%);color:#fff;display:grid;place-items:center;padding:28px;line-height:1.6}
+main{width:min(720px,100%);text-align:center}
+.logo{width:108px;height:108px;object-fit:contain;margin:0 auto 28px;display:block}
+.panel{border:1px solid rgba(245,200,66,.32);background:rgba(255,255,255,.06);box-shadow:0 24px 80px rgba(0,0,0,.35);border-radius:18px;padding:44px 34px}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,8vw,74px);line-height:1;letter-spacing:.03em;margin-bottom:14px}
+p{color:rgba(255,255,255,.78);font-size:18px;max-width:560px;margin:0 auto 30px}
+.actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+a{display:inline-block;border-radius:8px;padding:14px 24px;text-decoration:none;font-weight:800}
+.primary{background:linear-gradient(180deg,#fff5c2 0%,#f5c842 30%,#d4a017 100%);color:#051a10;box-shadow:0 8px 24px rgba(212,160,23,.35)}
+.secondary{border:2px solid rgba(245,200,66,.5);color:#fff}
+@media(max-width:520px){.panel{padding:34px 22px}.actions{display:grid}.actions a{width:100%}}
