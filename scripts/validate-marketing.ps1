@@ -172,6 +172,15 @@ if (Test-Path -LiteralPath $privacyPagePath) {
   }
 }
 
+$reviewsPagePath = Join-Path $root 'reviews.html'
+if (Test-Path -LiteralPath $reviewsPagePath) {
+  $reviewsHtml = Get-Content -Raw -LiteralPath $reviewsPagePath
+  Test-Contains -Html $reviewsHtml -Needle 'https://g.page/r/Cd_GEPdH7Mj-EAE/review' -Context 'reviews.html'
+  if ($reviewsHtml -like '*https://www.google.com/search?q=Indy+Mow+Masters+reviews*') {
+    $failures.Add('reviews.html should not use the generic Google review search link')
+  }
+}
+
 $educationPages = @(
   @{
     File = 'lawn-care-tips-indianapolis-in.html'
