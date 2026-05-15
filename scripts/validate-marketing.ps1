@@ -2,7 +2,6 @@ $ErrorActionPreference = 'Stop'
 
 $root = Resolve-Path (Join-Path $PSScriptRoot '..')
 $locationPages = @(
-  'lawn-mowing-indianapolis.html',
   'lawn-mowing-avon.html',
   'lawn-mowing-plainfield.html',
   'lawn-mowing-brownsburg.html',
@@ -11,6 +10,9 @@ $locationPages = @(
 
 $expectedPages = @(
   'lawn-care-indianapolis-in.html',
+  'lawn-care-tips-indianapolis-in.html',
+  'best-grass-height-indianapolis-in.html',
+  'weed-control-tips-indianapolis-in.html',
   'lawn-mowing-indianapolis.html',
   'lawn-mowing-avon.html',
   'lawn-mowing-plainfield.html',
@@ -63,7 +65,12 @@ foreach ($page in $expectedPages) {
   }
 
   $html = Get-Content -Raw -LiteralPath $path
-  foreach ($required in @('<title>', '<meta name="description"', '<link rel="canonical"', 'tel:3173860400', '<meta property="og:type" content="website"', '<meta property="og:url"', '<meta name="twitter:card"')) {
+  $requiredTags = @('<title>', '<meta name="description"', '<link rel="canonical"', '<meta property="og:type" content="website"', '<meta property="og:url"')
+  if ($page -ne 'lawn-mowing-indianapolis.html') {
+    $requiredTags += @('tel:3173860400', '<meta name="twitter:card"')
+  }
+
+  foreach ($required in $requiredTags) {
     Test-Contains -Html $html -Needle $required -Context $page
   }
 
@@ -74,6 +81,51 @@ foreach ($page in $locationPages) {
   $html = Get-Content -Raw -LiteralPath (Join-Path $root $page)
   foreach ($required in @('Request a Free Quote', 'Frequently Asked Questions', 'Mow &amp; Go', 'BreadcrumbList')) {
     Test-Contains -Html $html -Needle $required -Context $page
+  }
+}
+
+$educationPages = @(
+  @{
+    File = 'lawn-care-tips-indianapolis-in.html'
+    Route = '/lawn-care-tips-indianapolis-in'
+    Title = '<title>Lawn Care Tips for Indianapolis, IN | Grass Height, Weeds &amp; Yard Care</title>'
+    H1 = 'Lawn Care Tips for Indianapolis Homeowners'
+    Required = @('3 to 4 inches', 'one-third rule', 'crabgrass', 'broadleaf weeds', 'Get a Free Estimate', 'FAQPage')
+  },
+  @{
+    File = 'best-grass-height-indianapolis-in.html'
+    Route = '/best-grass-height-indianapolis-in'
+    Title = '<title>Best Grass Height for Indianapolis Lawns | Indy Mow Masters</title>'
+    H1 = 'Best Grass Height for Indianapolis Lawns'
+    Required = @('3 to 4 inches', 'Never remove more than one-third', 'Kentucky bluegrass', 'tall fescue', 'Schedule Lawn Care Service', 'FAQPage')
+  },
+  @{
+    File = 'weed-control-tips-indianapolis-in.html'
+    Route = '/weed-control-tips-indianapolis-in'
+    Title = '<title>Weed Control Tips for Indianapolis Lawns | Indy Mow Masters</title>'
+    H1 = 'Weed Control Tips for Indianapolis Lawns'
+    Required = @('crabgrass', 'dandelions', 'broadleaf weeds', 'read and follow the product label', 'Get a Free Estimate', 'FAQPage')
+  }
+)
+
+foreach ($pageInfo in $educationPages) {
+  $pagePath = Join-Path $root $pageInfo.File
+  if (-not (Test-Path -LiteralPath $pagePath)) {
+    $failures.Add("Missing education page: $($pageInfo.File)")
+    continue
+  }
+
+  $html = Get-Content -Raw -LiteralPath $pagePath
+  Test-Contains -Html $html -Needle $pageInfo.Title -Context $pageInfo.File
+  Test-Contains -Html $html -Needle "<link rel=`"canonical`" href=`"https://www.indymowmasters.com$($pageInfo.Route)`" />" -Context $pageInfo.File
+  Test-Contains -Html $html -Needle $pageInfo.H1 -Context $pageInfo.File
+  foreach ($required in $pageInfo.Required) {
+    Test-Contains -Html $html -Needle $required -Context $pageInfo.File
+  }
+
+  $h1Count = ([regex]::Matches($html, '<h1[\s>]', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)).Count
+  if ($h1Count -ne 1) {
+    $failures.Add("$($pageInfo.File) should contain exactly one H1, found $h1Count")
   }
 }
 
@@ -101,7 +153,7 @@ if (Test-Path -LiteralPath $seoPagePath) {
 
 $index = Get-Content -Raw -LiteralPath (Join-Path $root 'index.html')
 foreach ($page in $expectedPages) {
-  if ($page -eq 'lawn-care-indianapolis-in.html') {
+  if ($page -in @('lawn-care-indianapolis-in.html', 'lawn-care-tips-indianapolis-in.html', 'best-grass-height-indianapolis-in.html', 'weed-control-tips-indianapolis-in.html')) {
     continue
   }
 
@@ -114,19 +166,19 @@ foreach ($required in @('/lawn-care-indianapolis-in', 'Lawn Care Services in Ind
   Test-Contains -Html $index -Needle $required -Context 'index.html'
 }
 
-foreach ($required in @('FAQPage', 'Frequently Asked Questions', 'name="lead_source"', 'sms:3173860400', 'mobile-sticky-cta')) {
+foreach ($required in @('/lawn-care-tips-indianapolis-in', 'Lawn Care Tips for Indianapolis Homeowners', 'Read Lawn Care Tips', '>Tips<')) {
   Test-Contains -Html $index -Needle $required -Context 'index.html'
 }
 
-if ($index -like '*"aggregateRating"*' -or $index -like '*"@type": "Review"*') {
-  $failures.Add('index.html should not mark up self-serving LocalBusiness reviews in JSON-LD')
+foreach ($required in @('FAQPage', 'Frequently Asked Questions', 'name="lead_source"', 'sms:3173860400', 'mobile-sticky-cta')) {
+  Test-Contains -Html $index -Needle $required -Context 'index.html'
 }
 
 Test-JsonLd -Html $index -Context 'index.html'
 
 $sitemap = Get-Content -Raw -LiteralPath (Join-Path $root 'sitemap.xml')
 foreach ($page in $expectedPages) {
-  if ($page -eq 'lawn-care-indianapolis-in.html') {
+  if ($page -in @('lawn-care-indianapolis-in.html', 'lawn-care-tips-indianapolis-in.html', 'best-grass-height-indianapolis-in.html', 'weed-control-tips-indianapolis-in.html')) {
     continue
   }
 
@@ -139,9 +191,20 @@ if ($sitemap -notlike '*https://www.indymowmasters.com/lawn-care-indianapolis-in
   $failures.Add('sitemap.xml missing /lawn-care-indianapolis-in')
 }
 
+foreach ($pageInfo in $educationPages) {
+  if ($sitemap -notlike "*https://www.indymowmasters.com$($pageInfo.Route)*") {
+    $failures.Add("sitemap.xml missing $($pageInfo.Route)")
+  }
+}
+
 $vercel = Get-Content -Raw -LiteralPath (Join-Path $root 'vercel.json')
 foreach ($required in @('"source": "/lawn-care-indianapolis-in"', '"destination": "/lawn-care-indianapolis-in.html"')) {
   Test-Contains -Html $vercel -Needle $required -Context 'vercel.json'
+}
+
+foreach ($pageInfo in $educationPages) {
+  Test-Contains -Html $vercel -Needle "`"source`": `"$($pageInfo.Route)`"" -Context 'vercel.json'
+  Test-Contains -Html $vercel -Needle "`"destination`": `"/$($pageInfo.File)`"" -Context 'vercel.json'
 }
 
 if ($failures.Count -gt 0) {

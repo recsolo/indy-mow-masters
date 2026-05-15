@@ -3,6 +3,18 @@
     {
       "source": "/lawn-care-indianapolis-in",
       "destination": "/lawn-care-indianapolis-in.html"
+    },
+    {
+      "source": "/lawn-care-tips-indianapolis-in",
+      "destination": "/lawn-care-tips-indianapolis-in.html"
+    },
+    {
+      "source": "/best-grass-height-indianapolis-in",
+      "destination": "/best-grass-height-indianapolis-in.html"
+    },
+    {
+      "source": "/weed-control-tips-indianapolis-in",
+      "destination": "/weed-control-tips-indianapolis-in.html"
     }
   ],
   "headers": [
