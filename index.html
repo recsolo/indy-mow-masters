@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Lawn Mowing Indianapolis IN | $40 Flat Rate | Indy Mow Masters</title>
-<meta name="description" content="Affordable lawn mowing in Indianapolis, Carmel, Fishers, Zionsville & Whitestown IN. Flat $40 rate — no contracts, no surprises. Instant quotes. Call or book online." />
+<meta name="description" content="Professional lawn mowing service in Indianapolis, IN — flat rates starting at $40. Mowing, trimming &amp; cleanup every visit. Serving Avon, Plainfield, Brownsburg, Speedway, Carmel, Fishers, Zionsville &amp; more. Call (317) 386-0400." />
 <meta property="og:title" content="Indy Mow Masters — Mow & Go Lawn Care" />
 <meta property="og:description" content="Professional lawn mowing, trimming & cleanup. Starting at $40. Serving Indianapolis, Avon, Plainfield, Brownsburg, and Speedway. Call (317) 386-0400." />
 <meta property="og:type" content="website" />
@@ -20,32 +20,459 @@
 <meta name="theme-color" content="#0d3a23" />
 <link rel="icon" href="logo-128.png" type="image/png" />
 <link rel="apple-touch-icon" href="logo-512.png" />
-<meta name="keywords" content="lawn mowing Indianapolis IN, lawn care Indianapolis, affordable lawn mowing near me, $40 lawn mowing Indianapolis, lawn mowing Carmel IN, lawn mowing Fishers IN, lawn mowing Zionsville IN, lawn mowing Whitestown IN, lawn mowing Meridian Hills IN, grass cutting Indianapolis">
-<link rel="canonical" href="https://www.indymowmasters.com/" />
+<link rel="canonical" href="https://www.indymowmasters.com" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/csp-index.css" />
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#fff;color:#0B2A1A;-webkit-font-smoothing:antialiased;line-height:1.6}
+
+/* ─── TOKENS — matched to logo ─── */
+:root{
+  --g-darkest:#051a10;
+  --g-dark:#0a3520;
+  --g-deep:#0d3a23;
+  --g-mid:#1a5535;
+  --g-accent:#247344;
+  --g-glow:rgba(36,115,68,.35);
+
+  --gold-deep:#8b6914;
+  --gold:#c9922a;
+  --gold-mid:#d4a017;
+  --gold-bright:#f5c842;
+  --gold-shine:#fff5c2;
+  --gold-light:#fdecb1;
+
+  --gold-grad:linear-gradient(180deg,#fff5c2 0%,#f5c842 18%,#d4a017 55%,#a87a14 100%);
+  --gold-grad-flat:linear-gradient(135deg,#d4a017 0%,#f5c842 50%,#c9922a 100%);
+  --gold-text-grad:linear-gradient(180deg,#fff5c2 0%,#f5c842 35%,#c9922a 75%,#8b6914 100%);
+
+  --white:#FFFFFF;
+  --off:#F5F6F2;
+  --cream:#faf8f1;
+  --line:#E2E8DF;
+  --muted:#4A6741;
+
+  --shadow-sm:0 1px 2px rgba(5,26,16,.08), 0 2px 4px rgba(5,26,16,.06);
+  --shadow-md:0 4px 8px rgba(5,26,16,.1), 0 12px 24px rgba(5,26,16,.12);
+  --shadow-lg:0 8px 16px rgba(5,26,16,.15), 0 24px 48px rgba(5,26,16,.2);
+  --shadow-xl:0 16px 32px rgba(5,26,16,.2), 0 32px 80px rgba(5,26,16,.3);
+  --gold-glow:0 0 0 1px rgba(212,160,23,.3), 0 8px 24px rgba(212,160,23,.35), 0 2px 4px rgba(139,105,20,.4);
+  --inset-bevel:inset 0 1px 0 rgba(255,245,194,.6), inset 0 -2px 0 rgba(139,105,20,.3);
+}
+
+/* ─── UTILITIES ─── */
+.container{max-width:1160px;margin:0 auto;padding:0 24px}
+.btn{display:inline-block;padding:15px 32px;border-radius:8px;font-weight:700;font-size:16px;text-decoration:none;transition:all .2s cubic-bezier(.4,0,.2,1);cursor:pointer;border:none;font-family:inherit;letter-spacing:.02em;position:relative}
+.btn-gold{background:var(--gold-grad);color:var(--g-darkest);box-shadow:var(--gold-glow), var(--inset-bevel);text-shadow:0 1px 0 rgba(255,245,194,.5)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(212,160,23,.4), 0 14px 32px rgba(212,160,23,.5), 0 4px 8px rgba(139,105,20,.5), var(--inset-bevel)}
+.btn-gold:active{transform:translateY(0);box-shadow:inset 0 2px 4px rgba(139,105,20,.4), 0 2px 4px rgba(139,105,20,.3)}
+.btn-outline{background:rgba(255,255,255,.05);color:var(--white);border:2px solid rgba(245,200,66,.5);backdrop-filter:blur(8px)}
+.btn-outline:hover{background:rgba(245,200,66,.1);border-color:var(--gold-bright);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.3)}
+.btn-dark{background:linear-gradient(180deg,var(--g-mid) 0%,var(--g-dark) 100%);color:#fff;box-shadow:0 4px 12px rgba(5,26,16,.4), inset 0 1px 0 rgba(255,255,255,.1)}
+.btn-dark:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(5,26,16,.5), inset 0 1px 0 rgba(255,255,255,.15)}
+
+/* ─── NAV ─── */
+header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,var(--g-deep) 0%,var(--g-dark) 100%);border-bottom:1px solid rgba(245,200,66,.15);box-shadow:0 4px 24px rgba(5,26,16,.3), inset 0 -1px 0 rgba(245,200,66,.1)}
+nav{display:flex;justify-content:space-between;align-items:center;height:72px}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo-img{height:52px;width:auto;display:block}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:14px;font-weight:500;transition:color .15s}
+.nav-links a:hover{color:#fff}
+.nav-phone{display:flex;align-items:center;gap:8px;color:var(--gold-bright);font-weight:700;font-size:15px;text-decoration:none}
+@media(max-width:800px){.nav-links{display:none}}
+
+/* ─── HERO ─── */
+.hero{
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(36,115,68,.4) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 80% at 85% 20%, rgba(245,200,66,.08) 0%, transparent 60%),
+    linear-gradient(135deg, var(--g-deep) 0%, var(--g-darkest) 100%);
+  position:relative;overflow:hidden;padding:90px 0 80px
+}
+.hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5C842' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4h-4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 100% 60% at 50% 100%, rgba(0,0,0,.4) 0%, transparent 60%);
+}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(180deg,rgba(245,200,66,.15) 0%,rgba(245,200,66,.08) 100%);border:1px solid rgba(245,200,66,.4);color:var(--gold-bright);padding:8px 18px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:24px;box-shadow:0 2px 8px rgba(245,200,66,.15), inset 0 1px 0 rgba(255,245,194,.2)}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold-bright);border-radius:50%;box-shadow:0 0 8px var(--gold-bright);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,7vw,88px);line-height:1;color:#fff;letter-spacing:.03em;margin-bottom:20px;text-shadow:0 2px 0 rgba(0,0,0,.2), 0 4px 12px rgba(0,0,0,.4), 0 0 40px rgba(245,200,66,.1)}
+h1 .gold{
+  background:var(--gold-text-grad);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 2px 4px rgba(139,105,20,.4));
+}
+.hero-sub{font-size:18px;color:rgba(255,255,255,.7);max-width:480px;margin-bottom:36px}
+.hero-cta-group{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px}
+.hero-stats{display:flex;flex-direction:column;gap:12px}
+.stat{display:flex;align-items:center;gap:12px;font-size:15px;color:rgba(255,255,255,.92);font-weight:500}
+.stat strong{
+  display:grid;place-items:center;width:24px;height:24px;border-radius:50%;
+  background:var(--gold-grad);
+  color:var(--g-darkest);font-size:13px;flex-shrink:0;
+  box-shadow:0 2px 6px rgba(212,160,23,.4), inset 0 1px 0 rgba(255,245,194,.6), inset 0 -1px 0 rgba(139,105,20,.3);
+}
+
+/* Price card in hero */
+.hero-card{
+  background:#fff;border-radius:24px;padding:0;overflow:hidden;
+  box-shadow:
+    0 0 0 1px rgba(245,200,66,.15),
+    0 24px 48px rgba(0,0,0,.4),
+    0 60px 120px rgba(0,0,0,.5),
+    inset 0 1px 0 rgba(255,255,255,.6);
+  transform:perspective(1200px) rotateY(-2deg) rotateX(1deg);
+  transition:transform .4s ease;
+}
+.hero-card:hover{transform:perspective(1200px) rotateY(0) rotateX(0) translateY(-4px)}
+.hc-top{
+  background:linear-gradient(135deg, var(--g-mid) 0%, var(--g-dark) 100%);
+  padding:28px 32px;color:#fff;position:relative;
+  border-bottom:1px solid rgba(245,200,66,.2);
+  box-shadow:inset 0 -1px 0 rgba(245,200,66,.15);
+}
+.hc-top::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(245,200,66,.4),transparent)}
+.hc-badge{display:inline-block;background:var(--gold-grad);color:var(--g-darkest);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:14px;box-shadow:0 2px 4px rgba(139,105,20,.4), var(--inset-bevel);text-shadow:0 1px 0 rgba(255,245,194,.4)}
+.hc-top h3{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:.05em;margin-bottom:4px;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.hc-top p{font-size:14px;color:rgba(255,255,255,.8)}
+.hc-body{padding:28px 32px}
+.include-list{list-style:none;display:grid;gap:14px;margin-bottom:24px}
+.include-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--g-dark);font-weight:500}
+.check{
+  width:24px;height:24px;background:var(--gold-grad);color:var(--g-darkest);
+  border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:900;
+  flex-shrink:0;margin-top:1px;
+  box-shadow:0 2px 4px rgba(212,160,23,.4), inset 0 1px 0 rgba(255,245,194,.6), inset 0 -1px 0 rgba(139,105,20,.3);
+}
+.price-row{
+  background:linear-gradient(135deg, var(--cream) 0%, var(--off) 100%);
+  border:1px solid rgba(212,160,23,.2);
+  border-radius:14px;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8), 0 2px 4px rgba(5,26,16,.04);
+}
+.price-row span{font-size:13px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.price-row strong{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--g-dark);letter-spacing:.03em;text-shadow:0 1px 0 rgba(255,255,255,.8)}
+.price-note{font-size:12px;color:var(--muted);text-align:right;margin-top:8px}
+
+@media(max-width:920px){
+  .hero-inner{grid-template-columns:1fr;gap:44px}
+  .hero-card{max-width:440px}
+  .hero{padding:60px 0 60px}
+}
+
+/* ─── SERVICE SECTION ─── */
+.service-section{padding:100px 0;background:linear-gradient(180deg,var(--cream) 0%,var(--off) 100%);position:relative}
+.service-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,160,23,.3),transparent)}
+.section-label{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.section-label::before{content:'';display:block;width:28px;height:2px;background:var(--gold-grad-flat);box-shadow:0 1px 2px rgba(212,160,23,.4)}
+h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5vw,60px);color:var(--g-dark);letter-spacing:.03em;line-height:1.05;margin-bottom:16px;text-shadow:0 1px 0 rgba(255,255,255,.6)}
+.section-sub{color:var(--muted);font-size:17px;max-width:540px;margin-bottom:0}
+
+.service-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.big-service-card{
+  background:linear-gradient(160deg, var(--g-deep) 0%, var(--g-darkest) 100%);
+  border-radius:24px;overflow:hidden;color:#fff;
+  box-shadow:
+    0 0 0 1px rgba(245,200,66,.15),
+    0 16px 32px rgba(5,26,16,.2),
+    0 32px 80px rgba(5,26,16,.3),
+    inset 0 1px 0 rgba(245,200,66,.15);
+  position:relative;
+}
+.big-service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(245,200,66,.5),transparent)}
+.bsc-header{background:linear-gradient(135deg,var(--g-mid) 0%,var(--g-dark) 100%);padding:36px;border-bottom:1px solid rgba(245,200,66,.2);position:relative}
+.bsc-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(245,200,66,.3),transparent)}
+.bsc-tag{display:inline-block;background:var(--gold-grad);color:var(--g-darkest);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:16px;box-shadow:0 2px 4px rgba(139,105,20,.4), var(--inset-bevel);text-shadow:0 1px 0 rgba(255,245,194,.4)}
+.bsc-header h3{font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:.04em;color:#fff;margin-bottom:6px;text-shadow:0 2px 4px rgba(0,0,0,.3)}
+.bsc-header p{color:rgba(255,255,255,.7);font-size:15px}
+.bsc-steps{padding:36px;display:grid;gap:0}
+.step{display:flex;gap:18px;padding:18px 0;border-bottom:1px solid rgba(245,200,66,.08)}
+.step:last-child{border-bottom:0}
+.step-num{
+  font-family:'Bebas Neue',sans-serif;font-size:36px;line-height:1;width:36px;flex-shrink:0;margin-top:2px;
+  background:var(--gold-text-grad);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 1px 2px rgba(139,105,20,.4));
+}
+.step-info h4{font-size:16px;font-weight:700;color:#fff;margin-bottom:3px}
+.step-info p{font-size:14px;color:rgba(255,255,255,.6)}
+
+.service-right h2{margin-bottom:12px}
+.service-right .section-sub{margin-bottom:32px}
+.promise-list{display:grid;gap:16px;margin-bottom:36px}
+.promise{display:flex;gap:14px;align-items:flex-start}
+.promise-icon{
+  width:48px;height:48px;
+  background:linear-gradient(135deg,var(--gold-shine) 0%,var(--gold-light) 100%);
+  border:1px solid rgba(212,160,23,.3);
+  border-radius:12px;display:grid;place-items:center;font-size:22px;flex-shrink:0;
+  box-shadow:0 4px 12px rgba(212,160,23,.2), inset 0 1px 0 rgba(255,255,255,.6), inset 0 -1px 0 rgba(212,160,23,.2);
+}
+.promise-info h4{font-weight:700;font-size:15px;color:var(--g-dark);margin-bottom:2px}
+.promise-info p{font-size:14px;color:var(--muted)}
+
+@media(max-width:860px){.service-layout{grid-template-columns:1fr}}
+
+/* ─── PRICING ─── */
+.pricing-section{padding:100px 0;background:linear-gradient(180deg,#fff 0%,var(--cream) 100%);position:relative}
+.pricing-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,160,23,.25),transparent)}
+.pricing-head{text-align:center;max-width:600px;margin:0 auto 64px}
+.pricing-head .section-label{justify-content:center}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:36px;align-items:start}
+.price-card{
+  border:1px solid var(--line);border-radius:20px;padding:44px 28px;text-align:center;position:relative;
+  transition:transform .3s cubic-bezier(.4,0,.2,1), box-shadow .3s cubic-bezier(.4,0,.2,1);
+  background:linear-gradient(180deg,#fff 0%,var(--cream) 100%);
+  box-shadow:0 1px 2px rgba(5,26,16,.04), 0 8px 24px rgba(5,26,16,.06), inset 0 1px 0 rgba(255,255,255,.8);
+}
+.price-card:hover{transform:translateY(-8px);box-shadow:0 0 0 1px rgba(212,160,23,.3), 0 16px 32px rgba(5,26,16,.1), 0 32px 64px rgba(5,26,16,.15), inset 0 1px 0 rgba(255,255,255,.8)}
+.price-card.featured{
+  border:none;
+  background:linear-gradient(160deg, var(--g-deep) 0%, var(--g-darkest) 100%);
+  color:#fff;
+  transform:translateY(-12px) scale(1.04);
+  box-shadow:
+    0 0 0 2px var(--gold-bright),
+    0 0 0 6px rgba(245,200,66,.15),
+    0 16px 40px rgba(5,26,16,.3),
+    0 32px 80px rgba(5,26,16,.4),
+    inset 0 1px 0 rgba(245,200,66,.2);
+}
+.price-card.featured:hover{transform:translateY(-16px) scale(1.04)}
+.price-card.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(245,200,66,.6),transparent)}
+.featured-tag{
+  position:absolute;top:-16px;left:50%;transform:translateX(-50%);
+  background:var(--gold-grad);color:var(--g-darkest);
+  font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  padding:7px 18px;border-radius:999px;
+  box-shadow:0 4px 12px rgba(212,160,23,.5), var(--inset-bevel);
+  text-shadow:0 1px 0 rgba(255,245,194,.5);
+}
+.yard-size{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.price-card.featured .yard-size{
+  background:var(--gold-text-grad);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.price-amt{font-family:'Bebas Neue',sans-serif;font-size:84px;line-height:1;color:var(--g-dark);letter-spacing:.02em;margin-bottom:28px;text-shadow:0 1px 0 rgba(255,255,255,.6), 0 2px 4px rgba(5,26,16,.05)}
+.price-card.featured .price-amt{color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.4), 0 0 40px rgba(245,200,66,.15)}
+.price-amt sup{font-size:36px;vertical-align:top;margin-top:14px;display:inline-block;font-weight:600}
+.size-desc{font-size:14px;color:var(--muted);margin-bottom:24px}
+.price-card.featured .size-desc{color:rgba(255,255,255,.65)}
+.includes-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--g-accent);margin-bottom:14px}
+.price-card.featured .includes-label{color:var(--gold-bright)}
+.mini-list{list-style:none;display:grid;gap:10px;text-align:left}
+.mini-list li{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:10px;font-weight:500}
+.price-card.featured .mini-list li{color:rgba(255,255,255,.85)}
+.mini-list li::before{
+  content:'✓';font-weight:900;font-size:11px;color:var(--g-darkest);
+  width:18px;height:18px;border-radius:50%;
+  background:var(--gold-grad);
+  display:grid;place-items:center;flex-shrink:0;
+  box-shadow:0 1px 3px rgba(212,160,23,.4), inset 0 1px 0 rgba(255,245,194,.5);
+}
+
+.addon-stack{display:grid;gap:16px}
+.addon-bar{
+  background:linear-gradient(135deg, var(--gold-shine) 0%, var(--gold-light) 100%);
+  border:1px solid rgba(212,160,23,.4);
+  border-radius:18px;padding:28px 36px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+  box-shadow:0 8px 24px rgba(212,160,23,.15), inset 0 1px 0 rgba(255,255,255,.6), inset 0 -1px 0 rgba(212,160,23,.2);
+  position:relative;overflow:hidden;
+}
+.addon-bar::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.8),transparent)}
+.addon-icon{font-size:36px;filter:drop-shadow(0 2px 4px rgba(139,105,20,.3))}
+.addon-text h4{font-size:18px;font-weight:800;color:var(--g-darkest);margin-bottom:3px}
+.addon-text p{font-size:14px;color:var(--muted)}
+.addon-price{margin-left:auto;text-align:center}
+.addon-price strong{
+  font-family:'Bebas Neue',sans-serif;font-size:54px;line-height:1;letter-spacing:.03em;
+  background:var(--gold-text-grad);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 2px 4px rgba(139,105,20,.4));
+}
+.addon-price small{display:block;font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-top:4px}
+
+@media(max-width:760px){.pricing-grid{grid-template-columns:1fr}.price-card.featured{order:-1}}
+
+/* ─── CTA STRIP ─── */
+.cta-strip{
+  background:linear-gradient(180deg, var(--gold-shine) 0%, var(--gold-bright) 35%, var(--gold-mid) 100%);
+  padding:70px 0;position:relative;overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5), inset 0 -2px 8px rgba(139,105,20,.15);
+}
+.cta-strip::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent)}
+.cta-strip::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(139,105,20,.3),transparent)}
+.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;position:relative;z-index:1}
+.cta-inner h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4.5vw,56px);color:var(--g-darkest);letter-spacing:.03em;line-height:1.05;max-width:540px;text-shadow:0 1px 0 rgba(255,245,194,.5)}
+.cta-inner h2 em{font-style:normal;text-decoration:underline;text-decoration-color:rgba(11,42,26,.4);text-underline-offset:4px;text-decoration-thickness:2px}
+.cta-actions{display:flex;flex-direction:column;gap:12px;align-items:flex-end}
+.cta-phone{font-family:'Bebas Neue',sans-serif;font-size:46px;color:var(--g-darkest);letter-spacing:.05em;text-decoration:none;text-shadow:0 1px 0 rgba(255,245,194,.5);transition:transform .2s}
+.cta-phone:hover{transform:scale(1.04)}
+.cta-note{font-size:13px;color:rgba(11,42,26,.65);font-weight:500;text-align:right}
+@media(max-width:720px){.cta-inner{flex-direction:column;align-items:flex-start}.cta-actions{align-items:flex-start}}
+
+/* ─── REVIEWS ─── */
+.reviews-section{padding:100px 0;background:linear-gradient(180deg,#fff 0%,var(--off) 100%);position:relative}
+.reviews-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,160,23,.2),transparent)}
+.reviews-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;gap:24px;flex-wrap:wrap}
+.reviews-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.review-card{
+  background:linear-gradient(180deg,#fff 0%,var(--cream) 100%);
+  border:1px solid var(--line);
+  border-radius:18px;padding:32px;
+  box-shadow:0 1px 2px rgba(5,26,16,.04), 0 8px 24px rgba(5,26,16,.06), inset 0 1px 0 rgba(255,255,255,.8);
+  transition:transform .3s ease, box-shadow .3s ease;
+  position:relative;
+}
+.review-card:hover{transform:translateY(-4px);box-shadow:0 0 0 1px rgba(212,160,23,.2), 0 16px 32px rgba(5,26,16,.1), inset 0 1px 0 rgba(255,255,255,.8)}
+.review-stars{
+  font-size:18px;letter-spacing:2px;margin-bottom:14px;
+  background:var(--gold-text-grad);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 1px 2px rgba(139,105,20,.3));
+}
+.review-card p{font-size:15px;color:var(--g-dark);margin-bottom:20px;line-height:1.65}
+.reviewer{display:flex;align-items:center;gap:12px}
+.avi{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg, var(--g-mid) 0%, var(--g-dark) 100%);
+  color:var(--gold-bright);font-weight:800;font-size:14px;
+  display:grid;place-items:center;flex-shrink:0;
+  box-shadow:0 4px 8px rgba(5,26,16,.2), inset 0 1px 0 rgba(245,200,66,.2);
+}
+.reviewer-name{font-weight:700;font-size:14px;color:var(--g-dark)}
+.reviewer-loc{font-size:13px;color:var(--muted)}
+@media(max-width:760px){.reviews-grid{grid-template-columns:1fr}}
+
+/* ─── CONTACT FORM ─── */
+.contact-section{
+  padding:100px 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 30% 30%, rgba(36,115,68,.3) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(245,200,66,.06) 0%, transparent 60%),
+    linear-gradient(135deg, var(--g-deep) 0%, var(--g-darkest) 100%);
+  position:relative;
+}
+.contact-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(245,200,66,.3),transparent)}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;position:relative;z-index:1}
+.contact-left h2{color:#fff;margin-bottom:14px;text-shadow:0 2px 4px rgba(0,0,0,.3)}
+.contact-left p{color:rgba(255,255,255,.7);font-size:16px;margin-bottom:36px}
+.contact-info-list{display:grid;gap:18px}
+.ci-item{display:flex;gap:16px;align-items:center}
+.ci-icon{
+  width:48px;height:48px;
+  background:linear-gradient(135deg, rgba(245,200,66,.15) 0%, rgba(245,200,66,.05) 100%);
+  border:1px solid rgba(245,200,66,.25);
+  border-radius:12px;display:grid;place-items:center;font-size:20px;flex-shrink:0;
+  box-shadow:0 4px 12px rgba(0,0,0,.2), inset 0 1px 0 rgba(245,200,66,.15);
+}
+.ci-text span{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:3px}
+.ci-text a, .ci-text p{color:#fff;font-weight:600;font-size:16px;text-decoration:none}
+.ci-text a:hover{color:var(--gold-bright)}
+
+form{
+  background:linear-gradient(180deg,#fff 0%,var(--cream) 100%);
+  border-radius:24px;padding:40px;display:grid;gap:18px;
+  box-shadow:
+    0 0 0 1px rgba(245,200,66,.2),
+    0 24px 48px rgba(0,0,0,.3),
+    0 60px 120px rgba(0,0,0,.4),
+    inset 0 1px 0 rgba(255,255,255,.8);
+}
+.form-title{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--g-dark);letter-spacing:.04em;margin-bottom:4px}
+.form-subtitle{font-size:14px;color:var(--muted);margin-bottom:8px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field label{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--g-dark);margin-bottom:7px}
+.field input, .field select, .field textarea{
+  width:100%;padding:14px 16px;
+  border:1.5px solid var(--line);
+  border-radius:10px;font-family:inherit;
+  font-size:15px;background:#fff;color:var(--g-dark);
+  transition:border-color .2s, box-shadow .2s, transform .15s;
+  box-shadow:inset 0 1px 2px rgba(5,26,16,.04);
+}
+.field input:focus, .field select:focus, .field textarea:focus{
+  outline:none;
+  border-color:var(--gold-mid);
+  box-shadow:0 0 0 3px rgba(212,160,23,.15), inset 0 1px 2px rgba(5,26,16,.02);
+}
+.field textarea{resize:vertical;min-height:90px}
+.spam-field{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
+form .btn-gold{width:100%;margin-top:4px;font-size:16px}
+
+@media(max-width:900px){.contact-inner{grid-template-columns:1fr}.contact-section{padding:60px 0}}
+@media(max-width:600px){.form-row{grid-template-columns:1fr}}
+
+/* ─── PAYMENT ─── */
+.payment-section{padding:80px 0;background:linear-gradient(180deg,var(--cream) 0%,#fff 100%);border-top:1px solid rgba(212,160,23,.15);position:relative}
+.payment-inner{display:flex;align-items:center;gap:56px;flex-wrap:wrap}
+.payment-label{flex-shrink:0}
+.payment-label h2{margin-bottom:0}
+.payment-methods{display:flex;gap:14px;flex-wrap:wrap}
+.pay-chip{
+  background:linear-gradient(180deg,#fff 0%,var(--cream) 100%);
+  border:1px solid rgba(212,160,23,.25);
+  border-radius:999px;padding:14px 24px;font-size:15px;font-weight:600;color:var(--g-dark);white-space:nowrap;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s;
+  box-shadow:0 2px 6px rgba(5,26,16,.06), inset 0 1px 0 rgba(255,255,255,.8);
+}
+.pay-chip:hover{
+  transform:translateY(-3px);
+  border-color:var(--gold-mid);
+  box-shadow:0 8px 20px rgba(212,160,23,.25), inset 0 1px 0 rgba(255,255,255,.9);
+}
+@media(max-width:760px){.payment-inner{flex-direction:column;align-items:flex-start;gap:24px}}
+
+.area-section{padding:88px 0;background:linear-gradient(180deg,#fff 0%,var(--cream) 100%)}
+.area-head{max-width:680px;margin-bottom:34px}
+.area-head h2{margin-bottom:12px}
+.area-head p{color:var(--muted);font-size:17px}
+.area-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.area-card{background:#fff;border:1px solid rgba(212,160,23,.24);border-radius:14px;padding:22px;text-decoration:none;color:var(--g-dark);box-shadow:0 10px 26px rgba(5,26,16,.06);transition:transform .2s, box-shadow .2s, border-color .2s}
+.area-card:hover{transform:translateY(-3px);border-color:rgba(212,160,23,.5);box-shadow:0 16px 34px rgba(5,26,16,.1)}
+.area-card strong{display:block;font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.04em;margin-bottom:4px}
+.area-card span{display:block;color:var(--muted);font-size:13px;font-weight:700}
+@media(max-width:920px){.area-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.area-grid{grid-template-columns:1fr}}
+
+/* ─── FOOTER ─── */
+footer{
+  background:linear-gradient(180deg, var(--g-darkest) 0%, #020a06 100%);
+  padding:50px 0 32px;text-align:center;color:rgba(255,255,255,.45);font-size:14px;
+  border-top:1px solid rgba(245,200,66,.15);
+  position:relative;
+}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(245,200,66,.3),transparent)}
+.footer-logo{display:flex;justify-content:center;margin-bottom:20px}
+.footer-logo .logo-img{height:72px;width:auto;filter:drop-shadow(0 4px 12px rgba(245,200,66,.15))}
+footer p{margin-top:6px}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "LawnCareService"],
-  "@id": "https://www.indymowmasters.com/#business",
   "name": "Indy Mow Masters",
-  "description": "Affordable flat-rate lawn mowing service serving Indianapolis, Carmel, Fishers, Zionsville, Whitestown and surrounding areas. Starting at $40.",
+  "description": "Professional lawn mowing service in Indianapolis, IN. Flat-rate mowing, trimming, and leaf blower cleanup for residential properties. Serving Indianapolis, Avon, Plainfield, Brownsburg, Speedway, Whitestown, Zionsville, Fishers, Carmel, and Meridian Hills.",
   "url": "https://www.indymowmasters.com",
-  "image": "https://www.indymowmasters.com/og-image.jpg",
+  "image": "https://www.indymowmasters.com/social-preview.png",
   "logo": "https://www.indymowmasters.com/logo-512.png",
   "telephone": "+13173860400",
-  "priceRange": "$40-$120",
+  "priceRange": "$40-$80",
   "paymentAccepted": "Cash, Credit Card, Venmo, Cash App, PayPal, Apple Pay",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+13173860400",
-    "contactType": "customer service",
-    "areaServed": "US-IN",
-    "availableLanguage": "English"
-  },
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Indianapolis",
@@ -58,18 +485,16 @@
     "longitude": -86.1581
   },
   "areaServed": [
-    {"@type": "City", "name": "Indianapolis"},
-    {"@type": "City", "name": "Carmel"},
-    {"@type": "City", "name": "Fishers"},
-    {"@type": "City", "name": "Zionsville"},
-    {"@type": "City", "name": "Whitestown"},
-    {"@type": "City", "name": "Meridian Hills"},
-    {"@type": "City", "name": "Broad Ripple"},
-    {"@type": "City", "name": "Westfield"},
-    {"@type": "City", "name": "Avon"},
-    {"@type": "City", "name": "Plainfield"},
-    {"@type": "City", "name": "Brownsburg"},
-    {"@type": "City", "name": "Speedway"}
+    { "@type": "City", "name": "Indianapolis" },
+    { "@type": "City", "name": "Avon" },
+    { "@type": "City", "name": "Plainfield" },
+    { "@type": "City", "name": "Brownsburg" },
+    { "@type": "City", "name": "Speedway" },
+    { "@type": "City", "name": "Whitestown" },
+    { "@type": "City", "name": "Zionsville" },
+    { "@type": "City", "name": "Fishers" },
+    { "@type": "City", "name": "Carmel" },
+    { "@type": "City", "name": "Meridian Hills" }
   ],
   "openingHoursSpecification": [{
     "@type": "OpeningHoursSpecification",
@@ -79,91 +504,65 @@
   }],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "Lawn Care Services",
+    "name": "Residential Lawn Mowing Services",
     "itemListElement": [
       {
         "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Lawn Mowing",
-          "description": "Professional lawn mowing, edging, and blowing starting at $40 flat rate"
-        },
-        "price": "40",
+        "name": "Small Yard Lawn Mowing",
+        "description": "Full mow front & back, string trimming, leaf blower cleanup.",
+        "price": "40.00",
         "priceCurrency": "USD"
       },
       {
         "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Full Yard Cleanup",
-          "description": "Complete yard cleanup including mowing, edging, trimming, and debris removal"
-        }
+        "name": "Medium Yard Lawn Mowing",
+        "description": "Full mow front & back, string trimming, leaf blower cleanup.",
+        "price": "60.00",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "name": "Large Yard Lawn Mowing",
+        "description": "Full mow front & back, string trimming, leaf blower cleanup.",
+        "price": "80.00",
+        "priceCurrency": "USD"
       }
     ]
   },
-  "sameAs": [
-    "https://www.facebook.com/indymowmasters",
-    "https://www.google.com/maps?cid=indymowmasters"
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "4",
+    "bestRating": "5"
+  },
+  "review": [
     {
-      "@type": "Question",
-      "name": "How much does lawn mowing cost in Indianapolis?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Our flat rate starts at $40 for standard residential lawns in Indianapolis. No contracts, no surprises. Final price depends on lawn size."
-      }
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Nanci Hines" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Always shows up and is reliable and reasonable. Great job with every cut!!!"
     },
     {
-      "@type": "Question",
-      "name": "What areas do you serve?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We serve Indianapolis, Carmel, Fishers, Zionsville, Whitestown, Meridian Hills, Broad Ripple, and Westfield Indiana."
-      }
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Solving Crimes" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Mike is very professional. I appreciate him being on time and courteous. Our yard looks so good afterwards. He's great!!!"
     },
     {
-      "@type": "Question",
-      "name": "Do you require a contract or commitment?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No contracts, no cancellation fees, no commitments. Schedule one-time mows or regular service — whatever works for you."
-      }
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Terri Strunk-Olivier" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Mike is very dependable. He is always here when he says he will be and he does a great job. I highly recommend him."
     },
     {
-      "@type": "Question",
-      "name": "How do I get a quote for lawn mowing near me?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Fill out the quick quote form on our website with your address and lawn size. We'll get back to you fast, usually within a few hours."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What does your lawn mowing service include?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Every visit includes mowing, edging along driveways and sidewalks, and blowing off clippings from hard surfaces."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How often should I get my lawn mowed in Indianapolis?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "During Indianapolis's growing season (April through October), weekly mowing keeps your lawn looking its best. Bi-weekly is popular for slower-growing lawns."
-      }
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Shakir Mohammed" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Great Service, highly recommended."
     }
   ]
 }
 </script>
-<link rel="stylesheet" href="/csp-generated.css" />
 </head>
 <body>
 
@@ -175,9 +574,7 @@
         <img src="logo-128.png" alt="Indy Mow Masters" class="logo-img" width="128" height="128" decoding="async" fetchpriority="high" />
       </a>
       <ul class="nav-links">
-        <li><a href="/lawn-care-indianapolis-in">Services</a></li>
-        <li><a href="/lawn-care-tips-indianapolis-in">Tips</a></li>
-        <li><a href="/lawn-care-products">Products</a></li>
+        <li><a href="#service">Service</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#areas">Areas</a></li>
         <li><a href="#reviews">Reviews</a></li>
@@ -197,12 +594,11 @@
       <div>
         <div class="hero-badge">Indianapolis · Avon · Plainfield · Brownsburg · Speedway · Carmel · Fishers · Zionsville &amp; more</div>
         <h1>Indianapolis Lawn Mowing Service</h1>
-        <p class="csp-s61">Starting at $40 — Mowing, Trimming &amp; Cleanup</p>
+        <p style="font-size:22px;font-weight:700;color:rgba(255,255,255,.9);margin-bottom:16px">Starting at $40 — Mowing, Trimming &amp; Cleanup</p>
         <p class="hero-sub">One simple service. Three easy price points. We mow front &amp; back, trim, and blow every time — no surprises, no mess.</p>
         <div class="hero-cta-group">
           <a href="#contact" class="btn btn-gold">Get a Free Quote</a>
           <a href="tel:3173860400" class="btn btn-outline">Call (317) 386-0400</a>
-          <a href="sms:3173860400" class="btn btn-outline">Text for a Quote</a>
         </div>
         <div class="hero-stats">
           <div class="stat"><strong>✔</strong><span>Trusted by Indianapolis homeowners</span></div>
@@ -234,12 +630,13 @@
   </div>
 </section>
 
+<!-- ─── CONTACT ─── -->
 <section id="contact" class="contact-section">
   <div class="container">
     <div class="contact-inner">
       <div class="contact-left">
-        <div class="section-label csp-s62">Free Estimate</div>
-        <h2 class="csp-s63">Get a Free Lawn Mowing Quote in Indianapolis, IN</h2>
+        <div class="section-label" style="color:var(--gold-bright)">Free Estimate</div>
+        <h2 style="color:#fff">Get a Free Lawn Mowing Quote in Indianapolis, IN</h2>
         <p>Tell us your address and we'll give you an honest quote — usually same day. No pushy sales, no contracts required to start.</p>
         <div class="contact-info-list">
           <div class="ci-item">
@@ -268,7 +665,6 @@
 
       <form action="https://formspree.io/f/xpqbpwny" method="POST">
         <input type="hidden" name="_subject" value="New quote request — Indy Mow Masters" />
-        <input type="hidden" name="lead_source" value="Homepage quote form" />
         <div class="form-title">Request a Free Quote</div>
         <p class="form-subtitle">We'll get back to you with a price fast — usually same day.</p>
         <div class="form-row">
@@ -349,7 +745,6 @@
           <label for="notes">Anything else to know?</label>
           <textarea id="notes" name="notes" placeholder="Gate codes, dogs, special instructions…"></textarea>
         </div>
-        <p class="form-subtitle">By submitting this form, you agree that Indy Mow Masters may use your information to respond to your request. Read our <a href="/privacy-policy">Privacy Policy</a>.</p>
         <button type="submit" class="btn btn-gold">Send My Free Quote Request →</button>
       </form>
     </div>
@@ -432,61 +827,12 @@
 </section>
 
 <!-- ─── PRICING ─── -->
-<section class="area-section">
-  <div class="container">
-    <div class="area-head">
-      <div class="section-label">Lawn Care Services</div>
-      <h2>Lawn Care Services in Indianapolis, IN</h2>
-      <p>Looking for reliable lawn care in Indianapolis? Learn more about our mowing, trimming, edging, and yard maintenance services.</p>
-    </div>
-    <a href="/lawn-care-indianapolis-in" class="btn btn-dark">View Lawn Care Services</a>
-  </div>
-</section>
-
-<section class="band">
-  <div class="container">
-    <div class="section-head">
-      <div class="section-label">Lawn Care Education</div>
-      <h2>Lawn Care Tips for Indianapolis Homeowners</h2>
-      <p>Learn simple ways to keep your yard healthier between visits, including the right grass height, how the one-third mowing rule works, and why weeds spread in thin lawns.</p>
-    </div>
-    <div class="grid-3">
-      <div class="card">
-        <h3>Grass Height</h3>
-        <p>Most Indianapolis lawns do best around 3 to 4 inches, especially during hot weather.</p>
-        <p><a href="/best-grass-height-indianapolis-in">Best grass height guide</a></p>
-      </div>
-      <div class="card">
-        <h3>Weed Prevention</h3>
-        <p>Crabgrass, dandelions, and broadleaf weeds are easier to manage when turf is thick and mowed high.</p>
-        <p><a href="/weed-control-tips-indianapolis-in">Weed control tips</a></p>
-      </div>
-      <div class="card">
-        <h3>Seasonal Basics</h3>
-        <p>Use the lawn care tips hub for mowing, watering, weed, and seasonal yard care basics.</p>
-        <p><a href="/lawn-care-tips-indianapolis-in">Read Lawn Care Tips</a></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="area-section">
-  <div class="container">
-    <div class="area-head">
-      <div class="section-label">Affiliate Product Guide</div>
-      <h2>Lawn Care Products and Yard Tools</h2>
-      <p>Shop helpful mowing, trimming, cleanup, weed, and lawn care product categories. The page includes Amazon affiliate links with a clear disclosure.</p>
-    </div>
-    <a href="/lawn-care-products" class="btn btn-dark">Shop Yard Tools</a>
-  </div>
-</section>
-
 <section id="pricing" class="pricing-section">
   <div class="container">
     <div class="pricing-head">
       <div class="section-label">Pricing</div>
       <h2>Indianapolis Lawn Mowing Prices — Flat Rates, No Contracts</h2>
-      <p class="csp-s64">One fair price based on your yard size. No hidden fees, no per-visit contracts required.</p>
+      <p style="color:var(--muted);font-size:17px">One fair price based on your yard size. No hidden fees, no per-visit contracts required.</p>
     </div>
 
     <div class="pricing-grid">
@@ -553,52 +899,69 @@
   </div>
 </section>
 
-<!-- ─── OUR SERVICES ─── -->
-<section class="csp-s65">
-  <div class="container">
-    <div class="area-head">
-      <div class="section-label">Our Services</div>
-      <h2>Everything Your Yard Needs</h2>
-      <p class="section-sub">From weekly mowing to seasonal cleanups — one local crew handles it all. No contracts, no runaround.</p>
+<!-- Landscaping Specialty Services -->
+<section id="specialty-services" style="padding:70px 20px; background:#f8f9fa;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:48px;">
+      <span style="display:inline-block; background:#e8f5e9; color:#1E9E3E; font-size:12px; font-weight:800; letter-spacing:1px; text-transform:uppercase; padding:6px 16px; border-radius:20px; margin-bottom:12px;">Landscaping Specialty Services</span>
+      <h2 style="font-size:2.2rem; font-weight:900; color:#1a1a2e; margin-bottom:12px;">Detailed Hands-On Lawn &amp; Landscape Work</h2>
+      <p style="color:#6b7280; font-size:1.05rem; max-width:600px; margin:0 auto; line-height:1.7;">Beyond mowing — careful, labor-intensive services for beds, borders, and landscaping that need expert attention.</p>
     </div>
-    <div class="csp-s66">
-      <a href="/lawn-mowing-indianapolis.html" class="csp-s67">
-        <div class="csp-s68">🌿</div>
-        <div class="csp-s69">Lawn Mowing</div>
-        <div class="csp-s70">Flat rate mowing, edging &amp; blowing starting at $40</div>
-        <div class="csp-s71">Learn More →</div>
-      </a>
-      <a href="/leaf-cleanup-indianapolis.html" class="csp-s67">
-        <div class="csp-s68">🍂</div>
-        <div class="csp-s69">Leaf Cleanup</div>
-        <div class="csp-s70">Fall leaf blowing, raking, bagging &amp; haul-away</div>
-        <div class="csp-s71">Learn More →</div>
-      </a>
-      <a href="/yard-cleanup-indianapolis.html" class="csp-s67">
-        <div class="csp-s68">🏡</div>
-        <div class="csp-s69">Yard Cleanup</div>
-        <div class="csp-s70">Spring &amp; fall cleanup, debris removal, bed edging</div>
-        <div class="csp-s71">Learn More →</div>
-      </a>
-      <a href="/weed-pulling-indianapolis.html" class="csp-s67">
-        <div class="csp-s68">🌾</div>
-        <div class="csp-s69">Weed Pulling</div>
-        <div class="csp-s70">Chemical-free hand-pulling from beds, borders &amp; lawn</div>
-        <div class="csp-s71">Learn More →</div>
-      </a>
-      <a href="/mulch-installation-indianapolis.html" class="csp-s67">
-        <div class="csp-s68">🪵</div>
-        <div class="csp-s69">Mulch Installation</div>
-        <div class="csp-s70">Fresh mulch delivered &amp; installed in beds and borders</div>
-        <div class="csp-s71">Learn More →</div>
-      </a>
-      <a href="/drainage-cleanup-indianapolis.html" class="csp-s67">
-        <div class="csp-s68">💧</div>
-        <div class="csp-s69">Drainage Cleanup</div>
-        <div class="csp-s70">Drainage ditches, swales &amp; detention areas cleared</div>
-        <div class="csp-s71">Learn More →</div>
-      </a>
+
+    <!-- Hand Weeding Card -->
+    <div style="background:white; border-radius:20px; box-shadow:0 4px 24px rgba(0,0,0,0.08); overflow:hidden; max-width:900px; margin:0 auto;">
+      <!-- Card Header -->
+      <div style="background:linear-gradient(135deg, #1E9E3E, #2DC653); padding:28px 32px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+        <div>
+          <h3 style="font-size:1.6rem; font-weight:900; color:white; margin-bottom:4px;">✋ Hand Weeding</h3>
+          <p style="color:rgba(255,255,255,0.85); font-size:1rem;">Starting at <strong style="font-size:1.3rem; color:white;">$100</strong></p>
+        </div>
+        <a href="#contact" style="background:white; color:#1E9E3E; font-weight:800; font-size:14px; padding:12px 24px; border-radius:12px; text-decoration:none; white-space:nowrap;">Get a Free Quote →</a>
+      </div>
+
+      <!-- Card Body -->
+      <div style="padding:28px 32px;">
+        <p style="color:#4b5563; font-size:1rem; line-height:1.8; margin-bottom:24px;">Detailed bed and landscape weed removal by hand. Larger or heavily overgrown areas are quoted after inspection.</p>
+
+        <p style="color:#4b5563; font-size:0.97rem; line-height:1.8; margin-bottom:28px;">Our hand weeding service is designed for flower beds, mulch beds, fence lines, walkways, driveways, and landscaped areas where weeds need to be removed carefully by hand. Unlike basic mowing, hand weeding is a detailed labor service. Pricing depends on the size of the area, how thick the weeds are, and how much cleanup is needed.</p>
+
+        <!-- Pricing Tiers -->
+        <h4 style="font-size:1.1rem; font-weight:800; color:#1a1a2e; margin-bottom:16px;">Starting Prices</h4>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px;">
+
+          <div style="border:2px solid #e5e7eb; border-radius:14px; padding:20px; position:relative;">
+            <div style="background:#e8f5e9; color:#1E9E3E; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; padding:4px 10px; border-radius:20px; display:inline-block; margin-bottom:10px;">Small Job</div>
+            <div style="font-size:1.8rem; font-weight:900; color:#1a1a2e; margin-bottom:4px;">$100<span style="font-size:1rem; color:#6b7280; font-weight:600;">+</span></div>
+            <p style="font-size:13px; color:#6b7280; line-height:1.6; margin:0;">Best for small flower beds, light weeds, or small cleanup areas.</p>
+          </div>
+
+          <div style="border:2px solid #2DC653; border-radius:14px; padding:20px; position:relative; box-shadow:0 0 0 1px #2DC653;">
+            <div style="background:#2DC653; color:white; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; padding:4px 10px; border-radius:20px; display:inline-block; margin-bottom:10px;">Medium Job — Most Common</div>
+            <div style="font-size:1.8rem; font-weight:900; color:#1a1a2e; margin-bottom:4px;">$150<span style="font-size:1rem; color:#6b7280; font-weight:600;">–$300</span></div>
+            <p style="font-size:13px; color:#6b7280; line-height:1.6; margin:0;">Best for front yard landscape beds, mulch beds, fence lines, or moderate weed growth.</p>
+          </div>
+
+          <div style="border:2px solid #e5e7eb; border-radius:14px; padding:20px;">
+            <div style="background:#fff3e0; color:#e65100; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; padding:4px 10px; border-radius:20px; display:inline-block; margin-bottom:10px;">Heavy Job</div>
+            <div style="font-size:1.8rem; font-weight:900; color:#1a1a2e; margin-bottom:4px;">$300<span style="font-size:1rem; color:#6b7280; font-weight:600;">–$600+</span></div>
+            <p style="font-size:13px; color:#6b7280; line-height:1.6; margin:0;">Best for overgrown beds, thick weeds, large areas, deep roots, or neglected landscaping.</p>
+          </div>
+
+        </div>
+
+        <!-- Note -->
+        <div style="background:#f0fdf4; border-left:4px solid #2DC653; border-radius:0 10px 10px 0; padding:14px 18px; margin-top:24px;">
+          <p style="font-size:13px; color:#374151; margin:0; line-height:1.6;"><strong>Note:</strong> Larger or heavily overgrown areas are quoted after a quick inspection. We'll always give you an exact price before any work begins — no surprises.</p>
+        </div>
+
+        <!-- CTA Row -->
+        <div style="display:flex; gap:12px; margin-top:24px; flex-wrap:wrap;">
+          <a href="#contact" style="background:#2DC653; color:white; font-weight:800; font-size:14px; padding:13px 24px; border-radius:12px; text-decoration:none;">📋 Request a Weeding Quote</a>
+          <a href="/weed-pulling-indianapolis.html" style="background:white; color:#1E9E3E; font-weight:800; font-size:14px; padding:13px 24px; border-radius:12px; text-decoration:none; border:2px solid #2DC653;">Learn More →</a>
+        </div>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -660,7 +1023,7 @@
         <div class="section-label">Customer Reviews</div>
         <h2>What Indianapolis Homeowners Say About Indy Mow Masters</h2>
       </div>
-      <p class="csp-s72">Real reviews from real Indianapolis homeowners</p>
+      <p style="color:var(--muted);max-width:280px;font-size:15px">Real reviews from real Indianapolis homeowners</p>
     </div>
     <div class="reviews-grid">
       <div class="review-card">
@@ -708,104 +1071,23 @@
         </div>
       </div>
     </div>
-    <div class="csp-s73">
+    <div style="margin-top:34px;text-align:center">
       <a href="reviews.html" class="btn btn-dark">Leave a Review</a>
     </div>
   </div>
 </section>
 
-<!-- City Landing Sections -->
-<section id="service-areas-detail" class="csp-s20">
-  <div class="csp-s74">
-    <h2 class="csp-s75">Lawn Mowing Near You</h2>
-    <p class="csp-s76">Serving homeowners across Greater Indianapolis</p>
-    <div class="csp-s77">
-      <div class="csp-s78">
-        <h3 class="csp-s79">🌿 Lawn Mowing Indianapolis, IN</h3>
-        <p class="csp-s80">Flat $40 rate for most Indianapolis homes. We cover all Indianapolis neighborhoods including Broad Ripple, Meridian Hills, Speedway, Lawrence, and more. Fast scheduling, no contracts.</p>
-      </div>
-      <div class="csp-s78">
-        <h3 class="csp-s79">🌿 Lawn Mowing Carmel, IN</h3>
-        <p class="csp-s80">Professional lawn mowing in Carmel Indiana. Affordable flat-rate pricing for Carmel homeowners. We handle standard lots and larger properties. Book online in minutes.</p>
-      </div>
-      <div class="csp-s78">
-        <h3 class="csp-s79">🌿 Lawn Mowing Fishers, IN</h3>
-        <p class="csp-s80">Reliable lawn care in Fishers Indiana. Competitive flat-rate pricing, weekly or bi-weekly service. No contracts, no hidden fees. Fishers families trust Indy Mow Masters.</p>
-      </div>
-      <div class="csp-s78">
-        <h3 class="csp-s79">🌿 Lawn Mowing Zionsville, IN</h3>
-        <p class="csp-s80">Serving Zionsville Indiana with quality lawn mowing at affordable prices. Flexible scheduling around your needs. Get a quick quote for your Zionsville home today.</p>
-      </div>
-      <div class="csp-s78">
-        <h3 class="csp-s79">🌿 Lawn Mowing Whitestown, IN</h3>
-        <p class="csp-s80">Growing communities like Whitestown deserve great lawn care. Indy Mow Masters brings flat-rate professional mowing to Whitestown homeowners. Book your first cut today.</p>
-      </div>
-      <div class="csp-s78">
-        <h3 class="csp-s79">🌿 Lawn Mowing Meridian Hills, IN</h3>
-        <p class="csp-s80">Premium lawn mowing for Meridian Hills homes. We take care of your lawn like it's our own. Consistent, reliable, and priced fairly. Schedule online anytime.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ Section -->
-<section id="faq" class="csp-s81">
-  <div class="csp-s82">
-    <h2 class="csp-s83">Frequently Asked Questions</h2>
-    <p class="csp-s76">Everything you need to know about our Indianapolis lawn mowing service</p>
-
-    <div class="csp-s48">
-      <details class="csp-s84">
-        <summary class="csp-s85">How much does lawn mowing cost in Indianapolis? <span class="csp-s86">+</span></summary>
-        <p class="csp-s87">Our flat rate starts at $40 for standard residential lawns in Indianapolis. Unlike many companies that charge by the hour or by square footage, we keep it simple with transparent flat pricing. No surprises, no contracts. Final price depends on lawn size — we'll confirm your exact price before we start.</p>
-      </details>
-
-      <details class="csp-s84">
-        <summary class="csp-s85">What areas do you serve? <span class="csp-s86">+</span></summary>
-        <p class="csp-s87">We serve Indianapolis and the surrounding suburbs including Carmel, Fishers, Zionsville, Whitestown, Meridian Hills, Broad Ripple, and Westfield. Not sure if we cover your neighborhood? Request a quote and we'll let you know!</p>
-      </details>
-
-      <details class="csp-s84">
-        <summary class="csp-s85">Do you require a contract or commitment? <span class="csp-s86">+</span></summary>
-        <p class="csp-s87">Absolutely not. We believe in earning your business every single visit. No contracts, no cancellation fees, no commitments. You can schedule one-time mows or regular service — whatever works for you. Most customers set up weekly or bi-weekly cuts once they see the quality.</p>
-      </details>
-
-      <details class="csp-s84">
-        <summary class="csp-s85">How do I get a quote for lawn mowing near me? <span class="csp-s86">+</span></summary>
-        <p class="csp-s87">It's easy — just fill out our quick quote form at the top of this page with your address and lawn size. We'll get back to you fast, usually within a few hours. You can also call or text us directly to get an instant quote.</p>
-      </details>
-
-      <details class="csp-s84">
-        <summary class="csp-s85">What does your lawn mowing service include? <span class="csp-s86">+</span></summary>
-        <p class="csp-s87">Every visit includes mowing, edging along driveways and sidewalks, and blowing off clippings from hard surfaces. We leave your yard looking sharp and clean every time. Need full cleanup, trimming, or overgrown lots? We handle that too.</p>
-      </details>
-
-      <details class="csp-s84">
-        <summary class="csp-s85">How often should I get my lawn mowed in Indianapolis? <span class="csp-s86">+</span></summary>
-        <p class="csp-s87">During Indianapolis's growing season (April through October), weekly mowing keeps your lawn looking its best. Bi-weekly is a popular option for lawns that grow slower. We'll recommend the right frequency based on your grass type and how fast it grows.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
 <!-- ─── FOOTER ─── -->
-<div class="mobile-sticky-cta" role="navigation" aria-label="Quick quote options">
-  <a href="tel:3173860400">Call</a>
-  <a href="sms:3173860400">Text</a>
-  <a href="#contact">Quote</a>
-</div>
-
 <footer>
   <div class="container">
     <div class="footer-logo">
       <img src="logo-128.png" alt="Indy Mow Masters" class="logo-img" width="128" height="128" loading="lazy" decoding="async" />
     </div>
-    <p>© <span id="yr"></span> Indy Mow Masters · Indianapolis, IN · <a href="tel:3173860400" class="csp-s88">(317) 386-0400</a></p>
-    <p class="csp-s89">Licensed &amp; Insured · Locally Owned · <a href="/privacy-policy" class="csp-s88">Privacy Policy</a></p>
+    <p>© <span id="yr"></span> Indy Mow Masters · Indianapolis, IN · <a href="tel:3173860400" style="color:var(--gold-bright);text-decoration:none">(317) 386-0400</a></p>
+    <p style="margin-top:6px">Licensed &amp; Insured · Locally Owned</p>
   </div>
 </footer>
 
-
-<script src="/site.js" defer></script>
+<script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
 </body>
 </html>
