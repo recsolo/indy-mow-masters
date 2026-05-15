@@ -14,7 +14,13 @@ $expectedPages = @(
   'best-grass-height-indianapolis-in.html',
   'weed-control-tips-indianapolis-in.html',
   'lawn-care-products.html',
+  'privacy-policy.html',
   'lawn-mowing-indianapolis.html',
+  'leaf-cleanup-indianapolis.html',
+  'yard-cleanup-indianapolis.html',
+  'weed-pulling-indianapolis.html',
+  'mulch-installation-indianapolis.html',
+  'drainage-cleanup-indianapolis.html',
   'lawn-mowing-avon.html',
   'lawn-mowing-plainfield.html',
   'lawn-mowing-brownsburg.html',
@@ -68,11 +74,19 @@ foreach ($page in $expectedPages) {
   $html = Get-Content -Raw -LiteralPath $path
   $requiredTags = @('<title>', '<meta name="description"', '<link rel="canonical"', '<meta property="og:type" content="website"', '<meta property="og:url"')
   if ($page -ne 'lawn-mowing-indianapolis.html') {
-    $requiredTags += @('tel:3173860400', '<meta name="twitter:card"')
+    $requiredTags += @('<meta name="twitter:card"')
   }
 
   foreach ($required in $requiredTags) {
     Test-Contains -Html $html -Needle $required -Context $page
+  }
+
+  if ($html -notlike '*tel:3173860400*' -and $html -notlike '*tel:+13173860400*') {
+    $failures.Add("$page missing phone link")
+  }
+
+  foreach ($requiredNav in @('/lawn-care-indianapolis-in', '/lawn-care-tips-indianapolis-in', '/lawn-care-products', '/privacy-policy')) {
+    Test-Contains -Html $html -Needle $requiredNav -Context $page
   }
 
   Test-JsonLd -Html $html -Context $page
@@ -122,6 +136,22 @@ if (Test-Path -LiteralPath $affiliatePagePath) {
     if ($tag -notlike '*target="_blank"*') {
       $failures.Add("Amazon link missing target blank: $tag")
     }
+  }
+}
+
+$privacyPagePath = Join-Path $root 'privacy-policy.html'
+if (Test-Path -LiteralPath $privacyPagePath) {
+  $privacyHtml = Get-Content -Raw -LiteralPath $privacyPagePath
+  foreach ($required in @(
+    '<title>Privacy Policy | Indy Mow Masters</title>',
+    '<link rel="canonical" href="https://www.indymowmasters.com/privacy-policy" />',
+    '<h1>Privacy Policy</h1>',
+    'Information We Collect',
+    'Formspree',
+    'As an Amazon Associate I earn from qualifying purchases.',
+    'BreadcrumbList'
+  )) {
+    Test-Contains -Html $privacyHtml -Needle $required -Context 'privacy-policy.html'
   }
 }
 
@@ -194,7 +224,7 @@ if (Test-Path -LiteralPath $seoPagePath) {
 
 $index = Get-Content -Raw -LiteralPath (Join-Path $root 'index.html')
 foreach ($page in $expectedPages) {
-  if ($page -in @('lawn-care-indianapolis-in.html', 'lawn-care-tips-indianapolis-in.html', 'best-grass-height-indianapolis-in.html', 'weed-control-tips-indianapolis-in.html', 'lawn-care-products.html')) {
+  if ($page -in @('lawn-care-indianapolis-in.html', 'lawn-care-tips-indianapolis-in.html', 'best-grass-height-indianapolis-in.html', 'weed-control-tips-indianapolis-in.html', 'lawn-care-products.html', 'privacy-policy.html')) {
     continue
   }
 
@@ -215,15 +245,23 @@ foreach ($required in @('/lawn-care-products', 'Lawn Care Products and Yard Tool
   Test-Contains -Html $index -Needle $required -Context 'index.html'
 }
 
+foreach ($required in @('/privacy-policy', 'Privacy Policy')) {
+  Test-Contains -Html $index -Needle $required -Context 'index.html'
+}
+
 foreach ($required in @('FAQPage', 'Frequently Asked Questions', 'name="lead_source"', 'sms:3173860400', 'mobile-sticky-cta')) {
   Test-Contains -Html $index -Needle $required -Context 'index.html'
+}
+
+if ($index -like '*"aggregateRating"*' -or $index -like '*"@type": "Review"*') {
+  $failures.Add('index.html should not mark up self-serving LocalBusiness reviews in JSON-LD')
 }
 
 Test-JsonLd -Html $index -Context 'index.html'
 
 $sitemap = Get-Content -Raw -LiteralPath (Join-Path $root 'sitemap.xml')
 foreach ($page in $expectedPages) {
-  if ($page -in @('lawn-care-indianapolis-in.html', 'lawn-care-tips-indianapolis-in.html', 'best-grass-height-indianapolis-in.html', 'weed-control-tips-indianapolis-in.html', 'lawn-care-products.html')) {
+  if ($page -in @('lawn-care-indianapolis-in.html', 'lawn-care-tips-indianapolis-in.html', 'best-grass-height-indianapolis-in.html', 'weed-control-tips-indianapolis-in.html', 'lawn-care-products.html', 'privacy-policy.html')) {
     continue
   }
 
@@ -246,12 +284,20 @@ if ($sitemap -notlike '*https://www.indymowmasters.com/lawn-care-products*') {
   $failures.Add('sitemap.xml missing /lawn-care-products')
 }
 
+if ($sitemap -notlike '*https://www.indymowmasters.com/privacy-policy*') {
+  $failures.Add('sitemap.xml missing /privacy-policy')
+}
+
 $vercel = Get-Content -Raw -LiteralPath (Join-Path $root 'vercel.json')
 foreach ($required in @('"source": "/lawn-care-indianapolis-in"', '"destination": "/lawn-care-indianapolis-in.html"')) {
   Test-Contains -Html $vercel -Needle $required -Context 'vercel.json'
 }
 
 foreach ($required in @('"source": "/lawn-care-products"', '"destination": "/lawn-care-products.html"')) {
+  Test-Contains -Html $vercel -Needle $required -Context 'vercel.json'
+}
+
+foreach ($required in @('"source": "/privacy-policy"', '"destination": "/privacy-policy.html"')) {
   Test-Contains -Html $vercel -Needle $required -Context 'vercel.json'
 }
 

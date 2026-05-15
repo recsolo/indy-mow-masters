@@ -19,6 +19,10 @@
     {
       "source": "/lawn-care-products",
       "destination": "/lawn-care-products.html"
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy-policy.html"
     }
   ],
   "headers": [
