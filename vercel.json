@@ -21,6 +21,14 @@
       "destination": "/lawn-care-products.html"
     },
     {
+      "source": "/products",
+      "destination": "/lawn-care-products.html"
+    },
+    {
+      "source": "/amazon-products",
+      "destination": "/lawn-care-products.html"
+    },
+    {
       "source": "/privacy-policy",
       "destination": "/privacy-policy.html"
     }
