@@ -275,7 +275,7 @@ foreach ($required in @('/privacy-policy', 'Privacy Policy')) {
   Test-Contains -Html $index -Needle $required -Context 'index.html'
 }
 
-foreach ($required in @('FAQPage', 'Frequently Asked Questions', 'name="lead_source"', 'sms:3173860400', 'mobile-sticky-cta')) {
+foreach ($required in @('FAQPage', 'Frequently Asked Questions', 'name="lead_source"', 'sms:3173860400', 'mobile-sticky-cta', '<a href="/lawn-care-products">Products</a>')) {
   Test-Contains -Html $index -Needle $required -Context 'index.html'
 }
 
@@ -320,6 +320,10 @@ foreach ($required in @('"source": "/lawn-care-indianapolis-in"', '"destination"
 }
 
 foreach ($required in @('"source": "/lawn-care-products"', '"destination": "/lawn-care-products.html"')) {
+  Test-Contains -Html $vercel -Needle $required -Context 'vercel.json'
+}
+
+foreach ($required in @('"source": "/products"', '"source": "/amazon-products"')) {
   Test-Contains -Html $vercel -Needle $required -Context 'vercel.json'
 }
 
