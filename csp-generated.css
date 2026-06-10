@@ -133,3 +133,4 @@
 .csp-s132{list-style:none !important;display:flex !important;flex-direction:column !important;gap:8px !important;font-size:14px !important;color:#14532d !important}
 input:focus,select:focus,textarea:focus{border-color:#2DC653!important;}
 .quote-sent{background:#1E9E3E!important;}
+.hp-field{display:none!important}

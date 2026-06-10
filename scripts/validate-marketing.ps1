@@ -72,10 +72,7 @@ foreach ($page in $expectedPages) {
   }
 
   $html = Get-Content -Raw -LiteralPath $path
-  $requiredTags = @('<title>', '<meta name="description"', '<link rel="canonical"', '<meta property="og:type" content="website"', '<meta property="og:url"')
-  if ($page -ne 'lawn-mowing-indianapolis.html') {
-    $requiredTags += @('<meta name="twitter:card"')
-  }
+  $requiredTags = @('<title>', '<meta name="description"', '<link rel="canonical"', '<meta property="og:type" content="website"', '<meta property="og:url"', '<meta name="twitter:card"')
 
   foreach ($required in $requiredTags) {
     Test-Contains -Html $html -Needle $required -Context $page
@@ -254,8 +251,9 @@ foreach ($page in $expectedPages) {
     continue
   }
 
-  if ($index -notlike "*$page*") {
-    $failures.Add("index.html does not link to $page")
+  $slug = $page -replace '\.html$', ''
+  if ($index -notlike "*href=`"/$slug`"*") {
+    $failures.Add("index.html does not link to /$slug")
   }
 }
 
@@ -275,7 +273,7 @@ foreach ($required in @('/privacy-policy', 'Privacy Policy')) {
   Test-Contains -Html $index -Needle $required -Context 'index.html'
 }
 
-foreach ($required in @('FAQPage', 'Frequently Asked Questions', 'name="lead_source"', 'sms:3173860400', 'mobile-sticky-cta', '<a href="/lawn-care-products">Products</a>')) {
+foreach ($required in @('FAQPage', 'Frequently Asked Questions', 'name="lead_source"', 'name="_gotcha"', 'sms:3173860400', 'mobile-sticky-cta', 'data-service-quote-form')) {
   Test-Contains -Html $index -Needle $required -Context 'index.html'
 }
 
@@ -291,8 +289,12 @@ foreach ($page in $expectedPages) {
     continue
   }
 
-  if ($sitemap -notlike "*https://www.indymowmasters.com/$page*") {
-    $failures.Add("sitemap.xml missing $page")
+  $slug = $page -replace '\.html$', ''
+  if ($sitemap -notlike "*https://www.indymowmasters.com/$slug<*" -and $sitemap -notlike "*https://www.indymowmasters.com/$slug</loc>*") {
+    $failures.Add("sitemap.xml missing /$slug")
+  }
+  if ($sitemap -like "*$page*") {
+    $failures.Add("sitemap.xml should use extensionless URL for $page")
   }
 }
 
@@ -331,8 +333,31 @@ foreach ($required in @('"source": "/privacy-policy"', '"destination": "/privacy
   Test-Contains -Html $vercel -Needle $required -Context 'vercel.json'
 }
 
-foreach ($required in @('Content-Security-Policy', "style-src-attr 'none'", "script-src-attr 'none'", "object-src 'none'")) {
+foreach ($required in @('Content-Security-Policy', "style-src-attr 'none'", "script-src-attr 'none'", "object-src 'none'", 'connect-src ''self'' https://formspree.io')) {
   Test-Contains -Html $vercel -Needle $required -Context 'vercel.json'
+}
+
+# Every public page (except marketing pages with rewrites already covered above)
+# must be reachable extensionless via a rewrite.
+foreach ($page in $expectedPages) {
+  $slug = $page -replace '\.html$', ''
+  Test-Contains -Html $vercel -Needle "`"source`": `"/$slug`"" -Context 'vercel.json'
+}
+
+# Quote forms must actually submit somewhere and carry named fields.
+$formPages = @(
+  'lawn-mowing-indianapolis.html',
+  'leaf-cleanup-indianapolis.html',
+  'yard-cleanup-indianapolis.html',
+  'weed-pulling-indianapolis.html',
+  'mulch-installation-indianapolis.html',
+  'drainage-cleanup-indianapolis.html'
+)
+foreach ($page in $formPages) {
+  $html = Get-Content -Raw -LiteralPath (Join-Path $root $page)
+  foreach ($required in @('action="https://formspree.io/', 'method="POST"', 'name="name"', 'name="phone"', 'name="address"', 'name="_gotcha"', 'data-service-quote-form')) {
+    Test-Contains -Html $html -Needle $required -Context "$page (quote form)"
+  }
 }
 
 if ($vercel -like "*'unsafe-inline'*") {

@@ -440,7 +440,7 @@ form .btn-gold{width:100%;margin-top:4px;font-size:16px}
   body{padding-bottom:76px}
   .mobile-sticky-cta{
     position:fixed;left:12px;right:12px;bottom:12px;z-index:80;
-    display:grid;grid-template-columns:repeat(4,1fr);gap:8px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
     padding:8px;border-radius:14px;background:rgba(5,26,16,.94);
     border:1px solid rgba(245,200,66,.3);box-shadow:0 16px 40px rgba(0,0,0,.35);
     backdrop-filter:blur(12px)
@@ -463,3 +463,12 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 .footer-logo{display:flex;justify-content:center;margin-bottom:20px}
 .footer-logo .logo-img{height:72px;width:auto;filter:drop-shadow(0 4px 12px rgba(245,200,66,.15))}
 footer p{margin-top:6px}
+
+/* Specialty service links inside the areas section */
+.svc-head{max-width:680px;margin:42px 0 22px}
+.svc-head h3{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:.04em;margin-bottom:8px}
+.svc-head p{color:var(--muted);font-size:15px}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:920px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.svc-grid{grid-template-columns:1fr}}
+.svc-tips-row{margin-top:48px}
