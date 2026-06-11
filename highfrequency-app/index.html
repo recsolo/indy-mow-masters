@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HighFrequency — Frequency Audio Engine</title>
+  <meta name="description" content="One-tap brain states powered by real-time binaural beat and isochronic tone generation.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">HIGH<em>FREQUENCY</em></span>
+    </div>
+    <div class="stats" id="stats">
+      <span class="stat"><strong id="stat-streak">0</strong> day streak</span>
+      <span class="stat"><strong id="stat-sessions">0</strong> sessions</span>
+      <span class="stat"><strong id="stat-minutes">0</strong> min trained</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="stage">
+      <canvas id="orb" width="520" height="520" aria-hidden="true"></canvas>
+      <div class="stage-readout">
+        <div id="readout-state" class="readout-state">Ready</div>
+        <div id="readout-freq" class="readout-freq">Choose a state, press play</div>
+        <div id="readout-timer" class="readout-timer">--:--</div>
+      </div>
+    </section>
+
+    <section class="states" aria-label="Brain states">
+      <button class="state-btn" data-state="focus">
+        <span class="state-name">Focus</span>
+        <span class="state-sub">Beta · 18 Hz</span>
+        <span class="state-desc">Lock into deep work</span>
+      </button>
+      <button class="state-btn" data-state="calm">
+        <span class="state-name">Calm</span>
+        <span class="state-sub">Alpha · 10 Hz</span>
+        <span class="state-desc">Dissolve stress on cue</span>
+      </button>
+      <button class="state-btn" data-state="flow">
+        <span class="state-name">Flow</span>
+        <span class="state-sub">Alpha–Theta · 8 Hz</span>
+        <span class="state-desc">Effortless creative drive</span>
+      </button>
+      <button class="state-btn" data-state="meditate">
+        <span class="state-name">Meditate</span>
+        <span class="state-sub">Theta · 6 Hz</span>
+        <span class="state-desc">Drop in, instantly deep</span>
+      </button>
+      <button class="state-btn" data-state="sleep">
+        <span class="state-name">Sleep</span>
+        <span class="state-sub">Delta · 2.5 Hz</span>
+        <span class="state-desc">Power down the noise</span>
+      </button>
+    </section>
+
+    <section class="transport">
+      <button id="reset-btn" class="pill-btn reset-btn" title="60-second guided downshift from high-beta to alpha">
+        ⚡ 60-Second Reset
+      </button>
+      <button id="play-btn" class="play-btn" aria-label="Play or pause">
+        <svg id="icon-play" viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+        <svg id="icon-pause" viewBox="0 0 24 24" width="34" height="34" class="hidden"><path d="M6 5h4v14H6zm8 0h4v14h-4z" fill="currentColor"/></svg>
+      </button>
+      <div class="durations" id="durations" role="group" aria-label="Session length">
+        <button class="pill-btn dur" data-min="5">5m</button>
+        <button class="pill-btn dur" data-min="10">10m</button>
+        <button class="pill-btn dur active" data-min="20">20m</button>
+        <button class="pill-btn dur" data-min="30">30m</button>
+        <button class="pill-btn dur" data-min="0">∞</button>
+      </div>
+    </section>
+
+    <section class="controls">
+      <div class="control">
+        <label for="vol-tone">Frequency level</label>
+        <input type="range" id="vol-tone" min="0" max="100" value="55">
+      </div>
+      <div class="control">
+        <label for="vol-noise">Ambience (pink noise)</label>
+        <input type="range" id="vol-noise" min="0" max="100" value="25">
+      </div>
+      <div class="control mode-control">
+        <label id="mode-label" for="mode-toggle">Output mode</label>
+        <div class="mode-toggle" id="mode-toggle" role="radiogroup" aria-labelledby="mode-label">
+          <button class="mode-opt active" data-mode="binaural" role="radio" aria-checked="true">🎧 Headphones<small>binaural</small></button>
+          <button class="mode-opt" data-mode="isochronic" role="radio" aria-checked="false">🔊 Speakers<small>isochronic</small></button>
+        </div>
+      </div>
+    </section>
+
+    <p class="hint" id="hint">
+      Binaural mode requires stereo headphones — each ear receives a slightly different
+      tone and your brain perceives the difference as a rhythmic beat.
+    </p>
+  </main>
+
+  <footer>
+    <p>Real-time brainwave-entrainment audio engine. Not a medical device. Do not use while driving.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
