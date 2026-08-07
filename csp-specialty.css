@@ -196,3 +196,155 @@
     text-align: center;
   }
 }
+
+/* ================================================================
+   DRIVEWAY POWER WASHING $99 SPECIAL — highlighted homepage banner
+   ================================================================ */
+
+.pw-special-section {
+  padding: 34px 0;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0b4f9e 0%, #1D7ED8 55%, #2f9be6 100%);
+  border-top: 3px solid #F4A522;
+  border-bottom: 3px solid #F4A522;
+}
+
+.pw-special-section::after {
+  content: '';
+  position: absolute;
+  width: 520px;
+  height: 260px;
+  top: 50%;
+  right: 8%;
+  transform: translateY(-50%);
+  background: radial-gradient(ellipse, rgba(255,255,255,0.16) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(30px);
+}
+
+.pw-special-inner {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.pw-special-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #F4A522;
+  color: #0b2c52;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  animation: pw-special-wiggle 3s ease-in-out infinite;
+}
+
+@keyframes pw-special-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  4%       { transform: rotate(-2.5deg); }
+  8%       { transform: rotate(2.5deg); }
+  12%      { transform: rotate(0deg); }
+}
+
+.pw-special-content {
+  flex: 1;
+  min-width: 240px;
+}
+
+.pw-special-title {
+  font-size: clamp(1.5rem, 3.2vw, 2.1rem);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.15;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+.pw-special-title span {
+  color: #FFD466;
+}
+
+.pw-special-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.88);
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0;
+}
+
+.pw-special-price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255,255,255,0.12);
+  border: 2px dashed rgba(255,255,255,0.55);
+  border-radius: 16px;
+  padding: 12px 24px;
+  flex-shrink: 0;
+}
+
+.pw-special-price-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #FFD466;
+}
+
+.pw-special-price-amt {
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.pw-special-price-amt sup {
+  font-size: 1.2rem;
+  vertical-align: super;
+}
+
+.pw-special-btn {
+  display: inline-block;
+  background: #F4A522;
+  color: #0b2c52;
+  padding: 15px 32px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 15px;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pw-special-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(0,0,0,0.4);
+}
+
+@media (max-width: 768px) {
+  .pw-special-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .pw-special-price {
+    align-self: center;
+  }
+  .pw-special-btn {
+    align-self: stretch;
+    text-align: center;
+  }
+}
