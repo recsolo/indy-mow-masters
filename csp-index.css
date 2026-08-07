@@ -280,6 +280,42 @@ h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5vw,60px);color:var(
 
 @media(max-width:760px){.pricing-grid{grid-template-columns:1fr}.price-card.featured{order:-1}}
 
+/* ─── ECONOMY PLAN (MONEY SAVER) BAR ─── */
+.eco-plan-bar{
+  background:linear-gradient(160deg, var(--g-deep) 0%, var(--g-darkest) 100%);
+  border-radius:18px;padding:30px 36px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;
+  margin-bottom:16px;position:relative;overflow:hidden;
+  box-shadow:0 0 0 1px rgba(245,200,66,.35), 0 12px 32px rgba(5,26,16,.25), inset 0 1px 0 rgba(245,200,66,.15);
+}
+.eco-plan-bar::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(245,200,66,.5),transparent)}
+.eco-plan-badge{
+  background:var(--gold-grad);color:var(--g-darkest);
+  font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  padding:8px 18px;border-radius:999px;white-space:nowrap;flex-shrink:0;
+  box-shadow:0 4px 12px rgba(212,160,23,.45), inset 0 1px 0 rgba(255,245,194,.5);
+}
+.eco-plan-text{flex:1;min-width:240px}
+.eco-plan-text h3{font-size:20px;font-weight:800;color:#fff;margin-bottom:5px}
+.eco-plan-text p{font-size:14px;color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:12px}
+.eco-plan-list{list-style:none;display:flex;gap:18px;flex-wrap:wrap;margin:0;padding:0}
+.eco-plan-list li{font-size:13px;font-weight:600}
+.eco-plan-yes{color:rgba(255,255,255,.9)}
+.eco-plan-no{color:rgba(255,255,255,.55)}
+.eco-plan-cta{display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0;margin-left:auto}
+.eco-plan-cta-note{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-bright)}
+.eco-plan-btn{
+  display:inline-block;background:var(--gold-grad);color:var(--g-darkest);
+  font-weight:800;font-size:14px;padding:14px 26px;border-radius:12px;text-decoration:none;white-space:nowrap;
+  box-shadow:0 4px 16px rgba(212,160,23,.4), inset 0 1px 0 rgba(255,245,194,.5);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.eco-plan-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,160,23,.55), inset 0 1px 0 rgba(255,245,194,.6)}
+@media(max-width:760px){
+  .eco-plan-bar{flex-direction:column;align-items:flex-start;padding:26px 24px}
+  .eco-plan-cta{margin-left:0;align-self:stretch}
+  .eco-plan-btn{align-self:stretch;text-align:center;width:100%}
+}
+
 /* ─── CTA STRIP ─── */
 .cta-strip{
   background:linear-gradient(180deg, var(--gold-shine) 0%, var(--gold-bright) 35%, var(--gold-mid) 100%);

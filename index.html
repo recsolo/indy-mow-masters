@@ -95,6 +95,11 @@
       },
       {
         "@type": "Offer",
+        "name": "Economy Plan Mow & Blow",
+        "description": "Budget option: front & back mow plus property blow-off, no trimming. Pricing by request — ask for a Money Saver quote."
+      },
+      {
+        "@type": "Offer",
         "name": "Driveway Power Washing Special",
         "description": "Limited-time special: power washing for standard residential driveways.",
         "price": "99.00",
@@ -139,6 +144,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "We serve Indianapolis, Avon, Plainfield, Brownsburg, Speedway, Whitestown, Zionsville, Fishers, Carmel, and Meridian Hills at standard rates. Outside that area, we add $10 to the starting price."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you have a cheaper mowing option?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — our Economy Plan. We mow the front and back and blow off your property, but skip the trimming. Pricing is by request only: choose Economy Plan in the quote form or call and ask for a Money Saver quote."
       }
     },
     {
@@ -307,6 +320,13 @@
             <option value="Carmel">Carmel</option>
             <option value="Meridian Hills">Meridian Hills</option>
             <option value="Other (+$10)">Other — outside service area (+$10)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="plan">Service Plan</label>
+          <select id="plan" name="service_plan">
+            <option value="Standard Mow &amp; Go">Standard Mow &amp; Go — mow, trim &amp; blow</option>
+            <option value="Economy Plan — Money Saver quote">Economy Plan — mow &amp; blow only, ask for Money Saver quote</option>
           </select>
         </div>
         <div class="form-row">
@@ -479,6 +499,23 @@
           <li>Full trim</li>
           <li>Blow &amp; cleanup</li>
         </ul>
+      </div>
+    </div>
+
+    <div class="eco-plan-bar">
+      <div class="eco-plan-badge">💰 Money Saver</div>
+      <div class="eco-plan-text">
+        <h3>Economy Plan — Mow &amp; Blow</h3>
+        <p>On a budget? We'll mow the front &amp; back and blow off your property — no trimming. A simple cut at a money-saving price.</p>
+        <ul class="eco-plan-list">
+          <li class="eco-plan-yes">✓ Front &amp; back mow</li>
+          <li class="eco-plan-yes">✓ Blow off driveways &amp; walkways</li>
+          <li class="eco-plan-no">✗ No trimming</li>
+        </ul>
+      </div>
+      <div class="eco-plan-cta">
+        <span class="eco-plan-cta-note">Pricing by request only</span>
+        <a href="#contact" class="eco-plan-btn">Ask for a Money Saver Quote →</a>
       </div>
     </div>
 
@@ -800,6 +837,10 @@
       <div class="faq-item">
         <h3>How fast can I get a quote?</h3>
         <p>Usually the same day, 7 days a week. Send the quote form with your address and yard size, or call or text (317) 386-0400.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do you have a cheaper mowing option?</h3>
+        <p>Yes — our Economy Plan. We mow the front and back and blow off your property, but skip the trimming. Pricing is by request only: choose "Economy Plan" in the quote form or call and ask for a Money Saver quote.</p>
       </div>
       <div class="faq-item">
         <h3>When can you start?</h3>
