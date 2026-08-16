@@ -78,7 +78,7 @@ foreach ($page in $expectedPages) {
     Test-Contains -Html $html -Needle $required -Context $page
   }
 
-  if ($html -notlike '*tel:3173860400*' -and $html -notlike '*tel:+13173860400*') {
+  if ($html -notlike '*tel:3175142861*' -and $html -notlike '*tel:+13175142861*') {
     $failures.Add("$page missing phone link")
   }
 
@@ -273,7 +273,7 @@ foreach ($required in @('/privacy-policy', 'Privacy Policy')) {
   Test-Contains -Html $index -Needle $required -Context 'index.html'
 }
 
-foreach ($required in @('FAQPage', 'Frequently Asked Questions', 'name="lead_source"', 'name="_gotcha"', 'sms:3173860400', 'mobile-sticky-cta', 'data-service-quote-form')) {
+foreach ($required in @('FAQPage', 'Frequently Asked Questions', 'name="lead_source"', 'name="_gotcha"', 'sms:3175142861', 'mobile-sticky-cta', 'data-service-quote-form')) {
   Test-Contains -Html $index -Needle $required -Context 'index.html'
 }
 
