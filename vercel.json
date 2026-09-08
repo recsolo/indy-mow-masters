@@ -1,5 +1,25 @@
 {
+  "redirects": [
+    {
+      "source": "/leaf-cleanup-indianapolis",
+      "destination": "/leaf-cleanup",
+      "permanent": true
+    },
+    {
+      "source": "/leaf-cleanup-indianapolis.html",
+      "destination": "/leaf-cleanup",
+      "permanent": true
+    }
+  ],
   "rewrites": [
+    {
+      "source": "/gutter-cleaning",
+      "destination": "/gutter-cleaning.html"
+    },
+    {
+      "source": "/leaf-cleanup",
+      "destination": "/leaf-cleanup.html"
+    },
     {
       "source": "/lawn-care-indianapolis-in",
       "destination": "/lawn-care-indianapolis-in.html"
@@ -35,10 +55,6 @@
     {
       "source": "/lawn-mowing-indianapolis",
       "destination": "/lawn-mowing-indianapolis.html"
-    },
-    {
-      "source": "/leaf-cleanup-indianapolis",
-      "destination": "/leaf-cleanup-indianapolis.html"
     },
     {
       "source": "/yard-cleanup-indianapolis",

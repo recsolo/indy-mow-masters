@@ -16,7 +16,8 @@ $expectedPages = @(
   'lawn-care-products.html',
   'privacy-policy.html',
   'lawn-mowing-indianapolis.html',
-  'leaf-cleanup-indianapolis.html',
+  'leaf-cleanup.html',
+  'gutter-cleaning.html',
   'yard-cleanup-indianapolis.html',
   'weed-pulling-indianapolis.html',
   'mulch-installation-indianapolis.html',
@@ -89,9 +90,11 @@ foreach ($page in $expectedPages) {
   Test-JsonLd -Html $html -Context $page
 }
 
+# Suburb pages are deliberately written with unique copy per city, so this
+# checks the structures that must exist rather than shared boilerplate text.
 foreach ($page in $locationPages) {
   $html = Get-Content -Raw -LiteralPath (Join-Path $root $page)
-  foreach ($required in @('Request a Free Quote', 'Frequently Asked Questions', 'Mow &amp; Go', 'BreadcrumbList')) {
+  foreach ($required in @('Request a Free Quote', 'FAQPage', 'BreadcrumbList')) {
     Test-Contains -Html $html -Needle $required -Context $page
   }
 }
@@ -277,8 +280,17 @@ foreach ($required in @('FAQPage', 'Frequently Asked Questions', 'name="lead_sou
   Test-Contains -Html $index -Needle $required -Context 'index.html'
 }
 
-if ($index -like '*"aggregateRating"*' -or $index -like '*"@type": "Review"*') {
-  $failures.Add('index.html should not mark up self-serving LocalBusiness reviews in JSON-LD')
+# NOTE: index.html carries first-party review/aggregateRating markup by choice.
+# Google ignores self-serving LocalBusiness review markup for rich results
+# (it is not a penalty), so this is allowed but the reviews must stay real:
+# every marked-up review has to also appear as visible text on the page.
+$markedUpReviews = [regex]::Matches($index, '"reviewBody":\s*"(?<body>[^"]+)"')
+foreach ($reviewMatch in $markedUpReviews) {
+  $body = $reviewMatch.Groups['body'].Value
+  $snippet = $body.Substring(0, [Math]::Min(40, $body.Length))
+  if ($index -notlike "*$snippet*".Replace('"', '')) {
+    $failures.Add("index.html marks up a review not visible on the page: $snippet")
+  }
 }
 
 Test-JsonLd -Html $index -Context 'index.html'
@@ -347,7 +359,8 @@ foreach ($page in $expectedPages) {
 # Quote forms must actually submit somewhere and carry named fields.
 $formPages = @(
   'lawn-mowing-indianapolis.html',
-  'leaf-cleanup-indianapolis.html',
+  'leaf-cleanup.html',
+  'gutter-cleaning.html',
   'yard-cleanup-indianapolis.html',
   'weed-pulling-indianapolis.html',
   'mulch-installation-indianapolis.html',
@@ -362,6 +375,105 @@ foreach ($page in $formPages) {
 
 if ($vercel -like "*'unsafe-inline'*") {
   $failures.Add("vercel.json CSP should not include 'unsafe-inline'")
+}
+
+# The retired leaf page must 301 to the consolidated /leaf-cleanup URL so the
+# two pages never compete for the same query again.
+foreach ($required in @('"redirects"', '"source": "/leaf-cleanup-indianapolis"', '"destination": "/leaf-cleanup"', '"permanent": true')) {
+  Test-Contains -Html $vercel -Needle $required -Context 'vercel.json (leaf redirect)'
+}
+
+# Seasonal pages: published pricing, the fall promo, and the qualifying
+# form fields are the whole point of these pages — guard all three.
+$gutterPath = Join-Path $root 'gutter-cleaning.html'
+if (Test-Path -LiteralPath $gutterPath) {
+  $gutter = Get-Content -Raw -LiteralPath $gutterPath
+  foreach ($required in @(
+    '<title>Gutter Cleaning Indianapolis IN | From $99 | 1-Story Homes | Indy Mow Masters</title>',
+    '<link rel="canonical" href="https://www.indymowmasters.com/gutter-cleaning" />',
+    '1-Story Homes Only',
+    'promo-banner',
+    'Book Your <em>October &amp; November</em>',
+    'name="preferred_timing"',
+    'October — Fall Special',
+    'process-steps',
+    'BreadcrumbList',
+    'FAQPage'
+  )) {
+    Test-Contains -Html $gutter -Needle $required -Context 'gutter-cleaning.html'
+  }
+
+  foreach ($price in @('<sup>$</sup>99', '<sup>$</sup>129', '<sup>$</sup>159')) {
+    if ($gutter -notlike "*$price*") {
+      $failures.Add("gutter-cleaning.html missing tier price $price")
+    }
+  }
+
+  $h1Count = ([regex]::Matches($gutter, '<h1[\s>]', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)).Count
+  if ($h1Count -ne 1) {
+    $failures.Add("gutter-cleaning.html should contain exactly one H1, found $h1Count")
+  }
+
+  $stepCount = ([regex]::Matches($gutter, '<div class="step">')).Count
+  if ($stepCount -ne 4) {
+    $failures.Add("gutter-cleaning.html should have a 4-step process card, found $stepCount steps")
+  }
+}
+
+$leafPath = Join-Path $root 'leaf-cleanup.html'
+if (Test-Path -LiteralPath $leafPath) {
+  $leaf = Get-Content -Raw -LiteralPath $leafPath
+  foreach ($required in @(
+    '<link rel="canonical" href="https://www.indymowmasters.com/leaf-cleanup" />',
+    'promo-banner',
+    'Mow-Over Mulching',
+    'Bag &amp; Leave',
+    'Full Haul Away',
+    'Leaf Volume Changes Everything',
+    'Early List',
+    'name="leaf_coverage"',
+    'name="preferred_timing"',
+    'BreadcrumbList',
+    'FAQPage'
+  )) {
+    Test-Contains -Html $leaf -Needle $required -Context 'leaf-cleanup.html'
+  }
+
+  # Full tier matrix: every published price must be present.
+  foreach ($price in @('>$40<', '>$60<', '>$80<', '>$99<', '>$149<', '>$199<', '>$169<', '>$249<', '>$349<')) {
+    if ($leaf -notlike "*$price*") {
+      $failures.Add("leaf-cleanup.html missing tier price $price")
+    }
+  }
+
+  # Very large properties are quote-only on all three tiers.
+  $quoteCells = ([regex]::Matches($leaf, '<td class="is-quote">Quote</td>')).Count
+  if ($quoteCells -ne 3) {
+    $failures.Add("leaf-cleanup.html should have a Quote cell for Very Large on all 3 tiers, found $quoteCells")
+  }
+
+  # Every tier carries its own pricing-varies note.
+  $variesCount = ([regex]::Matches($leaf, 'Pricing varies by leaf volume')).Count
+  if ($variesCount -lt 3) {
+    $failures.Add("leaf-cleanup.html should have a pricing-varies note on all 3 tiers, found $variesCount")
+  }
+
+  foreach ($coverage in @('Light —', 'Moderate —', 'Heavy —', 'Very Heavy —')) {
+    Test-Contains -Html $leaf -Needle $coverage -Context 'leaf-cleanup.html (coverage dropdown)'
+  }
+
+  $h1Count = ([regex]::Matches($leaf, '<h1[\s>]', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)).Count
+  if ($h1Count -ne 1) {
+    $failures.Add("leaf-cleanup.html should contain exactly one H1, found $h1Count")
+  }
+}
+
+# The new phone number must be everywhere; the old one nowhere.
+foreach ($htmlFile in $publicHtmlFiles) {
+  $html = Get-Content -Raw -LiteralPath $htmlFile.FullName
+  if ($html -like '*3173860400*' -or $html -like '*386-0400*') {
+    $failures.Add("$($htmlFile.Name) still references the retired phone number")
+  }
 }
 
 foreach ($pageInfo in $educationPages) {
