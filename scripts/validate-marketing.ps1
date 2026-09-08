@@ -468,6 +468,65 @@ if (Test-Path -LiteralPath $leafPath) {
   }
 }
 
+$hotmPath = Join-Path $root 'house-of-the-month.html'
+if (Test-Path -LiteralPath $hotmPath) {
+  $hotm = Get-Content -Raw -LiteralPath $hotmPath
+  foreach ($required in @(
+    '<link rel="canonical" href="https://www.indymowmasters.com/house-of-the-month" />',
+    'id="featured"',
+    'id="past-winners"',
+    'id="nominate"',
+    'name="whose_yard"',
+    'name="why_nominated"',
+    'data-service-quote-form',
+    'BreadcrumbList',
+    'FAQPage'
+  )) {
+    Test-Contains -Html $hotm -Needle $required -Context 'house-of-the-month.html'
+  }
+
+  $h1Count = ([regex]::Matches($hotm, '<h1[\s>]', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)).Count
+  if ($h1Count -ne 1) {
+    $failures.Add("house-of-the-month.html should contain exactly one H1, found $h1Count")
+  }
+
+  # Only inspect markup that actually renders — the page carries commented-out
+  # fill-in templates for publishing a new month, and those are not live.
+  $hotmLive = [regex]::Replace($hotm, '<!--.*?-->', '', [System.Text.RegularExpressions.RegexOptions]::Singleline)
+
+  # Video embeds must use the privacy-preserving nocookie domain, and any
+  # iframe host has to be allowed by frame-src or it silently fails to load.
+  foreach ($iframe in [regex]::Matches($hotmLive, '<iframe\b[^>]*src="(?<src>[^"]+)"[^>]*>')) {
+    $src = $iframe.Groups['src'].Value
+    if ($src -notlike 'https://www.youtube-nocookie.com/*') {
+      $failures.Add("house-of-the-month.html iframe must use youtube-nocookie.com, found: $src")
+    }
+    if ($iframe.Value -notlike '*title=*') {
+      $failures.Add('house-of-the-month.html iframe is missing a title attribute')
+    }
+  }
+
+  # Placeholder media must never ship as a broken <img> reference.
+  foreach ($img in [regex]::Matches($hotmLive, '<img\b[^>]*src="(?<src>[^"]+)"')) {
+    $src = $img.Groups['src'].Value
+    if ($src -notmatch '^https?://' -and $src -notmatch '^data:') {
+      $localName = $src.TrimStart('/')
+      if (-not (Test-Path -LiteralPath (Join-Path $root $localName))) {
+        $failures.Add("house-of-the-month.html references a missing image: $src")
+      }
+    }
+  }
+}
+
+# Any page embedding an iframe needs a frame-src that permits its host.
+$iframePages = $publicHtmlFiles | Where-Object {
+  $live = [regex]::Replace((Get-Content -Raw -LiteralPath $_.FullName), '<!--.*?-->', '', [System.Text.RegularExpressions.RegexOptions]::Singleline)
+  $live -match '<iframe'
+}
+if ($iframePages -and $vercel -notlike '*frame-src*') {
+  $failures.Add('vercel.json CSP needs a frame-src directive: ' + (($iframePages | ForEach-Object { $_.Name }) -join ', ') + ' embed iframes that default-src would block')
+}
+
 # The new phone number must be everywhere; the old one nowhere.
 foreach ($htmlFile in $publicHtmlFiles) {
   $html = Get-Content -Raw -LiteralPath $htmlFile.FullName

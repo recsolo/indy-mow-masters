@@ -17,6 +17,10 @@
       "destination": "/gutter-cleaning.html"
     },
     {
+      "source": "/house-of-the-month",
+      "destination": "/house-of-the-month.html"
+    },
+    {
       "source": "/leaf-cleanup",
       "destination": "/leaf-cleanup.html"
     },
@@ -131,7 +135,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; img-src 'self' data: https:; style-src 'self' https://fonts.googleapis.com; style-src-attr 'none'; font-src 'self' https://fonts.gstatic.com; script-src 'self'; script-src-attr 'none'; connect-src 'self' https://formspree.io; object-src 'none'; form-action https://formspree.io; base-uri 'self'; frame-ancestors 'none'"
+          "value": "default-src 'self'; img-src 'self' data: https:; media-src 'self'; style-src 'self' https://fonts.googleapis.com; style-src-attr 'none'; font-src 'self' https://fonts.gstatic.com; script-src 'self'; script-src-attr 'none'; connect-src 'self' https://formspree.io; frame-src https://www.youtube-nocookie.com https://www.youtube.com; object-src 'none'; form-action https://formspree.io; base-uri 'self'; frame-ancestors 'none'"
         }
       ]
     },
