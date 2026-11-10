@@ -50,7 +50,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:#fff;color:#0B2A1A;-web
 .btn-dark:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(5,26,16,.5)}
 .section-label{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
 .section-label::before{content:'';display:block;width:28px;height:2px;background:var(--gold-grad-flat)}
-h1,h2,h3,h4{font-family:'Bebas Neue',sans-serif;letter-spacing:.02em;line-height:1.05;font-weight:400}
+h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;font-weight:700;letter-spacing:-.012em;line-height:1.12;font-variant-numeric:lining-nums}
 .hp-field{display:none}
 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
@@ -129,11 +129,11 @@ nav{display:flex;justify-content:space-between;align-items:center;height:72px;ga
   letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:100px;
   box-shadow:var(--gold-glow);white-space:nowrap
 }
-.pc-size{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.04em;color:var(--g-dark);margin-bottom:2px}
+.pc-size{font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:26px;color:var(--g-dark);margin-bottom:2px}
 .price-card.featured .pc-size{color:var(--gold-bright)}
 .pc-desc{font-size:13px;color:var(--muted);margin-bottom:16px;font-weight:600}
 .price-card.featured .pc-desc{color:rgba(255,255,255,.65)}
-.pc-amt{font-family:'Bebas Neue',sans-serif;font-size:60px;line-height:1;color:var(--g-dark);margin-bottom:4px}
+.pc-amt{font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:60px;line-height:1;color:var(--g-dark);margin-bottom:4px}
 .pc-amt sup{font-size:26px;vertical-align:super;margin-right:2px}
 .price-card.featured .pc-amt{color:#fff}
 .pc-start{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
@@ -216,7 +216,7 @@ table.price-table tbody tr:nth-child(even){background:var(--cream)}
 @media(max-width:520px){.process-steps{grid-template-columns:1fr}}
 .step{padding:30px 26px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
 .step:last-child{border-right:none}
-.step-num{font-family:'Bebas Neue',sans-serif;font-size:38px;line-height:1;color:var(--gold-mid);margin-bottom:10px}
+.step-num{font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:38px;line-height:1;color:var(--gold-mid);margin-bottom:10px}
 .step h3{font-family:'Inter',sans-serif;font-weight:800;font-size:16px;letter-spacing:0;color:var(--g-dark);margin-bottom:8px;line-height:1.35}
 .step p{font-size:14px;color:var(--muted);line-height:1.65}
 
@@ -240,7 +240,7 @@ table.price-table tbody tr:nth-child(even){background:var(--cream)}
 .ci-text p{color:rgba(255,255,255,.8);font-size:14.5px;line-height:1.6}
 
 form.quote-form{background:linear-gradient(180deg,#fff 0%,var(--cream) 100%);border-radius:18px;padding:32px;box-shadow:var(--shadow-lg);display:flex;flex-direction:column;gap:15px}
-.form-title{font-family:'Bebas Neue',sans-serif;font-size:29px;color:var(--g-dark);letter-spacing:.04em;margin-bottom:2px}
+.form-title{font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:29px;color:var(--g-dark);margin-bottom:2px}
 .form-subtitle{font-size:14px;color:var(--muted);margin-top:-10px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:560px){.form-row{grid-template-columns:1fr}}
@@ -268,7 +268,7 @@ form.quote-form .btn-gold{width:100%;font-size:16px}
 .cta-strip{padding:60px 0;background:var(--g-darkest);text-align:center}
 .cta-strip h2{font-size:clamp(28px,3.6vw,40px);color:#fff;margin-bottom:8px}
 .cta-strip h2 em{font-style:normal;color:var(--gold-bright)}
-.cta-strip .cta-phone{display:inline-block;font-family:'Bebas Neue',sans-serif;font-size:44px;letter-spacing:.03em;color:var(--gold-bright);text-decoration:none;margin:10px 0 4px}
+.cta-strip .cta-phone{display:inline-block;font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:44px;color:var(--gold-bright);text-decoration:none;margin:10px 0 4px}
 .cta-strip .cta-phone:hover{color:var(--gold-shine)}
 .cta-strip p{color:rgba(255,255,255,.65);font-size:15px}
 
