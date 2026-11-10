@@ -26,6 +26,7 @@ $expectedPages = @(
   'lawn-mowing-plainfield.html',
   'lawn-mowing-brownsburg.html',
   'lawn-mowing-speedway.html',
+  'spring-cleanup.html',
   'reviews.html'
 )
 
@@ -276,7 +277,7 @@ foreach ($required in @('/privacy-policy', 'Privacy Policy')) {
   Test-Contains -Html $index -Needle $required -Context 'index.html'
 }
 
-foreach ($required in @('FAQPage', 'Frequently Asked Questions', 'name="lead_source"', 'name="_gotcha"', 'sms:3175142861', 'mobile-sticky-cta', 'data-service-quote-form')) {
+foreach ($required in @('FAQPage', 'Frequently Asked Questions', 'name="lead_source"', 'name="email"', 'name="_gotcha"', 'sms:3175142861', 'mobile-sticky-cta', 'data-service-quote-form')) {
   Test-Contains -Html $index -Needle $required -Context 'index.html'
 }
 
@@ -364,11 +365,12 @@ $formPages = @(
   'yard-cleanup-indianapolis.html',
   'weed-pulling-indianapolis.html',
   'mulch-installation-indianapolis.html',
-  'drainage-cleanup-indianapolis.html'
+  'drainage-cleanup-indianapolis.html',
+  'spring-cleanup.html'
 )
 foreach ($page in $formPages) {
   $html = Get-Content -Raw -LiteralPath (Join-Path $root $page)
-  foreach ($required in @('action="https://formspree.io/', 'method="POST"', 'name="name"', 'name="phone"', 'name="address"', 'name="_gotcha"', 'data-service-quote-form')) {
+  foreach ($required in @('action="https://formspree.io/', 'method="POST"', 'name="name"', 'name="phone"', 'name="email"', 'name="address"', 'name="_gotcha"', 'data-service-quote-form')) {
     Test-Contains -Html $html -Needle $required -Context "$page (quote form)"
   }
 }
@@ -393,9 +395,9 @@ if (Test-Path -LiteralPath $gutterPath) {
     '<link rel="canonical" href="https://www.indymowmasters.com/gutter-cleaning" />',
     '1-Story Homes Only',
     'promo-banner',
-    'Book Your <em>October &amp; November</em>',
+    'Late-Fall',
     'name="preferred_timing"',
-    'October — Fall Special',
+    'name="email"',
     'process-steps',
     'BreadcrumbList',
     'FAQPage'

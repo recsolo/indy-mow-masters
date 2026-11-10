@@ -9,12 +9,46 @@
       "source": "/leaf-cleanup-indianapolis.html",
       "destination": "/leaf-cleanup",
       "permanent": true
+    },
+    {
+      "source": "/mulching",
+      "destination": "/mulch-installation-indianapolis",
+      "permanent": true
+    },
+    {
+      "source": "/mulch",
+      "destination": "/mulch-installation-indianapolis",
+      "permanent": true
+    },
+    {
+      "source": "/spring-cleanup-2027",
+      "destination": "/spring-cleanup",
+      "permanent": false
+    },
+    {
+      "source": "/spring",
+      "destination": "/spring-cleanup",
+      "permanent": false
+    },
+    {
+      "source": "/gutters",
+      "destination": "/gutter-cleaning",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
     }
   ],
   "rewrites": [
     {
       "source": "/gutter-cleaning",
       "destination": "/gutter-cleaning.html"
+    },
+    {
+      "source": "/spring-cleanup",
+      "destination": "/spring-cleanup.html"
     },
     {
       "source": "/house-of-the-month",
@@ -167,11 +201,38 @@
       ]
     },
     {
+      "source": "/luxe.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/luxe.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/icons.svg",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
       "source": "/marketing.css",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
         }
       ]
     }
