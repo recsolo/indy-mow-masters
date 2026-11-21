@@ -522,3 +522,53 @@ a.lx-card{display:block;text-decoration:none;color:inherit}
 .lx-depth__bar i{white-space:nowrap}
 .lx-res + .lx-res{padding-top:26px;border-top:1px solid var(--lx-hair-dark)}
 .lx-footer a.lx-footer__tel{font-size:26px}
+
+
+/* Indy Mow Masters 2027 bold homepage: deep green / hot red / gold */
+:root{--imm-green:#003D26;--imm-red:#F0002B;--imm-gold:#E4B957}
+.lx-header{background:linear-gradient(110deg,#002b1b,var(--imm-green) 55%,#002b1b);border-bottom:5px solid var(--imm-gold)}
+.lx-header .lx-nav a:hover{color:#fff;background:rgba(240,0,43,.17)}
+.lx-header .lx-nav__pill,.lx-header .lx-phone{background:linear-gradient(130deg,#ff1841,#c60025);color:#fff!important;border:1px solid #fb4564;box-shadow:0 8px 20px rgba(240,0,43,.23)}
+.lx-header .lx-logo span{color:#fff}
+.imm-hero{position:relative;overflow:hidden;background:radial-gradient(ellipse at 73% 48%,#10583d 0%,#003d26 36%,#002d1c 74%);color:#fff;border-bottom:5px solid var(--imm-gold)}
+.imm-hero__inner{display:grid;grid-template-columns:1fr .87fr;min-height:610px;gap:36px;align-items:center;padding-top:60px;padding-bottom:62px;position:relative;z-index:1}
+.imm-hero__content{animation:imm-enter-left .85s both}
+.imm-hero__eyebrow{color:var(--imm-gold);font:700 12px/1.6 var(--lx-sans);letter-spacing:.12em;text-transform:uppercase;margin-bottom:22px}
+.imm-hero h1{font-family:var(--lx-sans);font-size:clamp(48px,5.4vw,92px);font-style:italic;font-weight:900;line-height:1.03;letter-spacing:-.065em;text-shadow:0 10px 18px rgba(0,0,0,.23);margin:0}
+.imm-hero h1 span,.imm-hero h1 strong{display:block}
+.imm-hero h1 strong{color:var(--imm-red);font-weight:900;white-space:nowrap}
+.imm-hero__stroke{height:10px;width:62%;background:linear-gradient(90deg,transparent,var(--imm-gold),#ffdf83,transparent);margin:20px 0 28px;clip-path:polygon(8% 20%,100% 0,88% 70%,0 100%);animation:imm-sweep 1.2s .5s both}
+.imm-hero p{font:600 clamp(17px,1.6vw,24px)/1.5 var(--lx-sans);max-width:550px;color:#f2f7f2;margin:0}
+.imm-hero__actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:30px}
+.imm-hero__primary,.imm-hero__secondary{min-height:61px;padding:17px 26px;border-radius:12px;font:800 19px/1.2 var(--lx-sans);text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:17px;transition:transform .22s,box-shadow .22s,background .22s}
+.imm-hero__primary{color:#fff;background:linear-gradient(145deg,#ff1841,#d3002a);box-shadow:0 7px 0 #8e0020,0 16px 26px rgba(0,0,0,.25)}
+.imm-hero__secondary{color:#ffe29c;border:3px solid var(--imm-gold);background:#002e1d}
+.imm-hero__primary:hover,.imm-hero__secondary:hover{transform:translateY(-6px) scale(1.025);box-shadow:0 15px 33px rgba(0,0,0,.32)}
+.imm-hero__primary:focus-visible,.imm-hero__secondary:focus-visible,.imm-spring-banner a:focus-visible{outline:3px solid white;outline-offset:4px}
+.imm-hero__trust{list-style:none;margin:40px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:15px}
+.imm-hero__trust li{display:flex;align-items:center;gap:8px;color:#fff;font:700 13px/1.3 var(--lx-sans);padding-right:16px;border-right:1px solid var(--imm-gold)}
+.imm-hero__trust li:last-child{border:0}
+.imm-hero__trust li span{color:var(--imm-gold);font-size:27px;line-height:1}
+.imm-hero__visual{height:430px;position:relative;display:grid;place-items:center;animation:imm-enter-right 1s both}
+.imm-hero__glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 77% 55%,rgba(240,0,43,.1),transparent 38%)}
+.imm-hero__orbit{position:absolute;inset:5%;border:2px solid rgba(228,185,87,.43);border-radius:50%;animation:imm-rotate 24s linear infinite}
+.imm-hero__orbit--two{inset:0 13%;border-color:rgba(240,0,43,.8);border-width:7px;transform:rotate(-17deg);animation:imm-pulse 3.6s ease-in-out infinite alternate}
+.imm-hero__visual-frame{position:relative;z-index:1;max-width:380px;width:88%;padding:50px 20px 45px;text-align:center;border-radius:28px;background:linear-gradient(150deg,#02432b,#001c13);border:3px solid var(--imm-gold);box-shadow:0 26px 60px rgba(0,0,0,.37),inset 0 0 40px rgba(228,185,87,.08);transform:rotate(-3deg);animation:imm-hover 4s ease-in-out infinite}
+.imm-hero__monogram{font:900 clamp(82px,9vw,146px)/1 var(--lx-sans);letter-spacing:-.08em;color:var(--imm-gold);text-shadow:5px 7px 0 #93001b}
+.imm-hero__visual-label{font:800 12px/1.4 var(--lx-sans);letter-spacing:.16em;color:#fff;margin-top:10px}
+.imm-hero__visual-rule{height:5px;border-radius:4px;background:var(--imm-red);max-width:240px;margin:21px auto}
+.imm-hero__visual-words{font:700 12px/1.7 var(--lx-sans);color:#fff}
+.imm-hero__visual-words span{color:var(--imm-gold)}
+.imm-spring-banner{background:linear-gradient(90deg,#a50022,#e00030,#a30022);color:#fff;border-bottom:5px solid var(--imm-gold)}
+.imm-spring-banner__inner{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding-top:18px;padding-bottom:18px;font:600 16px/1.4 var(--lx-sans)}
+.imm-spring-banner strong{color:#ffe090;font-size:clamp(20px,2vw,29px);font-style:italic}
+.imm-spring-banner a{color:#fff;font-weight:800;text-decoration:underline;text-underline-offset:4px}
+@keyframes imm-enter-left{from{opacity:0;transform:translateX(-65px)}to{opacity:1;transform:translateX(0)}}
+@keyframes imm-enter-right{from{opacity:0;transform:translateX(80px) scale(.9)}to{opacity:1;transform:translateX(0) scale(1)}}
+@keyframes imm-hover{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-18px) rotate(-1deg)}}
+@keyframes imm-pulse{from{opacity:.55;scale:.92}to{opacity:1;scale:1.03}}
+@keyframes imm-rotate{to{transform:rotate(360deg)}}
+@keyframes imm-sweep{from{opacity:0;transform:scaleX(.12);transform-origin:left}to{opacity:1;transform:scaleX(1);transform-origin:left}}
+@media(max-width:900px){.imm-hero__inner{grid-template-columns:1fr;min-height:0;padding-top:52px;padding-bottom:45px}.imm-hero__visual{height:340px}.imm-hero h1 strong{white-space:normal}.imm-hero__trust{margin-top:30px}}
+@media(max-width:600px){.imm-hero__inner{gap:5px;padding-top:38px}.imm-hero__visual{height:270px}.imm-hero__visual-frame{padding:22px 14px}.imm-hero__monogram{font-size:80px}.imm-hero__actions a{width:100%}.imm-hero__trust{gap:10px}.imm-hero__trust li{border:0}.imm-spring-banner__inner{display:block}.imm-spring-banner__inner>*{display:block;margin:5px 0}.imm-hero__eyebrow{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.imm-hero *, .imm-hero *::before,.imm-hero *::after{animation:none!important;transition:none!important}.imm-hero__primary:hover,.imm-hero__secondary:hover{transform:none}}
