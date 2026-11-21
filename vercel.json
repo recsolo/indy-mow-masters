@@ -43,6 +43,10 @@
   ],
   "rewrites": [
     {
+      "source": "/subcontractors-2027",
+      "destination": "/subcontractors-2027.html"
+    },
+    {
       "source": "/gutter-cleaning",
       "destination": "/gutter-cleaning.html"
     },
