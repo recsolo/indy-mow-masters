@@ -774,3 +774,13 @@ html {
     padding: 30px 24px;
   }
 }
+
+/* Tie early access actions to the Indy Mow Masters brand. */
+.gk-btn.gk-btn--gold {
+  color:white;
+  background:linear-gradient(165deg,#e9002c,#d40028);
+  border:1px solid #ff5971;
+  box-shadow:inset 0 1px #ff8496,0 4px #920322;
+  text-shadow:none;
+}
+.gk-btn.gk-btn--gold:active {transform:translateY(3px);box-shadow:0 1px #920322}
