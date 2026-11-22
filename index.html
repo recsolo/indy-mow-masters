@@ -284,86 +284,61 @@
 
 <main id="main">
 
-<!-- ─── HERO: hot-red / green / gold redesign ─── -->
-<section class="imm-hero" aria-labelledby="imm-hero-title">
-  <div class="imm-hero__glow" aria-hidden="true"></div>
-  <div class="lx-wrap imm-hero__inner">
-    <div class="imm-hero__content">
-      <div class="imm-hero__eyebrow">Indianapolis &bull; Avon &bull; Plainfield &bull; Brownsburg &bull; Speedway</div>
-      <h1 id="imm-hero-title"><span>Your Yard.</span><strong>Done Right.</strong></h1>
-      <div class="imm-hero__stroke" aria-hidden="true"></div>
-      <p>Professional mowing, mulching, and landscape services in Indianapolis and surrounding areas.</p>
-      <div class="imm-hero__actions">
-        <a href="#contact" class="imm-hero__primary">Get a Free Quote <span aria-hidden="true">&rarr;</span></a>
-        <a href="#pricing" class="imm-hero__secondary">View Pricing</a>
-      </div>
-      <ul class="imm-hero__trust">
-        <li><span aria-hidden="true">&#9734;</span><b>5.0 Google Rating</b></li>
-        <li><span aria-hidden="true">&#10003;</span><b>No Contracts</b></li>
-        <li><span aria-hidden="true">&#10022;</span><b>Reliable &amp; Professional</b></li>
-      </ul>
-    </div>
-    <div class="imm-hero__visual" aria-hidden="true">
-      <div class="imm-hero__orbit imm-hero__orbit--one"></div>
-      <div class="imm-hero__orbit imm-hero__orbit--two"></div>
-      <div class="imm-hero__visual-frame">
-        <div class="imm-hero__monogram">IMM</div>
-        <div class="imm-hero__visual-label">LOCAL LAWN &amp; LANDSCAPE CARE</div>
-        <div class="imm-hero__visual-rule"></div>
-        <div class="imm-hero__visual-words">MOWING <span>&bull;</span> MULCHING <span>&bull;</span> CLEANUPS</div>
-      </div>
-    </div>
+<section class="estate-hero" aria-labelledby="estate-title">
+  <picture>
+    <source media="(max-width: 680px)" srcset="/lawn-at-dusk-mobile.webp">
+    <img src="/lawn-at-dusk.webp" alt="" width="1536" height="1024" fetchpriority="high">
+  </picture>
+  <div class="lx-wrap estate-hero__inner">
+    <div class="estate-location">Indianapolis &amp; surrounding areas</div>
+    <h1 id="estate-title">Your yard.<em>Done right.</em></h1>
+    <p>Owner-operated lawn care. From a crisp weekly cut to a full seasonal cleanup, get a fair price before the work begins.</p>
+    <div class="estate-actions"><a class="lx-btn lx-btn--gold" href="#contact">Get a free quote <span aria-hidden="true">&rarr;</span></a><a href="#pricing">View pricing</a></div>
+    <div class="estate-rating"><span aria-hidden="true">★★★★★</span> 5.0 on Google <i aria-hidden="true"></i> No contracts</div>
   </div>
 </section>
-<div class="imm-spring-banner">
-  <div class="lx-wrap imm-spring-banner__inner">
-    <strong>NOW BOOKING SPRING 2027!</strong>
-    <span>Reserve your spot for mowing, mulching, and seasonal cleanups.</span>
-    <a href="/spring-cleanup">Join the Spring List &rarr;</a>
-  </div>
-</div>
+<div class="estate-season"><div class="lx-wrap"><strong>Spring 2027 bookings</strong><span>Reserve your spring cleanup or fresh mulch.</span><a href="/spring-cleanup">Join the spring list &rarr;</a></div></div>
 
 <!-- ─── SERVICES ─── -->
 <section id="services" class="lx-sec lx-sec--ivory">
   <div class="lx-wrap">
     <div class="lx-head lx-head--center">
-      <div class="lx-eyebrow">What We Do</div>
-      <h2>One Crew for the Whole Property</h2>
-      <p>Mowing is where we started. These are the jobs our customers kept asking us to take on next — each with its own page, pricing, and quote form.</p>
+      <div class="lx-eyebrow">Our services</div>
+      <h2>One crew for the whole property.</h2>
+      <p>Explore services, see starting prices, and choose the care your property needs.</p>
     </div>
     <div class="lx-grid lx-grid--3">
-      <a class="lx-card lx-reveal" data-tilt href="/lawn-mowing-indianapolis">
+      <a class="lx-card lx-reveal" href="/lawn-mowing-indianapolis">
         <span class="lx-card__icon"><svg aria-hidden="true"><use href="/icons.svg#mower"/></svg></span>
         <h3>Lawn Mowing</h3>
         <p>The Mow &amp; Go package: front and back cut, full string trim, and blower cleanup. Weekly, biweekly, or one time.</p>
         <div class="lx-card__meta"><span>Flat rate by yard size</span><b>from $40</b></div>
       </a>
-      <a class="lx-card lx-card--dark lx-reveal" data-tilt href="/gutter-cleaning">
-        <span class="lx-card__flag">Booking now</span>
+      <a class="lx-card lx-reveal" href="/gutter-cleaning">
         <span class="lx-card__icon"><svg aria-hidden="true"><use href="/icons.svg#gutter"/></svg></span>
         <h3>Gutter Cleaning</h3>
         <p>One-story homes. Gutters scooped clean, downspouts flushed, water flow verified, mess hauled off.</p>
         <div class="lx-card__meta"><span>Price confirmed up front</span><b>from $99</b></div>
       </a>
-      <a class="lx-card lx-reveal" data-tilt href="/mulch-installation-indianapolis">
+      <a class="lx-card lx-reveal" href="/mulch-installation-indianapolis">
         <span class="lx-card__icon"><svg aria-hidden="true"><use href="/icons.svg#layers"/></svg></span>
         <h3>Mulch Installation</h3>
         <p>Beds edged, weeded, and dressed with fresh mulch at the right depth. Includes our mulch guide and calculator.</p>
         <div class="lx-card__meta"><span>Quoted by bed size</span><b>Free quote</b></div>
       </a>
-      <a class="lx-card lx-reveal" data-tilt href="/leaf-cleanup">
+      <a class="lx-card lx-reveal" href="/leaf-cleanup">
         <span class="lx-card__icon"><svg aria-hidden="true"><use href="/icons.svg#leaf"/></svg></span>
         <h3>Leaf Cleanup</h3>
         <p>Three ways to handle fall leaves — mulch-mow, bag and leave, or full haul-away — priced by yard size.</p>
         <div class="lx-card__meta"><span>3 service tiers</span><b>from $40</b></div>
       </a>
-      <a class="lx-card lx-reveal" data-tilt href="/yard-cleanup-indianapolis">
+      <a class="lx-card lx-reveal" href="/yard-cleanup-indianapolis">
         <span class="lx-card__icon"><svg aria-hidden="true"><use href="/icons.svg#wind"/></svg></span>
         <h3>Yard Cleanup</h3>
         <p>Spring and fall resets: debris and branches out, dead plants pulled, beds re-edged, everything raked and blown clean.</p>
         <div class="lx-card__meta"><span>One-time or seasonal</span><b>Free quote</b></div>
       </a>
-      <a class="lx-card lx-reveal" data-tilt href="/weed-pulling-indianapolis">
+      <a class="lx-card lx-reveal" href="/weed-pulling-indianapolis">
         <span class="lx-card__icon"><svg aria-hidden="true"><use href="/icons.svg#sprout"/></svg></span>
         <h3>Hand Weeding</h3>
         <p>Chemical-free weed removal from beds, fence lines, and walkways. Small jobs from $100, most beds $150–$300.</p>
@@ -433,6 +408,7 @@
           <li>Full string trim</li>
           <li>Blow &amp; cleanup</li>
         </ul>
+        <a href="#contact" class="lx-btn lx-btn--dark lx-btn--sm estate-plan" data-yard="Small">Quote my small yard &rarr;</a>
       </div>
       <div class="lx-card lx-price lx-price--featured lx-reveal" data-tilt>
         <div class="lx-price__tag">Most Common</div>
@@ -444,6 +420,7 @@
           <li>Full string trim</li>
           <li>Blow &amp; cleanup</li>
         </ul>
+        <a href="#contact" class="lx-btn lx-btn--dark lx-btn--sm estate-plan" data-yard="Medium">Quote my medium yard &rarr;</a>
       </div>
       <div class="lx-card lx-price lx-reveal" data-tilt>
         <div class="lx-price__name">Large Yard</div>
@@ -454,6 +431,7 @@
           <li>Full string trim</li>
           <li>Blow &amp; cleanup</li>
         </ul>
+        <a href="#contact" class="lx-btn lx-btn--dark lx-btn--sm estate-plan" data-yard="Large">Quote my large yard &rarr;</a>
       </div>
     </div>
 
@@ -464,7 +442,7 @@
           <h3>Economy Plan — Mow &amp; Blow</h3>
           <p>On a budget? We mow front and back and blow off the property, with no trimming. A simple cut at a money-saving price.</p>
         </div>
-        <a href="#contact" class="lx-btn lx-btn--dark lx-btn--sm">Ask for a Money Saver Quote</a>
+        <a href="#contact" class="lx-btn lx-btn--dark lx-btn--sm" data-economy>Ask for a Money Saver Quote</a>
       </div>
       <div class="lx-row-card lx-reveal">
         <span class="lx-card__icon"><svg aria-hidden="true"><use href="/icons.svg#zap"/></svg></span>
@@ -580,9 +558,9 @@
             <label for="size">Yard Size (estimate) <i aria-hidden="true">*</i></label>
             <select id="size" name="yard_size" required>
               <option value="">Select yard size…</option>
-              <option value="Small yard — $40">Small yard — $40 mow</option>
-              <option value="Medium yard — $60">Medium yard — $60 mow</option>
-              <option value="Large yard — $80">Large yard — $80 mow</option>
+              <option data-size="Small" data-rate="40" value="Small yard — $40">Small yard — $40 mow</option>
+              <option data-size="Medium" data-rate="60" value="Medium yard — $60">Medium yard — $60 mow</option>
+              <option data-size="Large" data-rate="80" value="Large yard — $80">Large yard — $80 mow</option>
               <option value="Not sure">Not sure — I'll describe it</option>
             </select>
           </div>
@@ -632,6 +610,7 @@
           <label for="notes">Anything else to know?</label>
           <textarea id="notes" name="notes" placeholder="Gate codes, dogs, special instructions…"></textarea>
         </div>
+        <output class="estate-estimate" id="mowing-estimate" for="size plan city overgrown service" aria-live="polite"></output>
         <button type="submit" class="lx-btn lx-btn--gold lx-btn--block">Send My Free Quote Request</button>
         <p class="lx-form__foot">No contracts. No commitment. See our <a href="/privacy-policy">Privacy Policy</a>.</p>
       </form>
@@ -640,7 +619,7 @@
 </section>
 
 <!-- ─── WHY US ─── -->
-<section id="service" class="lx-sec lx-sec--ivory">
+<section id="why-choose-us" class="lx-sec lx-sec--ivory">
   <div class="lx-wrap">
     <div class="lx-head">
       <div class="lx-eyebrow">Why Choose Us</div>

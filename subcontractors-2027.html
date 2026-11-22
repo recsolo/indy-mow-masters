@@ -16,45 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/luxe.css">
-<style>
-.partner-hero{overflow:hidden;position:relative;background:linear-gradient(125deg,#002c1d 0%,#003d26 53%,#075738 100%);color:white;border-bottom:5px solid #e4b957}
-.partner-hero:after{content:"";position:absolute;width:440px;height:440px;right:-90px;top:-170px;border:75px solid rgba(240,0,43,.1);border-radius:50%;pointer-events:none}
-.partner-hero .lx-wrap{padding-top:clamp(65px,9vw,112px);padding-bottom:clamp(65px,9vw,112px);position:relative;z-index:1}
-.partner-kicker{color:#e4b957;letter-spacing:.15em;text-transform:uppercase;font-weight:800;font-size:13px;margin-bottom:16px}
-.partner-hero h1{color:white;font-family:Inter,system-ui,sans-serif;font-size:clamp(39px,5.5vw,78px);font-weight:900;letter-spacing:-.045em;max-width:900px;line-height:1.08}
-.partner-hero h1 span{color:#ff254c}
-.partner-hero p{font-size:clamp(17px,2vw,21px);max-width:740px;color:#e7f5eb;line-height:1.65;margin:22px 0 30px}
-.partner-hero .partner-btn{display:inline-flex;background:#f0002b;color:white;font-weight:800;padding:18px 28px;border-radius:9px;text-decoration:none;box-shadow:0 6px 0 #8b001f;transition:transform .2s,box-shadow .2s}
-.partner-hero .partner-btn:hover{transform:translateY(-3px);box-shadow:0 9px 0 #8b001f}
-.partner-tagrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-.partner-tagrow span{font-size:13px;border:1px solid rgba(228,185,87,.7);border-radius:30px;padding:8px 14px;color:#ffe5aa;font-weight:700}
-.partner-section{padding:clamp(52px,7vw,88px) 0}
-.partner-section h2{font-size:clamp(30px,3.5vw,46px)}
-.partner-copy{font-size:17px;line-height:1.7;color:#345543;max-width:820px}
-.partner-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
-.partner-step{background:#fff;border:1px solid #e7dac1;border-top:5px solid #f0002b;border-radius:16px;padding:25px;box-shadow:0 12px 28px rgba(0,40,25,.06)}
-.partner-step b{display:block;color:#003d26;font-size:20px;margin:0 0 8px}
-.partner-step p{line-height:1.6;color:#466150;margin:0}
-.partner-step .number{font-size:12px;font-weight:900;color:#d40029;letter-spacing:.1em;display:block;margin-bottom:12px}
-.partner-apply{background:linear-gradient(145deg,#f8f4ea,#fffdf8);padding:clamp(50px,7vw,90px) 0}
-.partner-panel{max-width:860px;margin:0 auto;background:#fff;border:1px solid #e6dfd2;border-top:7px solid #f0002b;border-radius:18px;padding:clamp(22px,4vw,44px);box-shadow:0 22px 55px rgba(0,35,20,.1)}
-.partner-panel h2{font-size:clamp(30px,4vw,44px);color:#003d26;margin:0 0 12px}
-.partner-panel .intro{color:#526353;margin-bottom:26px;line-height:1.65}
-.partner-form{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.partner-field{display:flex;flex-direction:column;gap:8px;min-width:0}
-.partner-field.wide{grid-column:1/-1}
-.partner-field label{color:#073b27;font:700 14px/1.4 Inter,sans-serif}
-.partner-field input,.partner-field select,.partner-field textarea{border:1.5px solid #baccc1;border-radius:9px;padding:14px 13px;width:100%;font:500 16px/1.4 Inter,sans-serif;color:#123b26;background:#fff}
-.partner-field :is(input,select,textarea):focus{outline:3px solid rgba(240,0,43,.2);border-color:#e50031}
-.partner-field textarea{min-height:110px;resize:vertical}
-.partner-panel button{grid-column:1/-1;background:#f0002b;color:white;border:0;border-radius:9px;padding:18px 22px;font:800 17px Inter,sans-serif;cursor:pointer;transition:background .2s,transform .2s}
-.partner-panel button:hover{background:#c90027;transform:translateY(-2px)}
-.partner-fine{grid-column:1/-1;font-size:13px;color:#536659;line-height:1.55}
-.partner-contact{background:#003d26;color:white;text-align:center;padding:45px 16px}
-.partner-contact p{color:#e3efe6;margin:8px 0 0}
-@media(max-width:760px){.partner-steps{grid-template-columns:1fr}.partner-form{grid-template-columns:1fr}.partner-hero h1{max-width:100%}}
-@media(prefers-reduced-motion:reduce){.partner-hero .partner-btn,.partner-panel button{transition:none!important;transform:none!important}}
-</style>
+<link rel="stylesheet" href="/partner.css">
 </head>
 <body class="lx">
 <!-- lx:header -->
@@ -131,7 +93,7 @@
   </div>
  </div>
 </section>
-<section class="partner-contact"><div class="lx-wrap"><h2 style="color:#fff">Let's Build a Strong 2027 Season.</h2><p>Indy Mow Masters · Indianapolis, Indiana</p></div></section>
+<section class="partner-contact"><div class="lx-wrap"><h2>Let's Build a Strong 2027 Season.</h2><p>Indy Mow Masters · Indianapolis, Indiana</p></div></section>
 </main>
 <!-- lx:footer -->
 <div class="lx-sticky mobile-sticky-cta" role="navigation" aria-label="Quick contact options">

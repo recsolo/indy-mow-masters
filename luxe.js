@@ -85,3 +85,38 @@
     }
   });
 })();
+
+/* Carry a selected mowing package into the quote and preview published rates. */
+(function () {
+  const estimate = document.getElementById('mowing-estimate');
+  if (!estimate) return;
+  const form = estimate.closest('form');
+  const {service, yard_size: size, service_plan: plan, city, overgrown_grass: grass} = form.elements;
+
+  function updateEstimate() {
+    const rate = Number(size.selectedOptions[0]?.dataset.rate);
+    if (service.value !== 'Lawn Mowing' || !rate || plan.selectedIndex !== 0) {
+      estimate.textContent = '';
+      return;
+    }
+    const visit = rate + (city.value.startsWith('Other') ? 10 : 0);
+    const firstVisit = visit + (grass.value.startsWith('Yes') ? 20 : 0);
+    estimate.textContent = 'Estimated mowing rate: $' + visit + ' per visit.' +
+      (firstVisit !== visit ? ' First visit: $' + firstVisit + ' with overgrowth.' : '') +
+      (!city.value ? ' Outside the service area, add $10.' : '') +
+      (grass.value === 'Not sure' ? ' Overgrowth may add $20 on the first visit.' : '');
+  }
+
+  document.querySelectorAll('[data-yard], [data-economy]').forEach(link => {
+    link.addEventListener('click', () => {
+      service.value = 'Lawn Mowing';
+      plan.selectedIndex = link.hasAttribute('data-economy') ? 1 : 0;
+      const choice = Array.from(size.options).find(option => option.dataset.size === link.dataset.yard);
+      if (link.dataset.yard && choice) size.value = choice.value;
+      updateEstimate();
+    });
+  });
+  form.addEventListener('change', updateEstimate);
+  window.addEventListener('pageshow', updateEstimate);
+  updateEstimate();
+})();
