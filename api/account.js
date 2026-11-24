@@ -2,7 +2,9 @@ const {account, supabase, setSession, clearSession, sameOrigin, parseBody} = req
 
 module.exports = async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
-  if (process.env.VERCEL_ENV !== 'preview') return res.status(404).json({error:'Not available'});
+  const live = process.env.VERCEL_ENV === 'production';
+  if (!live || process.env.PORTAL_LIVE_ENABLED !== 'true') return res.status(503).json({error:'Customer portal is not open yet'});
+  if (!['indymowmasters.com','www.indymowmasters.com'].includes(req.headers?.host)) return res.status(404).json({error:'Use the official Indy Mow Masters website'});
   if (!process.env.SUPABASE_URL || !process.env.SUPABASE_PUBLISHABLE_KEY) return res.status(503).json({error:'Accounts are being configured'});
   if (!['GET', 'POST'].includes(req.method)) return res.status(405).json({error:'Method not allowed'});
   if (req.method === 'POST' && !sameOrigin(req)) return res.status(403).json({error:'Please use this website to submit your request'});
@@ -21,7 +23,7 @@ module.exports = async function handler(req, res) {
       const email = typeof body.email === 'string' ? body.email.trim().toLowerCase() : '';
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254) return res.status(400).json({error:'Enter a valid email address'});
       if (action === 'recover') {
-        await supabase('/auth/v1/recover?redirect_to=' + encodeURIComponent('https://' + req.headers.host + '/account.html'), {method:'POST', body:{email}});
+        await supabase('/auth/v1/recover?redirect_to=' + encodeURIComponent('https://www.indymowmasters.com/account.html'), {method:'POST', body:{email}});
         return res.json({message:'If this account exists, a recovery email has been requested.'});
       }
       let session;
@@ -30,7 +32,7 @@ module.exports = async function handler(req, res) {
         session = await supabase('/auth/v1/verify', {method:'POST',body:{email,token:body.code,type:body.recovery ? 'recovery' : 'signup'}});
       } else {
         if (typeof body.password !== 'string' || body.password.length < 12 || body.password.length > 128) return res.status(400).json({error:'Use a password between 12 and 128 characters'});
-        session = await supabase(action === 'signup' ? '/auth/v1/signup?redirect_to=' + encodeURIComponent('https://' + req.headers.host + '/account.html') : '/auth/v1/token?grant_type=password', {
+        session = await supabase(action === 'signup' ? '/auth/v1/signup?redirect_to=' + encodeURIComponent('https://www.indymowmasters.com/account.html') : '/auth/v1/token?grant_type=password', {
           method:'POST',body:{email,password:body.password}
         });
       }
@@ -88,7 +90,7 @@ module.exports = async function handler(req, res) {
       supabase('/rest/v1/bookings?select=*&order=created_at.desc&limit=100', {token}),
       supabase('/rest/v1/service_history?select=*&order=service_date.desc&limit=100', {token})
     ]);
-    return res.json({email:user.email,userId:user.id,owner,profiles,bookings,history});
+    return res.json({email:user.email,userId:user.id,owner,profiles,bookings,history,savedCardsEnabled:process.env.SQUARE_LIVE_ENABLED === 'true' && process.env.SQUARE_SAVED_CARDS_ENABLED === 'true'});
   } catch (error) {
     if (error.status === 429) return res.status(429).json({error:'Too many attempts. Please try again later.'});
     if (['login', 'verify'].includes(action)) return res.status(400).json({error:'Could not sign in. Check your details and confirm your email.'});

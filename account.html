@@ -42,7 +42,7 @@
           <h2>Service history</h2><p id="history-summary">Completed services will appear here.</p><a href="#history">View service history</a>
         </section>
         <section><h2>Profile summary</h2><dl id="profile-summary"></dl><a href="#profile">Edit your profile</a>
-          <h2>Payment methods</h2><p>Save a card securely with Square.</p><a href="#payments">Manage payment methods</a>
+          <h2>Payment methods</h2><p>Pay securely using Square after your price is approved.</p><a href="#payments">Manage payment methods</a>
         </section>
       </div>
       <section id="bookings" class="wide-section">
@@ -57,8 +57,8 @@
       </section>
       <section id="history" class="wide-section"><h2>Service history</h2><div id="history-list"></div></section>
       <section id="payments" class="wide-section">
-        <h2>Payment methods</h2><p>Square stores your card securely. Only test cards can be used in this sandbox preview.</p>
-        <div id="card-list"></div><button id="add-card">Add payment method</button>
+        <h2>Payment methods</h2><p id="payment-note">Payment methods will appear when available.</p>
+        <div id="card-list"></div><button id="add-card" hidden>Add payment method</button>
         <form id="card-form" hidden>
           <div id="square-card"></div>
           <label class="check"><input name="consent" type="checkbox" required> I authorize Indy Mow Masters to save this card with Square for future payments.</label>
@@ -80,7 +80,7 @@
       </section>
       <section id="owner-panel" class="wide-section" hidden>
         <h2>Owner workspace</h2><p>Manage client requests and add completed services to their history.</p>
-        <p><a href="/owner-square.html">Create or check a sandbox payment link</a></p>
+        <p><a href="/owner-square.html">Create or check an approved payment link</a></p>
         <h3>Client requests</h3><div id="owner-bookings"></div>
         <h3>Record a completed service</h3>
         <form id="history-form" class="form-grid">
@@ -94,6 +94,6 @@
       </section>
     </div>
   </main>
-  <footer><a class="brand" href="/">Indy Mow Masters</a><a href="mailto:indymowmasters@gmail.com">indymowmasters@gmail.com</a><span>Sandbox preview</span></footer>
+  <footer><a class="brand" href="/">Indy Mow Masters</a><a href="mailto:indymowmasters@gmail.com">indymowmasters@gmail.com</a><span>Customer portal</span></footer>
 </body>
 </html>

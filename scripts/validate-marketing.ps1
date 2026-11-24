@@ -380,8 +380,8 @@ foreach ($rule in ($vercel | ConvertFrom-Json).headers) {
     if ($header.key -ne 'Content-Security-Policy') { continue }
     if ($rule.source -eq '/account.html') {
       # Square's hosted card fields require inline styles on this account document.
-      if ($header.value -notlike "*script-src 'self' https://sandbox.web.squarecdn.com;*") {
-        $failures.Add('Account CSP must restrict scripts to this site and the Square sandbox SDK')
+      if ($header.value -notlike "*script-src 'self' https://web.squarecdn.com;*") {
+        $failures.Add('Account CSP must restrict scripts to this site and the Square production SDK')
       }
       if ($header.value -notlike "*script-src-attr 'none'*") {
         $failures.Add('Account CSP must block inline event handlers')

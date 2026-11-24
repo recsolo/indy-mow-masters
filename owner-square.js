@@ -7,8 +7,19 @@ const orderInput = document.getElementById('order-id');
 let previous = '';
 let requestId = '';
 let ownerSignedIn = false;
+let ready = false;
+let live = false;
 
-fetch('/api/account').then(response => response.ok ? response.json() : null).then(account => {
+fetch('/api/square-health').then(response => response.json()).then(config => {
+  live = config.environment === 'production';
+  ready = config.connected === true && config.enabled === true;
+  document.getElementById('mode').textContent = !ready ? 'Payments unavailable. Contact the owner.' : live ? 'LIVE PAYMENTS: real money can be collected from approved links.' : 'Sandbox only. No real money is collected.';
+  if (!ready) return null;
+  form.querySelector('button').disabled = false;
+  paymentForm.querySelector('button').disabled = false;
+  if (live) { document.getElementById('owner-account').hidden = false; return null; }
+  return fetch('/api/account').then(response => response.ok ? response.json() : null);
+}).then(account => {
   if (!account?.owner) return;
   ownerSignedIn = true;
   const key = document.getElementById('key');
@@ -19,6 +30,7 @@ fetch('/api/account').then(response => response.ok ? response.json() : null).the
 
 form.addEventListener('submit', async event => {
   event.preventDefault();
+  if (!ready) return;
   const button = form.querySelector('button');
   button.disabled = true;
   const description = document.getElementById('description').value.trim();
@@ -28,7 +40,8 @@ form.addEventListener('submit', async event => {
     requestId = crypto.randomUUID();
     previous = signature;
   }
-  statusBox.textContent = 'Creating sandbox link…';
+  link.hidden = true;
+  statusBox.textContent = live ? 'Creating live payment link…' : 'Creating sandbox link…';
   try {
     const response = await fetch('/api/square-approved-checkout', {
       method: 'POST',
@@ -43,7 +56,7 @@ form.addEventListener('submit', async event => {
     link.hidden = false;
     orderInput.value = data.orderId;
     paymentResult.textContent = '';
-    statusBox.textContent = 'Test link ready. Copy the link or open it to test.';
+    statusBox.textContent = live ? 'Live link ready. Send it only to the customer who approved this price.' : 'Test link ready. Copy the link or open it to test.';
     previous = '';
   } catch (error) {
     statusBox.textContent = error.message;
@@ -54,12 +67,13 @@ form.addEventListener('submit', async event => {
 
 paymentForm.addEventListener('submit', async event => {
   event.preventDefault();
+  if (!ready) return;
   const key = document.getElementById('key');
   if (!ownerSignedIn && !key.reportValidity()) return;
   const button = paymentForm.querySelector('button');
   button.disabled = true;
   const orderId = orderInput.value.trim();
-  paymentResult.textContent = 'Checking Square sandbox payment…';
+  paymentResult.textContent = 'Checking Square payment…';
   try {
     const response = await fetch('/api/square-approved-checkout', {
       method: 'POST',
@@ -78,7 +92,7 @@ paymentForm.addEventListener('submit', async event => {
     paymentResult.textContent = (labels[data.paymentStatus] || 'Status unavailable') +
       ' — ' + money(data.paidCents) + ' received of ' + money(data.totalCents) +
       (data.refundedCents ? ' · ' + money(data.refundedCents) + ' refunded' : '') +
-      ' · Sandbox · Checked ' + new Date().toLocaleTimeString();
+      (data.environment === 'production' ? ' · LIVE · Checked ' : ' · Sandbox · Checked ') + new Date().toLocaleTimeString();
   } catch (error) {
     paymentResult.textContent = error.message;
   } finally {

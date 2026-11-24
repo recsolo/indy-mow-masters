@@ -3,7 +3,10 @@ const handler = require('../api/account');
 const cards = require('../api/payment-methods');
 const {account} = require('../lib/accounts');
 
-process.env.VERCEL_ENV = 'preview';
+process.env.VERCEL_ENV = 'production';
+process.env.PORTAL_LIVE_ENABLED = 'true';
+process.env.SQUARE_LIVE_ENABLED = 'true';
+process.env.SQUARE_SAVED_CARDS_ENABLED = 'true';
 process.env.SUPABASE_URL = 'https://test.supabase.co';
 process.env.SUPABASE_PUBLISHABLE_KEY = 'test-key';
 process.env.SQUARE_ACCESS_TOKEN = 'mock';
@@ -28,9 +31,9 @@ function mock() {
     return {ok:true,status:200,json:async () => data};
   };
 }
-async function invoke(fn, body, cookie = 'imm_access=valid', origin='https://preview.example') {
+async function invoke(fn, body, cookie = 'imm_access=valid', origin='https://www.indymowmasters.com', host='www.indymowmasters.com') {
   const response = {headers:{},setHeader(name,value){this.headers[name]=value;},status(code){this.code=code;return this;},json(data){this.data=data;return this;}};
-  await fn({method:'POST',headers:{cookie,origin,host:'preview.example'},body},response);
+  await fn({method:'POST',headers:{cookie,origin,host},body},response);
   return response;
 }
 (async () => {
@@ -50,8 +53,36 @@ async function invoke(fn, body, cookie = 'imm_access=valid', origin='https://pre
   const session = await account({headers:{cookie:'imm_refresh=refresh'}},res);
   assert.equal(session.token,'renewed');
   assert.ok(res['Set-Cookie'].every(cookie => cookie.includes('HttpOnly; Secure; SameSite=Strict')));
-  process.env.VERCEL_ENV='production';
-  assert.equal((await invoke(handler,profile)).code,404);
-  assert.equal((await invoke(cards,{})).code,404);
-  console.log('Account tests passed: origin checks, ownership, owner permissions, card consent, cross-client card removal, session refresh, preview restrictions.');
+  // These flags are exercised only against mocked fetch in this local process.
+  for (const flag of ['PORTAL_LIVE_ENABLED','SQUARE_LIVE_ENABLED','SQUARE_SAVED_CARDS_ENABLED']) {
+    mock();
+    delete process.env[flag];
+    assert.equal((await invoke(cards,{})).code,503);
+    if (flag === 'PORTAL_LIVE_ENABLED') assert.equal((await invoke(handler,profile)).code,503);
+    assert.equal(calls.length,0);
+    process.env[flag]='true';
+  }
+  mock();
+  assert.equal((await invoke(handler,profile,'imm_access=valid','https://preview.example','preview.example')).code,404);
+  assert.equal((await invoke(cards,{},'imm_access=valid','https://preview.example','preview.example')).code,404);
+  assert.equal(calls.length,0);
+  for (const malformed of ['null','[]','true',null,[]]) {
+    const result = await invoke(handler,malformed);
+    assert.equal(result.code,403);
+  }
+  for (const action of ['recover','signup']) {
+    mock();
+    await invoke(handler,{action,email:user.email,password:'local-test-password-only'});
+    const emailRequest = calls.find(call => call.url.includes(action === 'recover' ? '/recover?' : '/signup?'));
+    assert.ok(emailRequest, action + ' should request an auth email');
+    assert.equal(new URL(emailRequest.url).searchParams.get('redirect_to'),'https://www.indymowmasters.com/account.html');
+  }
+  for (const environment of ['preview','development']) {
+    mock();
+    process.env.VERCEL_ENV=environment;
+    assert.equal((await invoke(handler,profile)).code,503);
+    assert.equal((await invoke(cards,{})).code,503);
+    assert.equal(calls.length,0);
+  }
+  console.log('Account tests passed: production flags, official host, origin checks, ownership, owner permissions, card consent, cross-client card removal, session refresh, malformed bodies, email redirects, and Preview isolation.');
 })().catch(error => {console.error(error);process.exitCode=1;});

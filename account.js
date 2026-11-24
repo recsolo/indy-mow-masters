@@ -61,6 +61,8 @@ function render() {
   document.getElementById('dashboard').hidden = false;
   document.getElementById('account-nav').hidden = false;
   document.getElementById('owner-panel').hidden = !state.owner;
+  document.getElementById('add-card').hidden = !state.savedCardsEnabled;
+  document.getElementById('payment-note').textContent = state.savedCardsEnabled ? 'Square securely stores your card. Saving a card does not charge it.' : 'Saved cards are not available yet. You can pay using a secure link provided after your price is approved.';
   const profile = state.profiles.find(profile => profile.id === state.userId) || {};
   const profileForm = document.getElementById('profile-form');
   for (const name of ['name','phone','address','city','zip','notes']) profileForm.elements[name].value = profile[name] || '';
@@ -199,6 +201,7 @@ document.getElementById('signout').addEventListener('click', async () => {
 });
 
 async function loadCards() {
+  if (!state?.savedCardsEnabled) { document.getElementById('card-list').textContent = ''; return; }
   try {
     const {cards} = await request('/api/payment-methods');
     renderRecords('card-list', cards.map(saved => {
@@ -221,6 +224,7 @@ async function loadCards() {
 }
 
 document.getElementById('add-card').addEventListener('click', async event => {
+  if (!state?.savedCardsEnabled) return;
   const button = event.currentTarget;
   button.disabled = true;
   try {
@@ -230,7 +234,8 @@ document.getElementById('add-card').addEventListener('click', async event => {
     if (!window.Square) {
       await new Promise((resolve, reject) => {
         const script = document.createElement('script');
-        script.src = 'https://sandbox.web.squarecdn.com/v1/square.js';
+        if (config.environment !== 'production') return reject(Error('Unexpected payment environment'));
+        script.src = 'https://web.squarecdn.com/v1/square.js';
         script.onload = resolve;
         script.onerror = () => reject(Error('Square’s secure card form could not load.'));
         document.head.append(script);
@@ -271,7 +276,7 @@ onSubmit('card-form', async form => {
   await card.clear();
   form.elements.consent.checked = false;
   await loadCards();
-  notice('Your test payment method was saved securely with Square.');
+  notice('Your payment method was saved securely with Square. No payment was charged.');
 });
 
 const today = new Date();
