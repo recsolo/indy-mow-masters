@@ -4,7 +4,13 @@ module.exports = async function(req,res) {
  if(req.method !== 'POST') return res.status(405).json({error:'POST required'});
  if(process.env.VERCEL_ENV !== 'preview') return res.status(404).json({error:'Not available'});
  const secret=process.env.SQUARE_OWNER_KEY, token=process.env.SQUARE_ACCESS_TOKEN;
- if(!secret || secret.length<24 || !token) return res.status(503).json({error:'Owner checkout not configured'});
+ const ownerKeyPresent = Boolean(secret);
+ const ownerKeyReady = ownerKeyPresent && secret.length >= 24;
+ const accessTokenPresent = Boolean(token);
+ if (!ownerKeyReady || !accessTokenPresent) {
+   console.warn('Sandbox checkout configuration', {ownerKeyPresent, ownerKeyReady, accessTokenPresent});
+   return res.status(503).json({error:'Owner checkout not configured'});
+ }
  const body=typeof req.body==='string'?(()=>{try{return JSON.parse(req.body)}catch{return null}})():req.body;
  const supplied=typeof body?.ownerKey==='string'?body.ownerKey:'';
  const hash=s=>crypto.createHash('sha256').update(s).digest();
