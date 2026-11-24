@@ -124,7 +124,7 @@
 /* sticky mobile CTA */
 .lx-sticky{display:none}
 @media(max-width:760px){
-  .lx-sticky{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:90;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(3,13,8,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--lx-hair);box-shadow:0 -12px 30px rgba(0,0,0,.4)}
+  .lx-sticky{display:grid;grid-template-columns:1fr 1fr 1fr 1.3fr;gap:6px;position:fixed;left:0;right:0;bottom:0;z-index:90;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(3,13,8,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--lx-hair);box-shadow:0 -12px 30px rgba(0,0,0,.4)}
   .lx-sticky a{display:flex;align-items:center;justify-content:center;gap:7px;min-height:48px;border-radius:12px;font:800 14.5px/1 var(--lx-sans);text-decoration:none;color:#fff;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12)}
   .lx-sticky a svg{width:16px;height:16px}
   .lx-sticky a:last-child{background:var(--lx-gold-grad);color:var(--lx-ink);border:0;box-shadow:var(--lx-bevel),0 3px 0 var(--lx-gold-deep)}
@@ -697,7 +697,4 @@ main .hero,.lx-hero,section#main:has(h1),#contact.lx-sec {
   .estate-actions {gap:20px}
 }
 
-/* Keep client accounts visible outside the mobile menu. */
-.lx-account-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 14px;border:1px solid #ff536b;border-radius:999px;color:#fff;text-decoration:none;font:700 14px/1.2 var(--lx-sans);white-space:nowrap}
-.lx-account-link:hover,.lx-account-link:focus-visible{background:#b80023;color:#fff}
-@media(max-width:600px){.lx-header__side{gap:8px}.lx-header__in{gap:12px}.lx-header .lx-phone{font-size:0;padding:12px;gap:0}.lx-header .lx-phone svg{width:18px;height:18px}.lx-account-link{padding:10px 12px;font-size:13px}.lx-logo span{display:none}}
+@media(max-width:400px){.lx-sticky{padding-left:8px;padding-right:8px}.lx-sticky a{font-size:12px;gap:4px}.lx-sticky a svg{width:14px;height:14px}}
