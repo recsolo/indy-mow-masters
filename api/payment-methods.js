@@ -1,7 +1,7 @@
 const {account, supabase, sameOrigin, parseBody} = require('../lib/accounts');
 
 async function square(path, method = 'GET', body) {
-  const response = await fetch('https://connect.squareupsandbox.com/v2' + path, {
+  const response = await fetch('https://connect.squareup.com/v2' + path, {
     method, headers:{Authorization:'Bearer ' + process.env.SQUARE_ACCESS_TOKEN, 'Square-Version':'2025-10-16','Content-Type':'application/json'},
     body:body ? JSON.stringify(body) : undefined, signal:AbortSignal.timeout(10000)
   });
@@ -12,7 +12,8 @@ async function square(path, method = 'GET', body) {
 
 module.exports = async function handler(req, res) {
   res.setHeader('Cache-Control','no-store');
-  if (process.env.VERCEL_ENV !== 'preview') return res.status(404).json({error:'Not available'});
+  if (process.env.VERCEL_ENV !== 'production' || process.env.PORTAL_LIVE_ENABLED !== 'true' || process.env.SQUARE_LIVE_ENABLED !== 'true' || process.env.SQUARE_SAVED_CARDS_ENABLED !== 'true') return res.status(503).json({error:'Saved cards are not enabled'});
+  if (!['indymowmasters.com','www.indymowmasters.com'].includes(req.headers?.host)) return res.status(404).json({error:'Use the official Indy Mow Masters website'});
   if (!['GET','POST'].includes(req.method)) return res.status(405).json({error:'Method not allowed'});
   if (req.method === 'POST' && !sameOrigin(req)) return res.status(403).json({error:'Please use this website'});
   try {
@@ -27,7 +28,7 @@ module.exports = async function handler(req, res) {
       const locations = await square('/locations');
       const active = (locations.locations || []).filter(location => location.status === 'ACTIVE' && location.currency === 'USD');
       if (active.length !== 1 || !process.env.SQUARE_APPLICATION_ID) throw Error('Configuration missing');
-      return res.json({applicationId:process.env.SQUARE_APPLICATION_ID,locationId:active[0].id,environment:'sandbox'});
+      return res.json({applicationId:process.env.SQUARE_APPLICATION_ID,locationId:active[0].id,environment:'production'});
     }
     const customers = await square('/customers/search','POST',{query:{filter:{reference_id:{exact:current.user.id}}},limit:2});
     let customer = customers.customers?.[0];
