@@ -1,4 +1,5 @@
 const crypto = require('node:crypto');
+const {account, sameOrigin} = require('../lib/accounts');
 module.exports = async function(req,res) {
  res.setHeader('Cache-Control','no-store');
  if(req.method !== 'POST') return res.status(405).json({error:'POST required'});
@@ -14,7 +15,13 @@ module.exports = async function(req,res) {
  const body=typeof req.body==='string'?(()=>{try{return JSON.parse(req.body)}catch{return null}})():req.body;
  const supplied=typeof body?.ownerKey==='string'?body.ownerKey:'';
  const hash=s=>crypto.createHash('sha256').update(s).digest();
- if(!crypto.timingSafeEqual(hash(secret),hash(supplied))) return res.status(401).json({error:'Unauthorized'});
+ if (!crypto.timingSafeEqual(hash(secret),hash(supplied))) {
+   if (!sameOrigin(req)) return res.status(401).json({error:'Unauthorized'});
+   try {
+     const current = await account(req, res);
+     if (!current?.owner) return res.status(401).json({error:'Owner sign-in required'});
+   } catch { return res.status(503).json({error:'Owner sign-in could not be verified'}); }
+ }
  if (body.action === 'status') {
    const {orderId} = body;
    if (typeof orderId !== 'string' || !/^[a-zA-Z0-9_-]{1,192}$/.test(orderId)) {

@@ -6,6 +6,16 @@ const paymentResult = document.getElementById('payment-result');
 const orderInput = document.getElementById('order-id');
 let previous = '';
 let requestId = '';
+let ownerSignedIn = false;
+
+fetch('/api/account').then(response => response.ok ? response.json() : null).then(account => {
+  if (!account?.owner) return;
+  ownerSignedIn = true;
+  const key = document.getElementById('key');
+  key.required = false;
+  key.closest('.lx-field').hidden = true;
+  statusBox.textContent = 'Signed in as owner.';
+}).catch(() => {});
 
 form.addEventListener('submit', async event => {
   event.preventDefault();
@@ -45,7 +55,7 @@ form.addEventListener('submit', async event => {
 paymentForm.addEventListener('submit', async event => {
   event.preventDefault();
   const key = document.getElementById('key');
-  if (!key.reportValidity()) return;
+  if (!ownerSignedIn && !key.reportValidity()) return;
   const button = paymentForm.querySelector('button');
   button.disabled = true;
   const orderId = orderInput.value.trim();

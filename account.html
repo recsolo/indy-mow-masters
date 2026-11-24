@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Your account | Indy Mow Masters</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap">
+  <link rel="stylesheet" href="/luxe.css">
+  <link rel="stylesheet" href="/account.css">
+  <script src="/account.js" defer></script>
+</head>
+<body class="portal">
+  <header><a class="brand" href="/">Indy Mow Masters</a><nav id="account-nav" hidden aria-label="Account">
+    <a href="#overview">Overview</a><a href="#bookings">Bookings</a><a href="#history">Service history</a><a href="#payments">Payment methods</a><a href="#profile">Profile</a><button id="signout" class="text-button">Sign out</button>
+  </nav></header>
+  <main>
+    <p id="message" role="status"></p>
+    <section id="auth" class="auth-panel">
+      <h1>Your lawn care account</h1>
+      <p>Manage your property, request service, and keep your lawn care history together.</p>
+      <form id="auth-form">
+        <label>Email address<input name="email" type="email" autocomplete="username" required maxlength="254"></label>
+        <label>Password<input name="password" type="password" autocomplete="current-password" minlength="12" maxlength="128" required></label>
+        <button name="intent" value="login" type="submit">Sign in</button>
+        <button name="intent" value="signup" type="submit" class="secondary">Create an account</button>
+      </form>
+      <button id="forgot" class="text-button">Forgot your password?</button>
+      <details><summary>Confirm an email code</summary>
+        <form id="verify-form">
+          <label>Email address<input name="email" type="email" autocomplete="email" required></label>
+          <label>Email code<input name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6,10}" required></label>
+          <label class="check"><input name="recovery" type="checkbox"> This is a password recovery code</label>
+          <button>Confirm code</button>
+        </form>
+      </details>
+    </section>
+    <div id="dashboard" hidden>
+      <section id="overview" class="title-row"><h1>Your lawn care</h1><a href="#booking-form" class="button">Request a booking</a></section>
+      <div class="lawn-banner" role="img" aria-label="A freshly maintained lawn at dusk"></div>
+      <div class="overview-grid">
+        <section><h2>Upcoming service</h2><div id="upcoming"></div><a href="#booking-form">Request a booking</a>
+          <h2>Service history</h2><p id="history-summary">Completed services will appear here.</p><a href="#history">View service history</a>
+        </section>
+        <section><h2>Profile summary</h2><dl id="profile-summary"></dl><a href="#profile">Edit your profile</a>
+          <h2>Payment methods</h2><p>Save a card securely with Square.</p><a href="#payments">Manage payment methods</a>
+        </section>
+      </div>
+      <section id="bookings" class="wide-section">
+        <h2>Bookings</h2><p>Requests are confirmed after we review your property, schedule, and price.</p>
+        <div id="booking-list"></div>
+        <form id="booking-form" class="form-grid">
+          <label>Service<select name="service" required><option>Lawn mowing</option><option>Yard cleanup</option><option>Leaf cleanup</option><option>Mulch installation</option><option>Gutter cleaning</option><option>Weed pulling</option><option>Other</option></select></label>
+          <label>Preferred date<input name="preferredDate" type="date" required></label>
+          <label class="full">Notes<textarea name="notes" maxlength="2000" rows="3" placeholder="Tell us about your property and what you need."></textarea></label>
+          <button>Send booking request</button>
+        </form>
+      </section>
+      <section id="history" class="wide-section"><h2>Service history</h2><div id="history-list"></div></section>
+      <section id="payments" class="wide-section">
+        <h2>Payment methods</h2><p>Square stores your card securely. Only test cards can be used in this sandbox preview.</p>
+        <div id="card-list"></div><button id="add-card">Add payment method</button>
+        <form id="card-form" hidden>
+          <div id="square-card"></div>
+          <label class="check"><input name="consent" type="checkbox" required> I authorize Indy Mow Masters to save this card with Square for future payments.</label>
+          <button>Save payment method</button>
+        </form>
+      </section>
+      <section id="profile" class="wide-section">
+        <h2>Your profile</h2><p id="account-email"></p>
+        <form id="profile-form" class="form-grid">
+          <label>Name<input name="name" autocomplete="name" maxlength="120" required></label>
+          <label>Phone<input name="phone" type="tel" autocomplete="tel" maxlength="30" required></label>
+          <label class="full">Service address<input name="address" autocomplete="street-address" maxlength="250" required></label>
+          <label>City<input name="city" autocomplete="address-level2" maxlength="100" required></label>
+          <label>ZIP code<input name="zip" autocomplete="postal-code" maxlength="10" required></label>
+          <label class="full">Property notes<textarea name="notes" maxlength="1000" rows="3" placeholder="Gate access, pets, or property details"></textarea></label>
+          <button>Save profile</button>
+        </form>
+        <details><summary>Change password</summary><form id="password-form"><label>New password<input name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required></label><button>Update password</button></form></details>
+      </section>
+      <section id="owner-panel" class="wide-section" hidden>
+        <h2>Owner workspace</h2><p>Manage client requests and add completed services to their history.</p>
+        <p><a href="/owner-square.html">Create or check a sandbox payment link</a></p>
+        <h3>Client requests</h3><div id="owner-bookings"></div>
+        <h3>Record a completed service</h3>
+        <form id="history-form" class="form-grid">
+          <label>Client<select name="userId" required id="history-client"></select></label>
+          <label>Service<input name="service" maxlength="120" required></label>
+          <label>Service date<input name="date" type="date" required></label>
+          <label>Total (USD)<input name="amount" type="number" min="0" max="10000" step=".01"></label>
+          <label class="full">Client-visible notes<textarea name="notes" maxlength="2000" rows="3"></textarea></label>
+          <button>Save completed service</button>
+        </form>
+      </section>
+    </div>
+  </main>
+  <footer><a class="brand" href="/">Indy Mow Masters</a><a href="mailto:indymowmasters@gmail.com">indymowmasters@gmail.com</a><span>Sandbox preview</span></footer>
+</body>
+</html>

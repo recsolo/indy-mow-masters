@@ -153,7 +153,7 @@
   ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/((?!account\\.html$).*)",
       "headers": [
         {
           "key": "X-Content-Type-Options",
@@ -237,6 +237,31 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/account.html",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; img-src 'self' data: https:; media-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self' https://sandbox.web.squarecdn.com; script-src-attr 'none'; connect-src 'self' https://sandbox.web.squarecdn.com https://pci-connect.squareupsandbox.com https://o160250.ingest.sentry.io https://formspree.io; frame-src https://sandbox.web.squarecdn.com https://www.youtube-nocookie.com https://www.youtube.com; object-src 'none'; form-action https://formspree.io; base-uri 'self'; frame-ancestors 'none'"
         }
       ]
     }
