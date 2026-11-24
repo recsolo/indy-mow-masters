@@ -239,10 +239,19 @@ document.getElementById('add-card').addEventListener('click', async event => {
     document.getElementById('card-form').hidden = false;
     if (!card) {
       const payments = window.Square.payments(config.applicationId,config.locationId);
-      card = await payments.card();
-      await card.attach('#square-card');
+      const newCard = await payments.card();
+      try {
+        await newCard.attach('#square-card');
+        card = newCard;
+      } catch (error) {
+        await newCard.destroy().catch(() => {});
+        throw error;
+      }
     }
-  } catch (error) { notice(error.message); }
+  } catch (error) {
+    document.getElementById('card-form').hidden = true;
+    notice('Square’s secure card form could not load. Please try again.');
+  }
   finally { button.disabled = false; }
 });
 onSubmit('card-form', async form => {
