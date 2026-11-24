@@ -15,6 +15,53 @@ module.exports = async function(req,res) {
  const supplied=typeof body?.ownerKey==='string'?body.ownerKey:'';
  const hash=s=>crypto.createHash('sha256').update(s).digest();
  if(!crypto.timingSafeEqual(hash(secret),hash(supplied))) return res.status(401).json({error:'Unauthorized'});
+ if (body.action === 'status') {
+   const {orderId} = body;
+   if (typeof orderId !== 'string' || !/^[a-zA-Z0-9_-]{1,192}$/.test(orderId)) {
+     return res.status(400).json({error:'Enter a valid Square order ID'});
+   }
+   const headers = {Authorization:'Bearer ' + token, 'Square-Version':'2025-10-16'};
+   try {
+     const response = await fetch('https://connect.squareupsandbox.com/v2/orders/' + encodeURIComponent(orderId), {
+       headers, signal:AbortSignal.timeout(8000)
+     });
+     const data = await response.json();
+     if (response.status === 404) return res.status(404).json({error:'Sandbox order not found'});
+     if (!response.ok || !data.order) return res.status(502).json({error:'Square could not retrieve the order'});
+     const order = data.order;
+     const total = order.total_money;
+     if (total?.currency !== 'USD' || !Number.isSafeInteger(total.amount) || total.amount <= 0) {
+       return res.status(502).json({error:'A positive USD order is required'});
+     }
+     const paymentIds = [...new Set((order.tenders || []).map(tender => tender.payment_id || tender.id).filter(Boolean))];
+     const payments = await Promise.all(paymentIds.map(async paymentId => {
+       const paymentResponse = await fetch('https://connect.squareupsandbox.com/v2/payments/' + encodeURIComponent(paymentId), {
+         headers, signal:AbortSignal.timeout(8000)
+       });
+       const result = await paymentResponse.json();
+       if (!paymentResponse.ok || !result.payment || result.payment.order_id !== orderId) throw Error('Payment unavailable');
+       return result.payment;
+     }));
+     let paidCents = 0;
+     let refundedCents = 0;
+     for (const payment of payments) {
+       if (payment.status !== 'COMPLETED') continue;
+       if (payment.total_money?.currency !== 'USD' || !Number.isSafeInteger(payment.total_money.amount)) throw Error('Invalid payment');
+       paidCents += payment.total_money.amount;
+       refundedCents += payment.refunded_money?.amount || 0;
+     }
+     const netPaidCents = Math.max(0, paidCents - refundedCents);
+     let paymentStatus = 'unpaid';
+     if (order.state === 'CANCELED') paymentStatus = 'canceled';
+     if (payments.some(payment => ['APPROVED', 'PENDING'].includes(payment.status))) paymentStatus = 'pending';
+     if (netPaidCents > 0) paymentStatus = 'partially_paid';
+     if (netPaidCents >= total.amount) paymentStatus = 'paid';
+     if (refundedCents > 0) paymentStatus = netPaidCents === 0 ? 'refunded' : 'partially_refunded';
+     return res.status(200).json({environment:'sandbox', orderId, paymentStatus, totalCents:total.amount, paidCents:netPaidCents, refundedCents});
+   } catch {
+     return res.status(502).json({error:'Square payment status could not be verified. Try again.'});
+   }
+ }
  const {amountCents,description,requestId}=body;
  if(!Number.isSafeInteger(amountCents)||amountCents<100||amountCents>1000000||typeof description!=='string'||!description.trim()||description.length>120||typeof requestId!=='string'||!/^[a-f0-9-]{36}$/i.test(requestId)) return res.status(400).json({error:'Invalid approved quote'});
  const headers={Authorization:'Bearer '+token,'Square-Version':'2025-10-16','Content-Type':'application/json'};
