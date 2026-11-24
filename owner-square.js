@@ -17,8 +17,7 @@ fetch('/api/square-health').then(response => response.json()).then(config => {
   if (!ready) return null;
   form.querySelector('button').disabled = false;
   paymentForm.querySelector('button').disabled = false;
-  if (live) return null;
-  document.getElementById('owner-account').hidden = false;
+  if (live) { document.getElementById('owner-account').hidden = false; return null; }
   return fetch('/api/account').then(response => response.ok ? response.json() : null);
 }).then(account => {
   if (!account?.owner) return;
