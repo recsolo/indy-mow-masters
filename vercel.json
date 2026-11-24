@@ -39,9 +39,28 @@
       "source": "/index.html",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/:path(gutter-cleaning|indianapolis-leaf-pickup-guide|lawn-care-indianapolis-in|lawn-care-products|lawn-mowing-indianapolis|leaf-cleanup|yard-cleanup-indianapolis).html",
+      "destination": "/:path",
+      "permanent": true
+    },
+    {
+      "source": "/products",
+      "destination": "/lawn-care-products",
+      "permanent": true
+    },
+    {
+      "source": "/amazon-products",
+      "destination": "/lawn-care-products",
+      "permanent": true
     }
   ],
   "rewrites": [
+    {
+      "source": "/indianapolis-leaf-pickup-guide",
+      "destination": "/indianapolis-leaf-pickup-guide.html"
+    },
     {
       "source": "/subcontractors-2027",
       "destination": "/subcontractors-2027.html"
@@ -80,14 +99,6 @@
     },
     {
       "source": "/lawn-care-products",
-      "destination": "/lawn-care-products.html"
-    },
-    {
-      "source": "/products",
-      "destination": "/lawn-care-products.html"
-    },
-    {
-      "source": "/amazon-products",
       "destination": "/lawn-care-products.html"
     },
     {
