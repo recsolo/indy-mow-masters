@@ -649,16 +649,14 @@ a.lx-card{display:block;text-decoration:none;color:inherit}
 main .hero,.lx-hero,section#main:has(h1),#contact.lx-sec {
   background:linear-gradient(95deg,#042c20f5,#032d24d9 55%,#06251ace),url('/garden-border.webp') center/cover;
 }
-.estate-hero {position:relative;isolation:isolate;overflow:hidden;background:#082b1e;color:#fff7e6}
-.estate-hero picture,.estate-hero img,.estate-hero::after {position:absolute;inset:0;width:100%;height:100%;z-index:-1}
-.estate-hero img {object-fit:cover;object-position:50% 57%}
-.estate-hero::after {content:'';background:linear-gradient(90deg,#032a20 0%,#04291cf2 18%,#05291dc9 32%,#05291d44 56%,transparent 78%)}
-.estate-hero__inner {padding-block:clamp(48px,5.4vw,88px)}
+.estate-hero {background:linear-gradient(115deg,#082b1e,#003d26);color:#fff7e6}
+.estate-hero__inner {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:center;gap:clamp(26px,4vw,68px);padding-block:clamp(48px,5.4vw,88px)}
+.estate-hero__video {display:block;width:100%;height:auto;aspect-ratio:16/9;background:#03291e;border-radius:10px;box-shadow:0 0 0 1px #e4b95780}
 .estate-location,.estate-season strong {display:flex;align-items:center;gap:14px;font:700 11px/1.4 var(--lx-sans);letter-spacing:.16em;text-transform:uppercase}
 .estate-location::before {content:'';width:34px;height:3px;background:var(--imm-red)}
-.estate-hero h1 {margin:22px 0;color:#fff9eb;font:600 clamp(72px,7.3vw,112px)/.98 var(--lx-serif);letter-spacing:-.06em}
+.estate-hero h1 {margin:22px 0;color:#fff9eb;font:600 clamp(54px,6.4vw,96px)/.98 var(--lx-serif);letter-spacing:-.06em}
 .estate-hero h1 em {display:block;color:#ff5066}
-.estate-hero__inner>p {max-width:39ch;color:#f4f2e4;font:400 clamp(16px,1.4vw,19px)/1.55 var(--lx-sans)}
+.estate-hero__copy>p {max-width:39ch;color:#f4f2e4;font:400 clamp(16px,1.4vw,19px)/1.55 var(--lx-sans)}
 .estate-actions {display:flex;align-items:center;gap:25px;margin:28px 0}
 .estate-actions .lx-btn {padding:16px 22px}
 .estate-actions a+a,.estate-season a {color:#fff8e8;font-weight:650;text-decoration:underline;text-underline-offset:5px}
@@ -683,14 +681,14 @@ main .hero,.lx-hero,section#main:has(h1),#contact.lx-sec {
   .estate-hero__inner {animation:estate-appear .65s ease-out both}
   @keyframes estate-appear {from {opacity:0;transform:translateY(10px)}}
 }
-@media(max-width:680px){
-  .estate-hero picture {height:275px}
-  .estate-hero img {object-position:65% 62%}
-  .estate-hero::after {background:linear-gradient(180deg,transparent 135px,#082b1e 275px)}
-  .estate-hero__inner {padding:231px 0 31px}
-  .estate-hero h1 {font-size:clamp(58px,15vw,80px);margin:14px 0}
+@media(max-width:780px){
+  .estate-hero__inner {grid-template-columns:1fr;gap:24px;padding-block:24px 31px}
+  .estate-hero__video {grid-row:1}
+  .estate-hero h1 {font-size:clamp(48px,12vw,76px);margin:14px 0}
   .estate-hero h1 em {display:inline}
   .estate-hero h1 em::before {content:' '}
+}
+@media(max-width:680px){
   .estate-season .lx-wrap {display:grid;grid-template-columns:1fr auto;gap:8px;font-size:12px}
   .estate-season .lx-wrap>span {display:none}
   #services .lx-grid {grid-template-columns:1fr}
