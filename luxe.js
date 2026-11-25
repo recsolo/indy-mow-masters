@@ -151,6 +151,16 @@
       updateEstimate();
     });
   });
+  if (city && form.querySelector('#mowing-schedule-field')) {
+    const params = new URLSearchParams(window.location.search);
+    const requestedCity = params.get('city');
+    if (Array.from(city.options).some(option => option.value === requestedCity)) {
+      city.value = requestedCity;
+    }
+    if (params.get('schedule') === 'one-time') schedule.value = 'One-time cut';
+    if (params.get('overgrown') === '1') grass.checked = true;
+  }
+
   form.addEventListener('change', updateEstimate);
   window.addEventListener('pageshow', updateEstimate);
   updateEstimate();
