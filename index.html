@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/luxe.css?v=mowing-prices" />
+<link rel="stylesheet" href="/luxe.css?v=overgrowth-35" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -153,7 +153,7 @@
       "name": "How much does lawn mowing cost in Indianapolis?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Standard one-time cuts start at $50 for small lawns, $65 for medium, and $80 for large. Weekly pay-per-visit mowing starts at $40, $55, and $70. Every-other-week mowing starts at $50, $65, and $80 per visit. Prepay saves $5 per cut. Overgrown lawns are quoted based on the extra work."
+        "text": "Standard one-time cuts start at $50 for small lawns, $65 for medium, and $80 for large. Weekly pay-per-visit mowing starts at $40, $55, and $70. Every-other-week mowing starts at $50, $65, and $80 per visit. Prepay saves $5 per cut. Overgrown grass adds $35 to the online estimate. We confirm the final price after reviewing the lawn."
       }
     },
     {
@@ -407,7 +407,7 @@
 
     <div class="mowing-terms">
       <h3>How mowing pricing works</h3>
-      <p><strong>Starting prices.</strong> Rates depend on lawn size, condition, and access. We confirm your quote before mowing. Overgrown lawns are quoted based on the extra work.</p>
+      <p><strong>Starting prices.</strong> Rates depend on lawn size, condition, and access. We confirm your quote before mowing. Overgrown grass adds $35 to the online estimate. We confirm the final price after reviewing the lawn.</p>
       <p><strong>Your first cut.</strong> New customers usually start at the one-time rate. If you continue, recurring or prepaid pricing begins on your next scheduled visit. If we have already reviewed your lawn and confirmed it is well maintained, you may be able to start with recurring or prepaid pricing on your first visit.</p>
       <p><strong>Recurring mowing.</strong> Choose weekly or every-other-week service and pay per visit. Every-other-week service costs more per visit because the lawn has an extra week of growth.</p>
       <p><strong>Prepaid packages.</strong> Pay up front for four weekly cuts or two every-other-week cuts. You save $5 per visit compared with the regular price for the same schedule, or $20 on the weekly package and $10 on the every-other-week package.</p>
@@ -426,7 +426,7 @@
         <span class="lx-card__icon"><svg aria-hidden="true"><use href="/icons.svg#zap"/></svg></span>
         <div>
           <h3>Overgrown Grass Add-On</h3>
-          <p>Overgrown lawns are quoted based on the extra work. We confirm your price before mowing.</p>
+          <p>Selecting overgrown grass adds $35 to your online estimate for that visit. If it’s been a month or more since your last cut, we treat it as overgrown for the estimate. A current photo can change that assessment. We confirm your price before mowing.</p>
         </div>
         <a class="lx-btn lx-btn--dark lx-btn--sm" href="/overgrown-lawn-mowing-indianapolis">Overgrown lawn quotes &rarr;</a>
       </div>
@@ -552,14 +552,10 @@
               <option value="Not mowing">Not a mowing request</option>
             </select>
           </div>
-          <div class="lx-field">
-            <label for="overgrown">Overgrown grass?</label>
-            <select id="overgrown" name="overgrown_grass">
-              <option value="No">No – normal height</option>
-              <option value="Yes">Yes — quote my overgrown lawn</option>
-              <option value="Not sure">Not sure</option>
-            </select>
-          </div>
+        </div>
+        <div class="quote-overgrowth" id="overgrowth-field">
+          <label for="overgrown"><input id="overgrown" type="checkbox" name="overgrown_grass" value="Yes (+$35 estimate)" data-estimate-add-on="35" aria-describedby="overgrowth-help"> My grass is overgrown (+$35 to estimate)</label>
+          <p id="overgrowth-help">If it’s been a month or more since your last cut, we treat it as overgrown for the estimate. Tall or thick grass that needs another pass or extra cleanup also counts. <a href="sms:3175142861">Text us a current photo</a> if you’re unsure. A photo can change the assessment. We’ll confirm the price before mowing. Your price may be higher if the lawn needs more work.</p>
         </div>
         <div class="lx-form__row">
           <div class="lx-field">
@@ -786,7 +782,7 @@
     <div class="lx-faq">
       <details open>
         <summary><h3>How much does lawn mowing cost in Indianapolis?</h3></summary>
-        <p>Standard one-time cuts start at $50 for small lawns, $65 for medium, and $80 for large. Weekly pay-per-visit mowing starts at $40, $55, and $70. Every-other-week mowing starts at $50, $65, and $80 per visit. Prepay saves $5 per cut. Overgrown lawns are quoted based on the extra work.</p>
+        <p>Standard one-time cuts start at $50 for small lawns, $65 for medium, and $80 for large. Weekly pay-per-visit mowing starts at $40, $55, and $70. Every-other-week mowing starts at $50, $65, and $80 per visit. Prepay saves $5 per cut. Overgrown grass adds $35 to the online estimate. We confirm the final price after reviewing the lawn.</p>
       </details>
       <details>
         <summary><h3>How much does gutter cleaning cost in Indianapolis?</h3></summary>
@@ -954,7 +950,7 @@
 </footer>
 <!-- /lx:footer -->
 
-<script src="/luxe.js?v=mowing-prices defer></script>
+<script src="/luxe.js?v=overgrowth-35 defer></script>
 <script src="/service-pages.js" defer></script>
 </body>
 </html>

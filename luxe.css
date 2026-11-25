@@ -717,3 +717,15 @@ main .hero,.lx-hero,section#main:has(h1),#contact.lx-sec {
 .mowing-terms { max-width: 74ch; margin: 2rem auto 0; }
 .mowing-terms p { margin: .7rem 0; }
 #mowing-schedule-field[hidden] { display: none; }
+
+.quote-overgrowth { margin: .5rem 0 1rem; }
+.quote-overgrowth[hidden] { display: none; }
+.quote-overgrowth label {
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+  font-weight: 700;
+}
+.quote-overgrowth input { accent-color: var(--lx-emerald); }
+.quote-overgrowth p { margin: .35rem 0 0; font-size: .9rem; }
+.quote-overgrowth a { text-decoration: underline; }

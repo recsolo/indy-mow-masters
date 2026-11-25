@@ -94,26 +94,30 @@
   const {service, yard_size: size, service_plan: plan, city,
     overgrown_grass: grass, mowing_schedule: schedule} = form.elements;
   const scheduleField = document.getElementById('mowing-schedule-field');
+  const overgrowthField = document.getElementById('overgrowth-field');
   const rateCards = new Map(Array.from(document.querySelectorAll('[data-yard-rate]'),
     card => [card.dataset.yardRate, card.dataset]));
 
   function updateEstimate() {
     const mowing = service.value === 'Lawn Mowing';
-    scheduleField.hidden = !mowing;
+    if (scheduleField) scheduleField.hidden = !mowing;
     schedule.disabled = !mowing;
+    overgrowthField.hidden = !mowing;
+    grass.disabled = !mowing;
     const rates = rateCards.get(size.selectedOptions[0]?.dataset.size);
-    if (!mowing || !rates || plan.selectedIndex !== 0) {
+    if (!mowing || !rates || (plan && plan.selectedIndex !== 0)) {
       estimate.textContent = '';
       return;
     }
 
-    const travel = city.value.startsWith('Other') ? 10 : 0;
-    const first = Number(rates.single) + travel;
-    const firstVisit = grass.value === 'Yes'
-      ? 'First cut: we’ll quote the extra work before mowing.'
-      : 'First cut normally starts at $' + first + '.' +
-        (grass.value === 'Not sure' ? ' We’ll confirm the price if the lawn is overgrown.' : '');
-    const travelNote = !city.value ? ' Add $10 per visit for eligible out-of-area addresses.' : '';
+    const travel = city?.value.startsWith('Other') ? 10 : 0;
+    const overgrowth = grass.checked ? Number(grass.dataset.estimateAddOn) : 0;
+    const first = Number(rates.single) + travel + overgrowth;
+    const firstVisit = overgrowth
+      ? 'Estimated first cut: $' + first + ' (includes $' + overgrowth +
+        ' for overgrown grass). Final price may be higher after we review your lawn.'
+      : 'First cut normally starts at $' + first + '.';
+    const travelNote = !city?.value ? ' Add $10 per visit for eligible out-of-area addresses.' : '';
     const schedules = {
       'Weekly pay per visit': {rate: Number(rates.weekly) + travel, cuts: 1},
       'Every other week pay per visit': {rate: Number(rates.alternate) + travel, cuts: 1},
@@ -131,7 +135,7 @@
   document.querySelectorAll('[data-yard], [data-economy]').forEach(link => {
     link.addEventListener('click', () => {
       service.value = 'Lawn Mowing';
-      plan.selectedIndex = link.hasAttribute('data-economy') ? 1 : 0;
+      if (plan) plan.selectedIndex = link.hasAttribute('data-economy') ? 1 : 0;
       const choice = Array.from(size.options).find(option => option.dataset.size === link.dataset.yard);
       if (link.dataset.yard && choice) size.value = choice.value;
       updateEstimate();
