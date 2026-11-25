@@ -2,7 +2,7 @@
   "use strict";
 
   const preferenceKey = "indy-mow-masters-site-music";
-  const positionKey = "indy-mow-masters-music-position";
+  const positionKey = "indy-mow-masters-trap-position";
 
   function read(key) {
     try {
@@ -20,10 +20,10 @@
     }
   }
 
-  const music = new Audio("/rook/site-theme.mp3");
+  const music = new Audio("/rook/site-theme.mp3?v=trap-beat");
   music.loop = true;
   music.preload = "none";
-  let enabled = read(preferenceKey) === "on";
+  let enabled = read(preferenceKey) !== "off";
   let playbackAttempt = 0;
   const button = document.createElement("button");
   button.type = "button";
@@ -111,7 +111,7 @@
   window.addEventListener("pagehide", pauseMusic);
   window.addEventListener("pageshow", event => {
     if (!event.persisted) return;
-    enabled = read(preferenceKey) === "on";
+    enabled = read(preferenceKey) !== "off";
     const position = Number(read(positionKey));
     if (Number.isFinite(music.duration) && music.duration > 0) {
       music.currentTime = position % music.duration;
