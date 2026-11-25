@@ -2,7 +2,7 @@
   "use strict";
 
   const preferenceKey = "indy-mow-masters-site-music";
-  const positionKey = "indy-mow-masters-trap-position";
+  const positionKey = "indy-mow-masters-remastered-position";
 
   function read(key) {
     try {
@@ -20,7 +20,7 @@
     }
   }
 
-  const music = new Audio("/rook/site-theme.mp3?v=trap-beat");
+  const music = new Audio("/rook/site-theme.mp3?v=c8a8e298");
   music.loop = true;
   music.preload = "none";
   let enabled = read(preferenceKey) !== "off";
@@ -28,11 +28,19 @@
   const button = document.createElement("button");
   button.type = "button";
   button.className = "site-music-toggle";
+  const portrait = document.createElement("img");
+  portrait.src = "/rook/rook-portrait.webp";
+  portrait.alt = "";
+  portrait.width = 48;
+  portrait.height = 48;
+  portrait.decoding = "async";
+  const label = document.createElement("span");
+  button.append(portrait, label);
   document.body.append(button);
 
   function updateButton() {
     const playing = !music.paused;
-    button.textContent = playing ? "Pause site music" : "Play site music";
+    label.textContent = playing ? "Pause site music" : "Play site music";
     button.setAttribute("aria-pressed", String(playing));
   }
 
