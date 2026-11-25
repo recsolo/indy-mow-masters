@@ -696,3 +696,24 @@ main .hero,.lx-hero,section#main:has(h1),#contact.lx-sec {
 }
 
 @media(max-width:400px){.lx-sticky{padding-left:8px;padding-right:8px}.lx-sticky a{font-size:12px;gap:4px}.lx-sticky a svg{width:14px;height:14px}}
+
+/* Mowing prices */
+.mowing-rate h3 { margin-bottom: .25rem; }
+.mowing-rate__size { margin: 0; }
+.mowing-rate dl {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  column-gap: .75rem;
+  margin: 1rem 0 1.25rem;
+}
+.mowing-rate dt, .mowing-rate dd {
+  margin: 0;
+  padding: .55rem 0;
+  border-bottom: 1px solid rgba(0, 61, 38, .15);
+}
+.mowing-rate dd { text-align: right; font-weight: 700; }
+.mowing-rate small { display: block; font-weight: 400; }
+.mowing-terms { max-width: 74ch; margin: 2rem auto 0; }
+.mowing-terms p { margin: .7rem 0; }
+#mowing-schedule-field[hidden] { display: none; }

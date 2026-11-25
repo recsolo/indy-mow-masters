@@ -91,20 +91,41 @@
   const estimate = document.getElementById('mowing-estimate');
   if (!estimate) return;
   const form = estimate.closest('form');
-  const {service, yard_size: size, service_plan: plan, city, overgrown_grass: grass} = form.elements;
+  const {service, yard_size: size, service_plan: plan, city,
+    overgrown_grass: grass, mowing_schedule: schedule} = form.elements;
+  const scheduleField = document.getElementById('mowing-schedule-field');
+  const rateCards = new Map(Array.from(document.querySelectorAll('[data-yard-rate]'),
+    card => [card.dataset.yardRate, card.dataset]));
 
   function updateEstimate() {
-    const rate = Number(size.selectedOptions[0]?.dataset.rate);
-    if (service.value !== 'Lawn Mowing' || !rate || plan.selectedIndex !== 0) {
+    const mowing = service.value === 'Lawn Mowing';
+    scheduleField.hidden = !mowing;
+    schedule.disabled = !mowing;
+    const rates = rateCards.get(size.selectedOptions[0]?.dataset.size);
+    if (!mowing || !rates || plan.selectedIndex !== 0) {
       estimate.textContent = '';
       return;
     }
-    const visit = rate + (city.value.startsWith('Other') ? 10 : 0);
-    const firstVisit = visit + (grass.value.startsWith('Yes') ? 20 : 0);
-    estimate.textContent = 'Estimated mowing rate: $' + visit + ' per visit.' +
-      (firstVisit !== visit ? ' First visit: $' + firstVisit + ' with overgrowth.' : '') +
-      (!city.value ? ' Outside the service area, add $10.' : '') +
-      (grass.value === 'Not sure' ? ' Overgrowth may add $20 on the first visit.' : '');
+
+    const travel = city.value.startsWith('Other') ? 10 : 0;
+    const first = Number(rates.single) + travel;
+    const firstVisit = grass.value === 'Yes'
+      ? 'First cut: we’ll quote the extra work before mowing.'
+      : 'First cut normally starts at $' + first + '.' +
+        (grass.value === 'Not sure' ? ' We’ll confirm the price if the lawn is overgrown.' : '');
+    const travelNote = !city.value ? ' Add $10 per visit for eligible out-of-area addresses.' : '';
+    const schedules = {
+      'Weekly pay per visit': {rate: Number(rates.weekly) + travel, cuts: 1},
+      'Every other week pay per visit': {rate: Number(rates.alternate) + travel, cuts: 1},
+      'Weekly prepay': {rate: Number(rates.weekly) + travel - 5, cuts: 4},
+      'Every other week prepay': {rate: Number(rates.alternate) + travel - 5, cuts: 2}
+    };
+    const next = schedules[schedule.value];
+    const ongoing = !next ? '' : next.cuts === 1
+      ? ' Recurring service starts at $' + next.rate + ' per visit.'
+      : ' Prepay starts at $' + (next.rate * next.cuts) + ' for ' + next.cuts +
+        ' cuts ($' + next.rate + ' per cut).';
+    estimate.textContent = firstVisit + ongoing + travelNote;
   }
 
   document.querySelectorAll('[data-yard], [data-economy]').forEach(link => {
