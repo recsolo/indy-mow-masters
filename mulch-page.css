@@ -1,0 +1,51 @@
+.mulch-hero-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 1px solid var(--lx-gold);
+  border-radius: 16px;
+  box-shadow: var(--lx-lift-dark);
+}
+
+.mulch-package {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.mulch-package .lx-ticks {
+  margin: 4px 0 10px;
+}
+
+.mulch-package .lx-btn {
+  margin-top: auto;
+}
+
+.mulch-package .mulch-rate {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 9px;
+}
+
+.mulch-rate strong {
+  font: 800 clamp(2.25rem, 4vw, 3.5rem) / 1 var(--lx-serif);
+  color: var(--lx-emerald);
+}
+
+.lx-card--dark .mulch-rate strong {
+  color: var(--lx-gold-hi);
+}
+
+.mulch-prep {
+  margin-top: 28px;
+  padding: 18px 22px;
+  border-inline-start: 3px solid var(--lx-gold);
+}
+
+.mulch-prep p {
+  margin: 6px 0 0;
+}

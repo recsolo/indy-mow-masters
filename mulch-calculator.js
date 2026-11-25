@@ -1,6 +1,15 @@
 /* Mulch calculator: bed area x depth -> cubic yards, 2 cu ft bags, and
    coverage. Copies the result into the quote form so the number reaches us. */
 document.addEventListener('DOMContentLoaded', function () {
+  var packageSelect = document.getElementById('mulch-package');
+  if (packageSelect) {
+    document.querySelectorAll('[data-mulch-package]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        packageSelect.value = link.dataset.mulchPackage;
+      });
+    });
+  }
+
   var calc = document.querySelector('[data-mulch-calc]');
   if (!calc) { return; }
 
@@ -17,14 +26,16 @@ document.addEventListener('DOMContentLoaded', function () {
     var l = parseFloat(len.value);
     var w = parseFloat(wid.value);
     var d = parseFloat(depth.value);
-    if (!(l > 0) || !(w > 0) || !(d > 0)) {
+    var area = l * w;
+    var valid = l > 0 && w > 0 && d > 0 && Number.isFinite(area);
+    if (useBtn) { useBtn.disabled = !valid; }
+    if (!valid) {
       outYards.textContent = '—';
       outBags.textContent = '—';
       outArea.textContent = '—';
       if (estimateField) { estimateField.value = ''; }
       return;
     }
-    var area = l * w;                       // square feet
     var cubicFeet = area * (d / 12);
     var yards = cubicFeet / 27;
     var roundedYards = Math.ceil(yards * 2) / 2;   // suppliers sell in half yards
