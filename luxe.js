@@ -93,6 +93,8 @@
   const form = estimate.closest('form');
   const {service, yard_size: size, service_plan: plan, city,
     overgrown_grass: grass, mowing_schedule: schedule} = form.elements;
+  const sizeField = document.getElementById('mowing-size-field');
+  const planField = document.getElementById('mowing-plan-field');
   const scheduleField = document.getElementById('mowing-schedule-field');
   const overgrowthField = document.getElementById('overgrowth-field');
   const rateCards = new Map(Array.from(document.querySelectorAll('[data-yard-rate]'),
@@ -100,6 +102,14 @@
 
   function updateEstimate() {
     const mowing = service.value === 'Lawn Mowing';
+    if (sizeField) {
+      sizeField.hidden = !mowing;
+      size.disabled = !mowing;
+    }
+    if (planField) {
+      planField.hidden = !mowing;
+      plan.disabled = !mowing;
+    }
     if (scheduleField) scheduleField.hidden = !mowing;
     schedule.disabled = !mowing;
     overgrowthField.hidden = !mowing;
