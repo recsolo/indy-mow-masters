@@ -18,6 +18,12 @@
     /* mobile menu */
     var burger = document.querySelector('.lx-burger');
     var nav = document.getElementById('lx-nav');
+    if (nav && !nav.querySelector('a[href="https://my.indymowmasters.com/login"]')) {
+      var portal = document.createElement('a');
+      portal.href = 'https://my.indymowmasters.com/login';
+      portal.textContent = 'Customer Login';
+      nav.appendChild(portal);
+    }
     if (burger && nav) {
       var setOpen = function (open) {
         nav.classList.toggle('is-open', open);
