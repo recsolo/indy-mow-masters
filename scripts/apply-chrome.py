@@ -34,6 +34,7 @@ HEADER = """<a class="lx-skip" href="#main">Skip to content</a>
       <a href="/lawn-care-tips-indianapolis-in">Tips</a>
       <a href="/lawn-care-products">Products</a>
       <a href="/spring-cleanup" class="lx-nav__pill">Spring 2027 List</a>
+      <a href="https://my.indymowmasters.com/login">Customer Login</a>
     </nav>
     <div class="lx-header__side">
       <a class="lx-phone" href="tel:3175142861" aria-label="Call Indy Mow Masters at 317-514-2861"><svg aria-hidden="true"><use href="/icons.svg#phone"/></svg>(317) 514-2861</a>
