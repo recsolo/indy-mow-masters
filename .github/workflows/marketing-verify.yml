@@ -1,0 +1,19 @@
+name: Marketing site verification
+on:
+  push:
+    branches: [master, release/goldknock-integration]
+  pull_request:
+    branches: [master]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - name: Validate SEO, site links and security policy
+        shell: pwsh
+        run: ./scripts/validate-marketing.ps1
