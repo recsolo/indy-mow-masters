@@ -190,7 +190,7 @@
       "name": "How much does lawn mowing cost in Indianapolis?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We charge simple flat rates based on yard size: $40 for small yards, $60 for medium, and $80 for large. Every price includes mowing front and back, string trimming, and blower cleanup. If the grass is overgrown on the first visit, there's a one-time $20 add-on."
+        "text": "We charge simple flat rates based on yard size: $40 for small yards, $60 for medium, and $80 for large. Standard recurring service includes mowing, edging, string trimming and blower cleanup. One-time cuts are quoted higher. Overgrowth starts at $35 extra; lawns not cut for a month are considered overgrown, subject to photo review."
       }
     },
     {
@@ -311,7 +311,7 @@
       <a class="lx-card lx-reveal" href="/lawn-mowing-indianapolis">
         <span class="lx-card__icon"><svg aria-hidden="true"><use href="/icons.svg#mower"/></svg></span>
         <h3>Lawn Mowing</h3>
-        <p>The Mow &amp; Go package: front and back cut, full string trim, and blower cleanup. Weekly, biweekly, or one time.</p>
+        <p>The Mow &amp; Go package: front and back cut, edging, full string trim, and blower cleanup. Weekly, biweekly, or one time.</p>
         <div class="lx-card__meta"><span>Flat rate by yard size</span><b>from $40</b></div>
       </a>
       <a class="lx-card lx-reveal" href="/gutter-cleaning">
@@ -395,17 +395,17 @@
     <div class="lx-head lx-head--center">
       <div class="lx-eyebrow">Mowing Prices</div>
       <h2>Indianapolis Lawn Mowing Prices — Flat Rates, No Contracts</h2>
-      <p>One fair price based on your yard size. Every visit is the full Mow &amp; Go package: mow, trim, and blow.</p>
+      <p>Standard recurring rates by yard size include mowing, edging, trimming and blowing. Prepay four weekly cuts or two biweekly cuts and save $5 per cut. One-time cuts are quoted separately at a higher rate.</p>
     </div>
 
     <div class="lx-grid lx-grid--3">
       <div class="lx-card lx-price lx-reveal" data-tilt>
         <div class="lx-price__name">Small Yard</div>
         <div class="lx-price__amt"><sup>$</sup>40</div>
-        <div class="lx-price__note">Per visit</div>
+        <div class="lx-price__note">Recurring base rate per visit</div>
         <ul class="lx-ticks">
           <li>Front &amp; back mow</li>
-          <li>Full string trim</li>
+          <li>Edging &amp; full string trim</li>
           <li>Blow &amp; cleanup</li>
         </ul>
         <a href="#contact" class="lx-btn lx-btn--dark lx-btn--sm estate-plan" data-yard="Small">Quote my small yard &rarr;</a>
@@ -414,10 +414,10 @@
         <div class="lx-price__tag">Most Common</div>
         <div class="lx-price__name">Medium Yard</div>
         <div class="lx-price__amt"><sup>$</sup>60</div>
-        <div class="lx-price__note">Per visit</div>
+        <div class="lx-price__note">Recurring base rate per visit</div>
         <ul class="lx-ticks">
           <li>Front &amp; back mow</li>
-          <li>Full string trim</li>
+          <li>Edging &amp; full string trim</li>
           <li>Blow &amp; cleanup</li>
         </ul>
         <a href="#contact" class="lx-btn lx-btn--dark lx-btn--sm estate-plan" data-yard="Medium">Quote my medium yard &rarr;</a>
@@ -425,10 +425,10 @@
       <div class="lx-card lx-price lx-reveal" data-tilt>
         <div class="lx-price__name">Large Yard</div>
         <div class="lx-price__amt"><sup>$</sup>80</div>
-        <div class="lx-price__note">Per visit</div>
+        <div class="lx-price__note">Recurring base rate per visit</div>
         <ul class="lx-ticks">
           <li>Front &amp; back mow</li>
-          <li>Full string trim</li>
+          <li>Edging &amp; full string trim</li>
           <li>Blow &amp; cleanup</li>
         </ul>
         <a href="#contact" class="lx-btn lx-btn--dark lx-btn--sm estate-plan" data-yard="Large">Quote my large yard &rarr;</a>
@@ -448,9 +448,9 @@
         <span class="lx-card__icon"><svg aria-hidden="true"><use href="/icons.svg#zap"/></svg></span>
         <div>
           <h3>Overgrown Grass Add-On</h3>
-          <p>Grass over standard height? We'll still handle it. One-time fee on the first visit until your lawn is on a regular schedule.</p>
+          <p>If it has been a month since your last cut, select overgrown. The surcharge starts at $35 and may increase after reviewing photos.</p>
         </div>
-        <div class="lx-row-card__amt">+$20<small>one time</small></div>
+        <div class="lx-row-card__amt">+$35<small>starting at</small></div>
       </div>
       <div class="lx-row-card lx-reveal">
         <span class="lx-card__icon"><svg aria-hidden="true"><use href="/icons.svg#pin"/></svg></span>
@@ -569,7 +569,7 @@
           <div class="lx-field">
             <label for="plan">Mowing Plan</label>
             <select id="plan" name="service_plan">
-              <option value="Standard Mow &amp; Go">Standard Mow &amp; Go — mow, trim &amp; blow</option>
+              <option value="Standard Mow &amp; Go">Standard Mow &amp; Go — mow, edge, trim &amp; blow</option>
               <option value="Economy Plan — Money Saver quote">Economy Plan — mow &amp; blow only</option>
               <option value="Not mowing">Not a mowing request</option>
             </select>
@@ -578,7 +578,7 @@
             <label for="overgrown">Overgrown grass?</label>
             <select id="overgrown" name="overgrown_grass">
               <option value="No">No – normal height</option>
-              <option value="Yes (+$20)">Yes – needs the +$20 add-on</option>
+              <option value="Yes (starting +$35)">Yes – starting at +$35</option>
               <option value="Not sure">Not sure</option>
             </select>
           </div>
@@ -607,10 +607,21 @@
           </div>
         </div>
         <div class="lx-field">
+          <label for="frequency">Mowing frequency</label>
+          <select id="frequency" name="mowing_frequency">
+            <option value="">Choose if requesting mowing…</option>
+            <option value="Weekly">Weekly</option>
+            <option value="Biweekly">Biweekly</option>
+            <option value="Weekly prepaid (4 cuts)">Weekly prepaid — four cuts, $20 savings</option>
+            <option value="Biweekly prepaid (2 cuts)">Biweekly prepaid — two cuts, $10 savings</option>
+            <option value="One-time quote">One-time cut — request a quote</option>
+          </select>
+        </div>
+        <div class="lx-field">
           <label for="notes">Anything else to know?</label>
           <textarea id="notes" name="notes" placeholder="Gate codes, dogs, special instructions…"></textarea>
         </div>
-        <output class="estate-estimate" id="mowing-estimate" for="size plan city overgrown service" aria-live="polite"></output>
+        <output class="estate-estimate" id="mowing-estimate" for="size plan city overgrown service frequency" aria-live="polite"></output>
         <button type="submit" class="lx-btn lx-btn--gold lx-btn--block">Send My Free Quote Request</button>
         <p class="lx-form__foot">No contracts. No commitment. See our <a href="/privacy-policy">Privacy Policy</a>.</p>
       </form>
@@ -797,7 +808,7 @@
     <div class="lx-faq">
       <details open>
         <summary><h3>How much does lawn mowing cost in Indianapolis?</h3></summary>
-        <p>Simple flat rates by yard size: $40 small, $60 medium, $80 large. Every price includes mowing front and back, string trimming, and blower cleanup. Overgrown grass on the first visit adds a one-time $20.</p>
+        <p>Simple flat rates by yard size: $40 small, $60 medium, $80 large. Every recurring base rate includes mowing front and back, edging, string trimming, and blower cleanup. Overgrowth starts at $35 extra; photos may change the final quote. One-time cuts are quoted higher than recurring service.</p>
       </details>
       <details>
         <summary><h3>How much does gutter cleaning cost in Indianapolis?</h3></summary>

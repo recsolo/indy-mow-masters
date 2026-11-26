@@ -91,7 +91,7 @@
   const estimate = document.getElementById('mowing-estimate');
   if (!estimate) return;
   const form = estimate.closest('form');
-  const {service, yard_size: size, service_plan: plan, city, overgrown_grass: grass} = form.elements;
+  const {service, yard_size: size, service_plan: plan, city, overgrown_grass: grass, mowing_frequency: frequency} = form.elements;
 
   function updateEstimate() {
     const rate = Number(size.selectedOptions[0]?.dataset.rate);
@@ -99,12 +99,21 @@
       estimate.textContent = '';
       return;
     }
+    if (!frequency || !frequency.value || frequency.value === 'One-time quote') {
+      estimate.textContent = 'Recurring base rate: $' + rate + ' per visit. One-time cuts are quoted separately at a higher rate. Select a mowing frequency for a package estimate.';
+      return;
+    }
     const visit = rate + (city.value.startsWith('Other') ? 10 : 0);
-    const firstVisit = visit + (grass.value.startsWith('Yes') ? 20 : 0);
-    estimate.textContent = 'Estimated mowing rate: $' + visit + ' per visit.' +
-      (firstVisit !== visit ? ' First visit: $' + firstVisit + ' with overgrowth.' : '') +
-      (!city.value ? ' Outside the service area, add $10.' : '') +
-      (grass.value === 'Not sure' ? ' Overgrowth may add $20 on the first visit.' : '');
+    const overgrowth = grass.value.startsWith('Yes') ? 35 : 0;
+    const count = frequency.value.startsWith('Weekly prepaid') ? 4 : frequency.value.startsWith('Biweekly prepaid') ? 2 : 0;
+    const total = count ? (visit - 5) * count + overgrowth : visit + overgrowth;
+    estimate.textContent = count
+      ? 'Estimated prepaid package: $' + total + ' for ' + count + ' cuts ($' + count * 5 + ' savings).'
+      : 'Estimated recurring rate: $' + visit + ' per visit.' + (overgrowth ? ' First visit starts at $' + total + '.' : '');
+    estimate.textContent += (overgrowth ? ' Includes the starting $35 overgrowth surcharge; photos may increase the quote.' : '') +
+      (!city.value ? ' Outside the service area, add $10 per visit.' : '') +
+      (grass.value === 'Not sure' ? ' Overgrowth may add $35 or more on the first visit.' : '') +
+      ' This is an estimate, not a confirmed booking.';
   }
 
   document.querySelectorAll('[data-yard], [data-economy]').forEach(link => {
