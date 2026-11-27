@@ -1,0 +1,70 @@
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body.portal{margin:0;background:#f8f4ea;color:#10261a;font:16px/1.6 Inter,system-ui,sans-serif}
+[hidden]{display:none!important}
+.portal header,.portal footer{background:#0a2717;color:#f8f4ea;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 3%}
+.portal header{position:sticky;top:0;z-index:10;flex-wrap:wrap}
+.portal .brand{font:600 28px/1.2 'Playfair Display',Georgia,serif;color:inherit;text-decoration:none;white-space:nowrap}
+.portal nav{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.portal nav a,.portal nav button{color:#f8f4ea;font-size:14px}
+.portal nav a{text-decoration:none}
+.portal nav a:hover{color:#d4af37}
+.portal main{max-width:1440px;margin:auto}
+.portal h1,.portal h2,.portal h3{font-family:'Playfair Display',Georgia,serif;line-height:1.2;font-weight:600}
+.portal h1{font-size:clamp(36px,5vw,64px);margin:0}
+.portal h2{font-size:32px;margin:0 0 28px}
+.portal h3{font-size:24px}
+.portal a{color:#7a5709;text-underline-offset:4px}
+.portal button,.portal .button{font:600 16px/1.4 Inter,system-ui,sans-serif;cursor:pointer;border:1px solid #b58d27;border-radius:7px;background:#d4af37;color:#10261a;padding:13px 22px;text-decoration:none;display:inline-block}
+.portal button:disabled{opacity:.6;cursor:wait}
+.portal button.secondary{background:transparent}
+.portal button.text-button{border:0;background:none;padding:6px 0;color:inherit;text-decoration:underline;text-underline-offset:4px}
+.portal :focus-visible{outline:3px solid #9a7018;outline-offset:4px}
+.portal label{font-weight:600;font-size:14px;display:block}
+.portal input,.portal select,.portal textarea{display:block;width:100%;padding:12px;margin-top:7px;border:1px solid #a9b6a7;border-radius:5px;background:#fffdf8;color:#10261a;font:400 16px/1.5 Inter,system-ui,sans-serif}
+.portal textarea{resize:vertical}
+.portal form{display:grid;gap:20px}
+.portal form button{justify-self:start}
+.portal .check{display:flex;align-items:flex-start;gap:12px;font-weight:400}
+.portal .check input{width:20px;margin-top:3px;flex-shrink:0}
+.auth-panel{max-width:560px;padding:55px 24px 80px;margin:0 auto;min-height:70vh}
+.auth-panel h1{font-size:42px}
+.auth-panel p{color:#4f6355;margin-bottom:28px}
+.auth-panel form button{width:100%}
+.auth-panel #forgot{margin:20px 0}
+.portal details{margin-top:28px}
+.portal summary{cursor:pointer;color:#7a5709;margin-bottom:20px}
+#message{margin:0;padding:0 3%;color:#6c3b11;white-space:pre-line}
+#message:not(:empty){padding-top:18px;padding-bottom:18px;border-bottom:1px solid #c9b272;background:#fff3c9}
+.title-row{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:35px 3%}
+.lawn-banner{height:220px;background:url('/lawn-at-dusk.webp') center 60%/cover no-repeat}
+.overview-grid{display:grid;grid-template-columns:1.2fr 1fr;padding:40px 3%;gap:50px}
+.overview-grid>section+section{border-left:1px solid #d8c394;padding-left:35px}
+.overview-grid h2:not(:first-child){margin-top:48px}
+.overview-grid dl{display:grid;grid-template-columns:80px 1fr;gap:12px}
+.overview-grid dt{color:#4f6355}
+.overview-grid dd{margin:0;overflow-wrap:anywhere}
+.wide-section{margin:0 3%;padding:45px 0;border-top:1px solid #cbbb94}
+.form-grid{grid-template-columns:1fr 1fr;max-width:850px;margin:28px 0}
+.form-grid .full{grid-column:1/-1}
+.record{padding:20px 0;border-bottom:1px solid #d8d6c8}
+.record p{margin:4px 0;color:#4f6355}
+.record strong{font-size:18px}
+.record form{grid-template-columns:repeat(3,minmax(100px,1fr));margin-top:15px;max-width:900px;align-items:end}
+#card-form{max-width:580px;margin-top:25px}
+.portal footer{font-size:14px;flex-wrap:wrap}
+.portal footer a{color:#f8f4ea}
+.portal footer .brand{font-size:24px}
+@media(max-width:760px){
+ .portal header{position:static;padding:18px}
+ .portal nav{gap:12px}
+ .portal .brand{font-size:24px}
+ .title-row{padding:30px 18px;align-items:flex-start;flex-direction:column}
+ .lawn-banner{height:160px}
+ .overview-grid{grid-template-columns:1fr;padding:30px 18px;gap:35px}
+ .overview-grid>section+section{border-left:0;border-top:1px solid #d8c394;padding:30px 0 0}
+ .wide-section{margin:0 18px;padding:32px 0}
+ .form-grid,.record form{grid-template-columns:1fr}
+ .portal footer{padding:24px 18px;flex-direction:column;align-items:flex-start}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

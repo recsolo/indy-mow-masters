@@ -375,8 +375,21 @@ foreach ($page in $formPages) {
   }
 }
 
-if ($vercel -like "*'unsafe-inline'*") {
-  $failures.Add("vercel.json CSP should not include 'unsafe-inline'")
+foreach ($rule in ($vercel | ConvertFrom-Json).headers) {
+  foreach ($header in $rule.headers) {
+    if ($header.key -ne 'Content-Security-Policy') { continue }
+    if ($rule.source -eq '/account.html') {
+      # Square's hosted card fields require inline styles on this account document.
+      if ($header.value -notlike "*script-src 'self' https://sandbox.web.squarecdn.com;*") {
+        $failures.Add('Account CSP must restrict scripts to this site and the Square sandbox SDK')
+      }
+      if ($header.value -notlike "*script-src-attr 'none'*") {
+        $failures.Add('Account CSP must block inline event handlers')
+      }
+    } elseif ($header.value -like "*'unsafe-inline'*") {
+      $failures.Add("Site CSP should not include 'unsafe-inline'")
+    }
+  }
 }
 
 # The retired leaf page must 301 to the consolidated /leaf-cleanup URL so the
