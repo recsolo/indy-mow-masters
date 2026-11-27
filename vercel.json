@@ -297,7 +297,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https://*.elevenlabs.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; script-src 'self' https://unpkg.com https://*.elevenlabs.io; connect-src 'self' https://unpkg.com https://*.elevenlabs.io wss://*.elevenlabs.io; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
+          "value": "default-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https://*.elevenlabs.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; script-src 'self' https://unpkg.com https://*.elevenlabs.io; script-src-elem 'self' blob: https://unpkg.com https://*.elevenlabs.io; script-src-attr 'none'; connect-src 'self' https://unpkg.com https://*.elevenlabs.io wss://*.elevenlabs.io; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
         }
       ]
     }
